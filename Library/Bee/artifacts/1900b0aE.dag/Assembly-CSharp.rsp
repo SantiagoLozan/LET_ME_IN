@@ -354,6 +354,7 @@
 -analyzer:"E:/UnityEditor/2022.3.22f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"E:/UnityEditor/2022.3.22f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/s_GameManager.cs"
+"Assets/Scripts/s_InformacionVisible.cs"
 -langversion:9.0
 
 /deterministic
