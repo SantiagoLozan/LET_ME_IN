@@ -14,7 +14,7 @@ public class s_GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //
     }
 
     public void ChangeScene(string name)
