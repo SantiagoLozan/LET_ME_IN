@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class s_GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
+     public CharactersManager CharactersManager; 
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         //
@@ -21,4 +22,11 @@ public class s_GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(name);
     }
+
+
+    public void NextCharacter()
+    {
+       CharactersManager.AparecerSiguientePersonaje();
+    }
+
 }
