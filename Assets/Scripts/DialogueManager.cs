@@ -5,85 +5,130 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-
     public TextMeshProUGUI textoDialogo;
     public RectTransform panelDialogo;
 
-    public string[] lineas;
+    public RectTransform panelRespuestas;
+    public TextMeshProUGUI textoRespuesta;
 
     public float velocidadTexto = 0.1f;
 
-    int index;
+    private string[] lineas;
+    private List<string> respuestasActuales;
 
+    private bool mostrandoRespuestas = false;
+
+    private int indexDialogo;
+    private int indexRespuestas;
 
     void Start()
     {
-        textoDialogo.text = string.Empty;
-        ComenzarDialogo();
+
     }
 
-    void Update()
+    public void ComenzarDialogo(string[] dialogos, List<string> respuestas)
     {
+        lineas = dialogos;
+        respuestasActuales = respuestas;
 
-        if (Input.GetMouseButtonDown(0) && EstaDentroDelPanel(Input.mousePosition))
-        {
-            if (textoDialogo.text == lineas[index])
-            {
-                ProximaLinea();
-            }
-            else
-            {
-                StopAllCoroutines();
-                textoDialogo.text = lineas[index];
-            }
-        }
+        indexDialogo = 0;
+        indexRespuestas = 0;
+        MostrarPanelDialogo();
     }
-    
-    bool EstaDentroDelPanel(Vector2 posicionClic)
+
+    void MostrarPanelRespuestas()
+    {
+        panelRespuestas.gameObject.SetActive(true);
+        panelDialogo.gameObject.SetActive(false);
+
+        StartCoroutine(EscribirRespuestas());
+    }
+
+    IEnumerator EscribirRespuestas()
+    {
+        textoRespuesta.text = "";
+
+        foreach (char letter in respuestasActuales[indexRespuestas].ToCharArray())
+        {
+            textoRespuesta.text += letter;
+            yield return new WaitForSeconds(velocidadTexto);
+        }
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && EstaDentroDelPanel(Input.mousePosition, panelRespuestas));
+        PanelRespuestasClick();
+    }
+
+    bool EstaDentroDelPanel(Vector2 posicionClic, RectTransform panel)
     {
         Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(panelDialogo, posicionClic, Camera.main, out localPoint);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(panel, posicionClic, Camera.main, out localPoint);
 
+        localPoint.x += panel.rect.width * panel.pivot.x;
+        localPoint.y += panel.rect.height * panel.pivot.y;
 
-        localPoint.x += panelDialogo.rect.width * panelDialogo.pivot.x;
-        localPoint.y += panelDialogo.rect.height * panelDialogo.pivot.y;
-
-        return panelDialogo.rect.Contains(localPoint);
+        return panel.rect.Contains(localPoint);
     }
 
-    public void ComenzarDialogo()
+    void MostrarPanelDialogo()
     {
-        index = 0;
+        mostrandoRespuestas = false;
+        panelRespuestas.gameObject.SetActive(false);
+        panelDialogo.gameObject.SetActive(true);
+
+        ComenzarEscritura();
+    }
+
+    void ComenzarEscritura()
+    {
         StartCoroutine(EscribirLinea());
     }
 
     IEnumerator EscribirLinea()
     {
-
-        foreach (char letter in lineas[index].ToCharArray())
+        textoDialogo.text = string.Empty;
+        foreach (char letter in lineas[indexDialogo].ToCharArray())
         {
-
             textoDialogo.text += letter;
-
             yield return new WaitForSeconds(velocidadTexto);
         }
+
+        mostrandoRespuestas = true;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && EstaDentroDelPanel(Input.mousePosition, panelDialogo));
+        PanelDialogoClick();
     }
 
-    public void ProximaLinea()
+    public void MostrarRespuestas(List<string> respuestas)
     {
-        if (index < lineas.Length - 1)
+        respuestasActuales = respuestas;
+        MostrarPanelRespuestas();
+    }
+
+    public void PanelRespuestasClick()
+    {
+        if (mostrandoRespuestas)
         {
-            index++;
-            textoDialogo.text = string.Empty;
-            StartCoroutine(EscribirLinea());
+            mostrandoRespuestas = false;
+            indexRespuestas++;
+            MostrarPanelDialogo(); 
+        }
+    }
+
+    public void PanelDialogoClick()
+    {
+        if (mostrandoRespuestas && indexRespuestas < respuestasActuales.Count )
+        {
+            indexDialogo++;
+            MostrarPanelRespuestas();
         }
         else
-        {
-            gameObject.SetActive(false);
-        }
-
+         {
+            if (indexDialogo == lineas.Length - 1)
+            {
+                panelDialogo.gameObject.SetActive(false);
+            }
+          }
     }
-
 }
 
 
