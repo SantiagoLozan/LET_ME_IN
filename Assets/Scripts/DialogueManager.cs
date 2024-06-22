@@ -26,6 +26,8 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    
+
     public void ComenzarDialogo(string[] dialogos, List<string> respuestas)
     {
         lineas = dialogos;

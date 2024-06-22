@@ -69,7 +69,7 @@ public class CharactersManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Índice de personaje fuera de rango.");
+            Debug.Log("Índice de personaje fuera de rango");
         }
     }
 
