@@ -14,7 +14,7 @@ public class Character
     public string nombre;
     public CharacterState estado;
     public List<string> dialogos;
-    public List<string> respuestas; 
+    public List<string> respuestas;
 }
 
 public class CharactersManager : MonoBehaviour
@@ -23,14 +23,31 @@ public class CharactersManager : MonoBehaviour
     public Transform spawnPoint;
     public List<Character> characters;
     public DialogueManager dialogueManager;
- 
+    public UI_Manager uiManager;
 
     private List<GameObject> personajesEnPantalla = new List<GameObject>();
     private int index = 0;
 
     void Start()
     {
-        AparecerSiguientePersonaje();
+        if (uiManager != null)
+        {
+            // suscribirse al evento OnPanelInicioDiaDesactivado
+            uiManager.PanelInicioDesactivado += AparecerSiguientePersonaje;
+        }
+        else
+        {
+            Debug.LogError("UI_Manager no está asignado en CharactersManager.");
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (uiManager != null)
+        {
+            // desuscribirse del evento para evitar posibles errores
+            uiManager.PanelInicioDesactivado -= AparecerSiguientePersonaje;
+        }
     }
 
     public void AparecerSiguientePersonaje()

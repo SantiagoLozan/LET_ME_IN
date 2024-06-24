@@ -21,12 +21,10 @@ public class DialogueManager : MonoBehaviour
     private int indexDialogo;
     private int indexRespuestas;
 
-    void Start()
+     void Start()
     {
-
+      
     }
-
-    
 
     public void ComenzarDialogo(string[] dialogos, List<string> respuestas)
     {
@@ -35,6 +33,7 @@ public class DialogueManager : MonoBehaviour
 
         indexDialogo = 0;
         indexRespuestas = 0;
+
         MostrarPanelDialogo();
     }
 
@@ -42,7 +41,6 @@ public class DialogueManager : MonoBehaviour
     {
         panelRespuestas.gameObject.SetActive(true);
         panelDialogo.gameObject.SetActive(false);
-
         StartCoroutine(EscribirRespuestas());
     }
 
@@ -74,9 +72,8 @@ public class DialogueManager : MonoBehaviour
     void MostrarPanelDialogo()
     {
         mostrandoRespuestas = false;
-        panelRespuestas.gameObject.SetActive(false);
         panelDialogo.gameObject.SetActive(true);
-
+        panelRespuestas.gameObject.SetActive(false);
         ComenzarEscritura();
     }
 

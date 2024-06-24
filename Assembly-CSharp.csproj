@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\s_VideoScript.cs" />
     <Compile Include="Assets\Scripts\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\CharactersManager.cs" />
+    <Compile Include="Assets\Scripts\UI_Manager.cs" />
     <Compile Include="Assets\Scripts\s_InformacionVisible.cs" />
     <Compile Include="Assets\Scripts\s_GameManager.cs" />
   </ItemGroup>

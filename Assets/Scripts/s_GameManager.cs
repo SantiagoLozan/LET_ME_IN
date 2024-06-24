@@ -6,11 +6,20 @@ using UnityEngine.SceneManagement;
 public class s_GameManager : MonoBehaviour
 {
     
-     public CharactersManager CharactersManager; 
+   public UI_Manager uiManager;
+    public CharactersManager charactersManager;
+    public string mensajeInicioDia = "";
 
     void Start()
     {
-
+        if (uiManager != null && charactersManager != null)
+        {
+            uiManager.MostrarInicioDia(mensajeInicioDia);
+        }
+        else
+        {
+            Debug.LogError("UI_Manager o CharactersManager no están asignados en GameController.");
+        }
     }
 
     void Update()
@@ -24,9 +33,10 @@ public class s_GameManager : MonoBehaviour
     }
 
 
-    public void NextCharacter()
+  public void NextCharacter()
     {
-       CharactersManager.AparecerSiguientePersonaje();
+       charactersManager.AparecerSiguientePersonaje();
     }
+
 
 }
