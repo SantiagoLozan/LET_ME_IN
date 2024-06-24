@@ -52,6 +52,7 @@ public class CharactersManager : MonoBehaviour
 
     public void AparecerSiguientePersonaje()
     {
+
         LimpiarPersonajes();
 
         if (index < personajesPrefabs.Length)

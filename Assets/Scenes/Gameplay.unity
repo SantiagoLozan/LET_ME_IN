@@ -717,6 +717,8 @@ MonoBehaviour:
   panelDialogo: {fileID: 699868702}
   panelRespuestas: {fileID: 1412460604}
   textoRespuesta: {fileID: 838351573}
+  botonSiguiente: {fileID: 0}
+  panelSiguiente: {fileID: 0}
   velocidadTexto: 0.1
 --- !u!1 &726205648
 GameObject:
@@ -1623,6 +1625,8 @@ MonoBehaviour:
   panelDialogo: {fileID: 699868702}
   panelRespuestas: {fileID: 1412460604}
   textoRespuesta: {fileID: 838351573}
+  botonSiguiente: {fileID: 0}
+  panelSiguiente: {fileID: 0}
   velocidadTexto: 0.1
 --- !u!114 &1412460606
 MonoBehaviour:
@@ -2409,7 +2413,7 @@ RectTransform:
   m_GameObject: {fileID: 1947946918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6625, y: 0.28984377, z: 1}
+  m_LocalScale: {x: 0.695625, y: 0.28984377, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1228093869}
@@ -2417,8 +2421,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 699, y: -413.83997}
-  m_SizeDelta: {x: -1397.48, y: -865.16}
+  m_AnchoredPosition: {x: 733.51, y: -422.59}
+  m_SizeDelta: {x: -1496.69, y: -925.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1947946920
 MonoBehaviour:
@@ -2491,6 +2495,8 @@ MonoBehaviour:
   panelDialogo: {fileID: 699868702}
   panelRespuestas: {fileID: 1412460604}
   textoRespuesta: {fileID: 838351573}
+  botonSiguiente: {fileID: 1228093870}
+  panelSiguiente: {fileID: 1947946919}
   velocidadTexto: 0.1
 --- !u!4 &2085731923
 Transform:

@@ -8,9 +8,9 @@ public class UI_Manager : MonoBehaviour
     public RectTransform panelInicioDia;
     public TextMeshProUGUI textoInicioDia;
     public float velocidadTexto = 0.1f;
-    public float duracionPanel = 1.0f;  
+    public float duracionPanel = 1.0f;
 
-    
+
     public event Action PanelInicioDesactivado;
 
     public DialogueManager dialogueManager;
@@ -24,8 +24,9 @@ public class UI_Manager : MonoBehaviour
     {
         dialogueManager.panelDialogo.gameObject.SetActive(false);
         dialogueManager.panelRespuestas.gameObject.SetActive(false);
-    
-    
+        dialogueManager.botonSiguiente.gameObject.SetActive(false); // Desactivar el botón de "Siguiente" inicialmente
+        dialogueManager.panelSiguiente.gameObject.SetActive(false);
+
         panelInicioDia.gameObject.SetActive(true);
         StartCoroutine(MostrarPanelInicioDiaCoroutine(mensaje));
     }

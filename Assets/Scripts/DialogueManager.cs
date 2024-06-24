@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class DialogueManager : MonoBehaviour
 
     public RectTransform panelRespuestas;
     public TextMeshProUGUI textoRespuesta;
+
+    public Button botonSiguiente; // Referencia al botón de "Siguiente"
+    public RectTransform panelSiguiente;
 
     public float velocidadTexto = 0.1f;
 
@@ -21,9 +25,9 @@ public class DialogueManager : MonoBehaviour
     private int indexDialogo;
     private int indexRespuestas;
 
-     void Start()
+    void Start()
     {
-      
+
     }
 
     public void ComenzarDialogo(string[] dialogos, List<string> respuestas)
@@ -109,24 +113,32 @@ public class DialogueManager : MonoBehaviour
         {
             mostrandoRespuestas = false;
             indexRespuestas++;
-            MostrarPanelDialogo(); 
+            MostrarPanelDialogo();
         }
     }
 
     public void PanelDialogoClick()
     {
-        if (mostrandoRespuestas && indexRespuestas < respuestasActuales.Count )
+        if (mostrandoRespuestas && indexRespuestas < respuestasActuales.Count)
         {
             indexDialogo++;
             MostrarPanelRespuestas();
         }
         else
-         {
+        {
             if (indexDialogo == lineas.Length - 1)
             {
                 panelDialogo.gameObject.SetActive(false);
+
+                MostrarBotonSiguiente(); // Llama a un método para mostrar el botón de "Siguiente"
             }
-          }
+        }
+    }
+
+    void MostrarBotonSiguiente()
+    {
+        botonSiguiente.gameObject.SetActive(true); 
+        panelSiguiente.gameObject.SetActive(true);
     }
 }
 
