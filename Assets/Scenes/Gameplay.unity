@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1905,7 +1905,6 @@ GameObject:
   - component: {fileID: 1664469820}
   - component: {fileID: 1664469819}
   - component: {fileID: 1664469818}
-  - component: {fileID: 1664469821}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1963,18 +1962,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1664469821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664469817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8daa41bea2fd6c24ea8522c06035a249, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1679651561
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,7 +2408,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 733.51, y: -422.59}
+  m_AnchoredPosition: {x: 733.51, y: -422.58997}
   m_SizeDelta: {x: -1496.69, y: -925.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1947946920
