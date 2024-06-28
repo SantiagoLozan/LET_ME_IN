@@ -17,6 +17,6 @@ public class s_InformacionVisible : MonoBehaviour
         {
             PanelInformacion.SetActive(false);
         }
+
     }
 }
-
