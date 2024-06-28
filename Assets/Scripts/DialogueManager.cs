@@ -21,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     private List<string> respuestasActuales;
 
     private bool mostrandoRespuestas = false;
+    private bool skipping = false;
 
     private int indexDialogo;
     private int indexRespuestas;
@@ -28,6 +29,14 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
 
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SkipDialogo();
+        }
     }
 
     public void ComenzarDialogo(string[] dialogos, List<string> respuestas)
@@ -56,7 +65,12 @@ public class DialogueManager : MonoBehaviour
         {
             textoRespuesta.text += letter;
             yield return new WaitForSeconds(velocidadTexto);
+            if (skipping) break;
         }
+
+        textoRespuesta.text = respuestasActuales[indexRespuestas]; // Complete the text
+
+        skipping = false; // Reset skipping flag
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && EstaDentroDelPanel(Input.mousePosition, panelRespuestas));
         PanelRespuestasClick();
@@ -93,7 +107,12 @@ public class DialogueManager : MonoBehaviour
         {
             textoDialogo.text += letter;
             yield return new WaitForSeconds(velocidadTexto);
+            if (skipping) break;
         }
+
+        textoDialogo.text = lineas[indexDialogo]; // Complete the text
+
+        skipping = false; // Reset skipping flag
 
         mostrandoRespuestas = true;
 
@@ -129,7 +148,6 @@ public class DialogueManager : MonoBehaviour
             if (indexDialogo == lineas.Length - 1)
             {
                 panelDialogo.gameObject.SetActive(false);
-
                 MostrarBotonSiguiente(); // Llama a un método para mostrar el botón de "Siguiente"
             }
         }
@@ -137,9 +155,12 @@ public class DialogueManager : MonoBehaviour
 
     void MostrarBotonSiguiente()
     {
-        botonSiguiente.gameObject.SetActive(true); 
+        botonSiguiente.gameObject.SetActive(true);
         panelSiguiente.gameObject.SetActive(true);
     }
+
+    public void SkipDialogo()
+    {
+        skipping = true;
+    }
 }
-
-
