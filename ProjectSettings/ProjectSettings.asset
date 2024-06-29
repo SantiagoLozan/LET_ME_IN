@@ -752,11 +752,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 28f25556-3c30-4f34-93e8-5af01276af50
+  cloudProjectId: 51f44664-cd3f-452a-ae28-217eef373d3e
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: LET ME IN
-  organizationId: santiagolozan73
+  projectName: LET_ME_IN
+  organizationId: valentinarojas
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

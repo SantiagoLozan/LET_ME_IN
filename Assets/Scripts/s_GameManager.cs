@@ -5,20 +5,38 @@ using UnityEngine.SceneManagement;
 
 public class s_GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
+   public UI_Manager uiManager;
+    public CharactersManager charactersManager;
+    public string mensajeInicioDia = "";
+
     void Start()
     {
-
+        if (uiManager != null && charactersManager != null)
+        {
+            uiManager.MostrarInicioDia(mensajeInicioDia);
+        }
+        else
+        {
+            Debug.LogError("UI_Manager o CharactersManager no están asignados en GameController.");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        //
     }
 
     public void ChangeScene(string name)
     {
         SceneManager.LoadScene(name);
     }
+
+
+  public void NextCharacter()
+    {
+       charactersManager.AparecerSiguientePersonaje();
+    }
+
+
 }
