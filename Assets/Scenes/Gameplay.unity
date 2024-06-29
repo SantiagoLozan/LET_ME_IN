@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1685,12 +1685,12 @@ MonoBehaviour:
   - nombre: pj3
     estado: 1
     dialogos:
+    - hola
     - De la ciudad, haciendo un recorrido en busca de provisiones
     - "Me cruc\xE9 con un grupo de gente, pero mantuve distancia."
     - No, solo me duele la cabeza por estar tantas horas bajo el sol.
     - "\xBFEs realmente necesario?"
     - "\xA1No pienso sacarlo! \xBFQuer\xE9s que me arriesgue a contagiarme? "
-    - ' '
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
