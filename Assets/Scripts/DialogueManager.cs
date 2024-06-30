@@ -12,7 +12,8 @@ public class DialogueManager : MonoBehaviour
     public RectTransform panelRespuestas;
     public TextMeshProUGUI textoRespuesta;
 
-    public Button botonSiguiente; // Referencia al botón de "Siguiente"
+    public Button botonIngreso;
+    public Button botonRechazo;  // Referencia al botón de "Siguiente"
     public RectTransform panelSiguiente;
 
     public float velocidadTexto = 0.1f;
@@ -21,16 +22,22 @@ public class DialogueManager : MonoBehaviour
     private List<string> respuestasActuales;
 
     private bool mostrandoRespuestas = false;
-    private bool skipping = false;
+   // private bool skipping = false;
+     private bool textoCompleto = false;
 
     private int indexDialogo;
     private int indexRespuestas;
+
+    public s_GameManager gameManager;
 
     void Start()
     {
 
     }
 
+
+
+   
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -38,7 +45,6 @@ public class DialogueManager : MonoBehaviour
             SkipDialogo();
         }
     }
-
     public void ComenzarDialogo(string[] dialogos, List<string> respuestas)
     {
         lineas = dialogos;
@@ -59,18 +65,19 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator EscribirRespuestas()
     {
+
         textoRespuesta.text = "";
 
         foreach (char letter in respuestasActuales[indexRespuestas].ToCharArray())
         {
             textoRespuesta.text += letter;
             yield return new WaitForSeconds(velocidadTexto);
-            if (skipping) break;
+          if (textoCompleto) break;
         }
 
         textoRespuesta.text = respuestasActuales[indexRespuestas]; // Complete the text
-
-        skipping = false; // Reset skipping flag
+ 
+        textoCompleto = false; // Reset skipping flag
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && EstaDentroDelPanel(Input.mousePosition, panelRespuestas));
         PanelRespuestasClick();
@@ -102,17 +109,20 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator EscribirLinea()
     {
+
+       
+         
         textoDialogo.text = string.Empty;
         foreach (char letter in lineas[indexDialogo].ToCharArray())
         {
             textoDialogo.text += letter;
             yield return new WaitForSeconds(velocidadTexto);
-            if (skipping) break;
+            if (textoCompleto) break;
         }
 
         textoDialogo.text = lineas[indexDialogo]; // Complete the text
 
-        skipping = false; // Reset skipping flag
+  textoCompleto = false;
 
         mostrandoRespuestas = true;
 
@@ -153,14 +163,18 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    
+
     void MostrarBotonSiguiente()
     {
-        botonSiguiente.gameObject.SetActive(true);
+        botonIngreso.interactable = true;
+        botonRechazo.interactable = true;
         panelSiguiente.gameObject.SetActive(true);
     }
 
     public void SkipDialogo()
     {
-        skipping = true;
+        textoCompleto = true;
     }
+ 
 }

@@ -23,6 +23,7 @@ public class CharactersManager : MonoBehaviour
     public Transform spawnPoint;
     public List<Character> characters;
     public DialogueManager dialogueManager;
+     public s_GameManager gameManager;
     public UI_Manager uiManager;
 
     private List<GameObject> personajesEnPantalla = new List<GameObject>();
@@ -55,6 +56,11 @@ public class CharactersManager : MonoBehaviour
 
         LimpiarPersonajes();
 
+
+
+        dialogueManager.botonIngreso.interactable = false;
+        dialogueManager.botonRechazo.interactable = false;
+
         if (index < personajesPrefabs.Length)
         {
             GameObject nuevoPersonaje = Instantiate(personajesPrefabs[index], spawnPoint.position, Quaternion.identity);
@@ -65,6 +71,8 @@ public class CharactersManager : MonoBehaviour
         else
         {
             Debug.Log("Todos los personajes han sido instanciados.");
+              gameManager.MostrarPanelReporte();
+
         }
     }
 
@@ -94,5 +102,21 @@ public class CharactersManager : MonoBehaviour
     public void MostrarRespuestas(List<string> respuestas)
     {
         dialogueManager.MostrarRespuestas(respuestas);
+    }
+
+
+    public Character GetCharacter(int index)
+    {
+        if (index >= 0 && index < characters.Count)
+        {
+            return characters[index];
+        }
+        Debug.LogError("Índice de personaje fuera de rango");
+        return null;
+    }
+
+    public int CurrentCharacterIndex
+    {
+        get { return index - 1; }  // Ajustar según cómo manejes el índice
     }
 }

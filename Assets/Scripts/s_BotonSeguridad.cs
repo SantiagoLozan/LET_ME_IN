@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class s_BotonSeguridad : MonoBehaviour
 {
     public GameObject PanelSeguridad;
     private Coroutine toggleCoroutine;
     public AudioSource audioSeguridad;
+       public Button botonSeguridad;
+
+
+   void Start()
+    {
+botonSeguridad.interactable = false; 
+    }
 
     public void Peligro()
     {
