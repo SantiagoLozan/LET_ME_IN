@@ -22,8 +22,8 @@ public class DialogueManager : MonoBehaviour
     private List<string> respuestasActuales;
 
     private bool mostrandoRespuestas = false;
-   // private bool skipping = false;
-     private bool textoCompleto = false;
+    // private bool skipping = false;
+    private bool textoCompleto = false;
 
     private int indexDialogo;
     private int indexRespuestas;
@@ -37,10 +37,10 @@ public class DialogueManager : MonoBehaviour
 
 
 
-   
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             SkipDialogo();
         }
@@ -72,11 +72,11 @@ public class DialogueManager : MonoBehaviour
         {
             textoRespuesta.text += letter;
             yield return new WaitForSeconds(velocidadTexto);
-          if (textoCompleto) break;
+            if (textoCompleto) break;
         }
 
         textoRespuesta.text = respuestasActuales[indexRespuestas]; // Complete the text
- 
+
         textoCompleto = false; // Reset skipping flag
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && EstaDentroDelPanel(Input.mousePosition, panelRespuestas));
@@ -110,8 +110,8 @@ public class DialogueManager : MonoBehaviour
     IEnumerator EscribirLinea()
     {
 
-       
-         
+
+
         textoDialogo.text = string.Empty;
         foreach (char letter in lineas[indexDialogo].ToCharArray())
         {
@@ -122,7 +122,7 @@ public class DialogueManager : MonoBehaviour
 
         textoDialogo.text = lineas[indexDialogo]; // Complete the text
 
-  textoCompleto = false;
+        textoCompleto = false;
 
         mostrandoRespuestas = true;
 
@@ -163,7 +163,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    
+
 
     void MostrarBotonSiguiente()
     {
@@ -176,5 +176,5 @@ public class DialogueManager : MonoBehaviour
     {
         textoCompleto = true;
     }
- 
+
 }
