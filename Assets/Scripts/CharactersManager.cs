@@ -28,6 +28,7 @@ public class CharactersManager : MonoBehaviour
 
     private List<GameObject> personajesEnPantalla = new List<GameObject>();
     private int index = 0;
+    public float tiempoDeEspera = 4.0f;
 
     void Start()
     {
@@ -53,13 +54,19 @@ public class CharactersManager : MonoBehaviour
 
     public void AparecerSiguientePersonaje()
     {
+        StartCoroutine(AparecerConRetraso());
+    }
 
+    private IEnumerator AparecerConRetraso()
+    {
         LimpiarPersonajes();
 
 
 
         dialogueManager.botonIngreso.interactable = false;
         dialogueManager.botonRechazo.interactable = false;
+
+           yield return new WaitForSeconds(tiempoDeEspera); // Esperar el tiempo especificado
 
         if (index < personajesPrefabs.Length)
         {
