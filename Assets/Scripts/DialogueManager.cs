@@ -79,7 +79,7 @@ public class DialogueManager : MonoBehaviour
 
         textoCompleto = false; // Reset skipping flag
 
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && EstaDentroDelPanel(Input.mousePosition, panelRespuestas));
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         PanelRespuestasClick();
     }
 
@@ -126,7 +126,7 @@ public class DialogueManager : MonoBehaviour
 
         mostrandoRespuestas = true;
 
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && EstaDentroDelPanel(Input.mousePosition, panelDialogo));
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         PanelDialogoClick();
     }
 

@@ -16,6 +16,9 @@ public class s_GameManager : MonoBehaviour
     public int sanosIngresados;
     public int enfermosIngresados;
 
+    public GameObject Musica;
+    public AudioSource backgroundMusic;
+
     void Start()
     {
         if (uiManager != null && charactersManager != null)
@@ -83,6 +86,7 @@ public class s_GameManager : MonoBehaviour
                 {
                     enfermosIngresados++;
                 }
+            
             }
             else
             {
@@ -98,7 +102,7 @@ public class s_GameManager : MonoBehaviour
 public void MostrarMensaje()
     {
        // Mostrar mensaje según la cantidad de enfermos ingresados
-        if (enfermosIngresados == 0)
+        if (enfermosIngresados == 2)
         {
             uiManager.mensajeReporte.text = "¡Buen trabajo!";
         }
@@ -106,11 +110,28 @@ public void MostrarMensaje()
         {
             uiManager.mensajeReporte.text = "Más cuidado la próxima vez.";
         }
-        else if (enfermosIngresados >= 2)
+        else if (enfermosIngresados == 0)
         {
             uiManager.mensajeReporte.text = "Fuiste retirado del puesto de trabajo.";
         }
 
+    }
+
+    public void MostrarMensajeEnfermos()
+    {
+        // Mostrar mensaje según la cantidad de enfermos ingresados
+        if (enfermosIngresados == 2)
+        {
+              uiManager.enfermosText.text = "Enfermos ingresados: 0" ;
+        }
+        else if (enfermosIngresados == 1)
+        {
+           uiManager.enfermosText.text = "Enfermos ingresados: 1" ;
+        }
+        else if (enfermosIngresados == 0)
+        {
+            uiManager.enfermosText.text = "Enfermos ingresados: 2" ;
+        }
     }
 
     }

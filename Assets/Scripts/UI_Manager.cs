@@ -64,8 +64,10 @@ public class UI_Manager : MonoBehaviour
     {
         panelReporte.gameObject.SetActive(true);
         sanosText.text = "Sanos ingresados: " + sanos;
-        enfermosText.text = "Enfermos ingresados: " + enfermos;
-
+       
+gameManager.MostrarMensajeEnfermos();
 gameManager.MostrarMensaje();
+
+
     }
 }
