@@ -10,10 +10,16 @@ public class UI_Manager : MonoBehaviour
     public float velocidadTexto = 0.1f;
     public float duracionPanel = 1.0f;
 
+    public RectTransform panelReporte; // Panel que se mostrará al final
+    public TextMeshProUGUI mensajeReporte;
+
+    public TextMeshProUGUI sanosText;
+    public TextMeshProUGUI enfermosText;
 
     public event Action PanelInicioDesactivado;
 
     public DialogueManager dialogueManager;
+    public s_GameManager gameManager;
 
     void Start()
     {
@@ -24,8 +30,11 @@ public class UI_Manager : MonoBehaviour
     {
         dialogueManager.panelDialogo.gameObject.SetActive(false);
         dialogueManager.panelRespuestas.gameObject.SetActive(false);
-        dialogueManager.botonSiguiente.gameObject.SetActive(false); // Desactivar el botón de "Siguiente" inicialmente
-        dialogueManager.panelSiguiente.gameObject.SetActive(false);
+
+        dialogueManager.botonIngreso.interactable = false;
+        dialogueManager.botonRechazo.interactable = false;
+
+        panelReporte.gameObject.SetActive(false);
 
         panelInicioDia.gameObject.SetActive(true);
         StartCoroutine(MostrarPanelInicioDiaCoroutine(mensaje));
@@ -48,5 +57,17 @@ public class UI_Manager : MonoBehaviour
 
         //invoca el evento cuando el panel se desactive
         PanelInicioDesactivado?.Invoke();
+    }
+
+
+    public void ActualizarPanelReporte(int sanos, int enfermos)
+    {
+        panelReporte.gameObject.SetActive(true);
+        sanosText.text = "Sanos ingresados: " + sanos;
+       
+gameManager.MostrarMensajeEnfermos();
+gameManager.MostrarMensaje();
+
+
     }
 }

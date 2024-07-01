@@ -23,10 +23,12 @@ public class CharactersManager : MonoBehaviour
     public Transform spawnPoint;
     public List<Character> characters;
     public DialogueManager dialogueManager;
+     public s_GameManager gameManager;
     public UI_Manager uiManager;
 
     private List<GameObject> personajesEnPantalla = new List<GameObject>();
     private int index = 0;
+    public float tiempoDeEspera = 4.0f;
 
     void Start()
     {
@@ -52,8 +54,19 @@ public class CharactersManager : MonoBehaviour
 
     public void AparecerSiguientePersonaje()
     {
+        StartCoroutine(AparecerConRetraso());
+    }
 
+    private IEnumerator AparecerConRetraso()
+    {
         LimpiarPersonajes();
+
+
+
+        dialogueManager.botonIngreso.interactable = false;
+        dialogueManager.botonRechazo.interactable = false;
+
+           yield return new WaitForSeconds(tiempoDeEspera); // Esperar el tiempo especificado
 
         if (index < personajesPrefabs.Length)
         {
@@ -65,6 +78,8 @@ public class CharactersManager : MonoBehaviour
         else
         {
             Debug.Log("Todos los personajes han sido instanciados.");
+              gameManager.MostrarPanelReporte();
+
         }
     }
 
@@ -94,5 +109,21 @@ public class CharactersManager : MonoBehaviour
     public void MostrarRespuestas(List<string> respuestas)
     {
         dialogueManager.MostrarRespuestas(respuestas);
+    }
+
+
+    public Character GetCharacter(int index)
+    {
+        if (index >= 0 && index < characters.Count)
+        {
+            return characters[index];
+        }
+        Debug.LogError("Índice de personaje fuera de rango");
+        return null;
+    }
+
+    public int CurrentCharacterIndex
+    {
+        get { return index - 1; }  // Ajustar según cómo manejes el índice
     }
 }
