@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Creditos.unity
     guid: dc3f4650b032530419b43193c0ef8d6e
+  - enabled: 1
+    path: Assets/Scenes/VideoCinematica.unity
+    guid: 04368e98057a10b4a802e592817dce9d
   m_configObjects: {}
