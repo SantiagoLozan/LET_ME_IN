@@ -10,11 +10,9 @@ public class UI_Manager : MonoBehaviour
     public float velocidadTexto = 0.1f;
     public float duracionPanel = 1.0f;
 
-    public RectTransform panelReporte; // Panel que se mostrará al final
+    public RectTransform panelReporte; 
     public TextMeshProUGUI mensajeReporte;
-
-    public TextMeshProUGUI sanosText;
-    public TextMeshProUGUI enfermosText;
+    public TextMeshProUGUI reporteText; 
 
     public event Action PanelInicioDesactivado;
 
@@ -60,14 +58,15 @@ public class UI_Manager : MonoBehaviour
     }
 
 
-    public void ActualizarPanelReporte(int sanos, int enfermos)
+    public void ActualizarPanelReporte(int sanosIngresados, int enfermosIngresados, int sanosRechazados, int enfermosRechazados)
     {
         panelReporte.gameObject.SetActive(true);
-        sanosText.text = "Sanos ingresados: " + sanos;
-       
-gameManager.MostrarMensajeEnfermos();
-gameManager.MostrarMensaje();
+        reporteText.text = $"Sanos ingresados: {sanosIngresados}\n" +
+                            $"Enfermos ingresados: {enfermosIngresados}\n" +
+                            $"Sanos rechazados: {sanosRechazados}\n" +
+                            $"Enfermos rechazados: {enfermosRechazados}";
 
-
+        gameManager.MostrarMensaje();
     }
+
 }
