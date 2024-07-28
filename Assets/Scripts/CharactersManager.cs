@@ -35,6 +35,9 @@ public class CharactersManager : MonoBehaviour
     public float bounceHeight = 0.2f; // Altura del rebote
     public float bounceSpeed = 2.0f; // Velocidad del rebote
 
+    public AudioClip footstepSound; // Añadir esta línea para el clip de audio
+
+
     void Start()
     {
         if (uiManager != null)
@@ -86,31 +89,44 @@ public class CharactersManager : MonoBehaviour
     }
 
     private IEnumerator MoverPersonajeAlCentro(GameObject personaje, Vector3 destino, int characterIndex)
+{
+    Vector3 inicio = personaje.transform.position;
+    float tiempoTranscurrido = 0f;
+
+    // Obtener o añadir un AudioSource al personaje
+    AudioSource audioSource = personaje.GetComponent<AudioSource>();
+    if (audioSource == null)
     {
-        Vector3 inicio = personaje.transform.position;
-        float tiempoTranscurrido = 0f;
-
-        while (tiempoTranscurrido < moveDuration)
-        {
-            tiempoTranscurrido += Time.deltaTime;
-            float t = Mathf.Clamp01(tiempoTranscurrido / moveDuration);
-
-            // Movimiento de deslizamiento
-            personaje.transform.position = Vector3.Lerp(inicio, destino, t);
-
-            // Movimiento de rebote (simular caminar)
-            float offsetY = Mathf.Sin(tiempoTranscurrido * bounceSpeed) * bounceHeight;
-            personaje.transform.position = new Vector3(personaje.transform.position.x, destino.y + offsetY, personaje.transform.position.z);
-
-            yield return null;
-        }
-
-        // Asegurarse de que el personaje esté exactamente en el destino final
-        personaje.transform.position = destino;
-
-        // Mostrar el diálogo del personaje
-        MostrarDialogoPersonaje(characterIndex);
+        audioSource = personaje.AddComponent<AudioSource>();
     }
+    audioSource.clip = footstepSound;
+    audioSource.loop = true;
+    audioSource.Play(); // Iniciar la reproducción del sonido
+
+    while (tiempoTranscurrido < moveDuration)
+    {
+        tiempoTranscurrido += Time.deltaTime;
+        float t = Mathf.Clamp01(tiempoTranscurrido / moveDuration);
+
+        // Movimiento de deslizamiento
+        personaje.transform.position = Vector3.Lerp(inicio, destino, t);
+
+        // Movimiento de rebote (simular caminar)
+        float offsetY = Mathf.Sin(tiempoTranscurrido * bounceSpeed) * bounceHeight;
+        personaje.transform.position = new Vector3(personaje.transform.position.x, destino.y + offsetY, personaje.transform.position.z);
+
+        yield return null;
+    }
+
+    // Detener el sonido de los pasos
+    audioSource.Stop();
+
+    // Asegurarse de que el personaje esté exactamente en el destino final
+    personaje.transform.position = destino;
+
+    // Mostrar el diálogo del personaje
+    MostrarDialogoPersonaje(characterIndex);
+}
 
 
     public void LimpiarPersonajes()
@@ -144,28 +160,41 @@ public class CharactersManager : MonoBehaviour
 
 
     private IEnumerator MoverPersonajeFueraDePantalla(GameObject personaje, Vector3 destino)
+{
+    Vector3 inicio = personaje.transform.position;
+    float tiempoTranscurrido = 0f;
+
+    // Obtener o añadir un AudioSource al personaje
+    AudioSource audioSource = personaje.GetComponent<AudioSource>();
+    if (audioSource == null)
     {
-        Vector3 inicio = personaje.transform.position;
-        float tiempoTranscurrido = 0f;
-
-        while (tiempoTranscurrido < moveDuration)
-        {
-            tiempoTranscurrido += Time.deltaTime;
-            float t = Mathf.Clamp01(tiempoTranscurrido / moveDuration);
-
-            // Movimiento de deslizamiento hacia la derecha
-            personaje.transform.position = Vector3.Lerp(inicio, destino, t);
-
-            // Movimiento de rebote (simular caminar)
-            float offsetY = Mathf.Sin(tiempoTranscurrido * bounceSpeed) * bounceHeight;
-            personaje.transform.position = new Vector3(personaje.transform.position.x, destino.y + offsetY, personaje.transform.position.z);
-
-            yield return null;
-        }
-
-        // Asegurarse de que el personaje esté exactamente en el destino final
-        personaje.transform.position = destino;
+        audioSource = personaje.AddComponent<AudioSource>();
     }
+    audioSource.clip = footstepSound;
+    audioSource.loop = true;
+    audioSource.Play(); // Iniciar la reproducción del sonido
+
+    while (tiempoTranscurrido < moveDuration)
+    {
+        tiempoTranscurrido += Time.deltaTime;
+        float t = Mathf.Clamp01(tiempoTranscurrido / moveDuration);
+
+        // Movimiento de deslizamiento hacia la derecha
+        personaje.transform.position = Vector3.Lerp(inicio, destino, t);
+
+        // Movimiento de rebote (simular caminar)
+        float offsetY = Mathf.Sin(tiempoTranscurrido * bounceSpeed) * bounceHeight;
+        personaje.transform.position = new Vector3(personaje.transform.position.x, destino.y + offsetY, personaje.transform.position.z);
+
+        yield return null;
+    }
+
+    // Detener el sonido de los pasos
+    audioSource.Stop();
+
+    // Asegurarse de que el personaje esté exactamente en el destino final
+    personaje.transform.position = destino;
+}
 
     public void MostrarDialogoPersonaje(int characterIndex)
     {
