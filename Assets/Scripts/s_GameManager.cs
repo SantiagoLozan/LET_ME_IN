@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class s_GameManager : MonoBehaviour
 {
-
     public UI_Manager uiManager;
     public CharactersManager charactersManager;
     public DialogueManager dialogueManager;
 
     public string mensajeInicioDia = "";
-
 
     public int sanosIngresados;
     public int enfermosIngresados;
@@ -35,7 +33,7 @@ public class s_GameManager : MonoBehaviour
 
     void Update()
     {
-        //
+        // Actualizaciones de frame si es necesario
     }
 
     public void ChangeScene(string name)
@@ -43,25 +41,22 @@ public class s_GameManager : MonoBehaviour
         SceneManager.LoadScene(name);
     }
 
-
     public void NextCharacter()
     {
-        //dialogueManager.botonIngreso.interactable = false;
-        //dialogueManager.botonRechazo.interactable = false;
         charactersManager.AparecerSiguientePersonaje();
-
     }
 
     public void OnBotonIngresoClick()
     {
-        VerificarEstadoPersonaje(true); // true indica ingreso
+        VerificarEstadoPersonaje(true); 
+        charactersManager.MoverPersonajeAlPunto(charactersManager.exitPoint.position);
     }
 
     public void OnBotonRechazoClick()
     {
-        VerificarEstadoPersonaje(false); // false indica rechazo
+        VerificarEstadoPersonaje(false);
+        charactersManager.MoverPersonajeAlPunto(charactersManager.spawnPoint.position);
     }
-
 
     void VerificarEstadoPersonaje(bool esIngreso)
     {
@@ -105,8 +100,6 @@ public class s_GameManager : MonoBehaviour
         uiManager.ActualizarPanelReporte(sanosIngresados, enfermosIngresados, sanosRechazados, enfermosRechazados);
     }
 
-
-
     public void MostrarMensaje()
     {
         // Mostrar mensaje según la cantidad de enfermos ingresados
@@ -118,11 +111,9 @@ public class s_GameManager : MonoBehaviour
         {
             uiManager.mensajeReporte.text = "Más cuidado la próxima vez.";
         }
-        else if (enfermosIngresados == 2)
+        else if (enfermosIngresados >= 2)
         {
             uiManager.mensajeReporte.text = "Fuiste retirado del puesto de trabajo.";
         }
-
     }
 }
-

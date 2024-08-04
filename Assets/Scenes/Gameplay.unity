@@ -2043,80 +2043,93 @@ MonoBehaviour:
     - "\xBFPuede bajarse el barbijo?"
     - Es necesario para verificar su estado de salud.
   - nombre: pj4
-    estado: 1
+    estado: 0
     dialogos:
-    - Hola
-    - De la ciudad, haciendo un recorrido en busca de provisiones
-    - "Me cruc\xE9 con un grupo de gente, pero mantuve distancia."
-    - No, solo me duele la cabeza por estar tantas horas bajo el sol.
-    - "\xBFEs realmente necesario?"
-    - "\xA1No pienso sacarlo! \xBFQuer\xE9s que me arriesgue a contagiarme? "
+    - Hola, necesito ayuda
+    - "Vengo deambulando entre ciudades, me qued\xE9 varado en un pueblo donde fui
+      a tocar cuando arranc\xF3 la pandemia."
+    - No, si no fue a verme nadie, tengo una bronca.
+    - No, nada raro en la piel.
+    - "S\xED, ped\xED prestada la guitarra, no me alcanza para comprarme una."
+    - "No, solo interactu\xE9 con mi banda, que me abandon\xF3 apenas se anunci\xF3
+      lo del virus."
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
     - "\xBFPresent\xF3 s\xEDntomas como picaz\xF3n o sarpullido? "
-    - "\xBFPuede bajarse el barbijo?"
-    - Es necesario para verificar su estado de salud.
+    - "Se ve que lo salv\xF3 su falta de talento, \xBFComparti\xF3 instrumentos con
+      otros m\xFAsicos?"
+    - "\xBFEstuvo en alg\xFAn lugar concurrido? Aparte de su recital, donde claramente
+      no lo fue a ver nadie."
   - nombre: pj5
     estado: 1
     dialogos:
-    - Hola xd
-    - De la ciudad, haciendo un recorrido en busca de provisiones
-    - "Me cruc\xE9 con un grupo de gente, pero mantuve distancia."
-    - No, solo me duele la cabeza por estar tantas horas bajo el sol.
-    - "\xBFEs realmente necesario?"
-    - "\xA1No pienso sacarlo! \xBFQuer\xE9s que me arriesgue a contagiarme? "
+    - "Hola \xA1Buen d\xEDa!"
+    - "De mi casa, no sal\xED para nada m\xE1s que buscar comida."
+    - No, vivo sola con mis gatos, y tampoco tengo amigos.
+    - Nada de momento.
+    - "Es mi alergia, estos cambios de clima me est\xE1n matando\u2026"
+    - "\xBFEh?\xBFQu\xE9 gatos\u2026? AH, si, eso\u2026 los deje de mi t\xEDa\u2026"
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
     - "\xBFPresent\xF3 s\xEDntomas como picaz\xF3n o sarpullido? "
-    - "\xBFPuede bajarse el barbijo?"
-    - Es necesario para verificar su estado de salud.
+    - "\xBFEntonces a qu\xE9 se deben las marcas en el cuello?"
+    - "\xBFVino hasta ac\xE1 sola?\xBFQu\xE9 pas\xF3 con sus gatos?"
   - nombre: pj6
-    estado: 1
+    estado: 0
     dialogos:
-    - Hola 6
-    - De la ciudad, haciendo un recorrido en busca de provisiones
-    - "Me cruc\xE9 con un grupo de gente, pero mantuve distancia."
-    - No, solo me duele la cabeza por estar tantas horas bajo el sol.
-    - "\xBFEs realmente necesario?"
-    - "\xA1No pienso sacarlo! \xBFQuer\xE9s que me arriesgue a contagiarme? "
+    - "\xA1Buenos, buenos d\xEDas!"
+    - "De mi apartamento, estuve encerrado desde que empez\xF3 esta locura\u2026"
+    - "No veo un alma hace semanas\u2026 hasta empec\xE9 a hablar con las plantas\u2026"
+    - "Nada de eso, solo la p\xE9rdida de cordura por la falta de contacto con la
+      gente\u2026"
+    - "Perfeccionando mis habilidades de cocina \xA1Ja! Puedo ser de utilidad ah\xED
+      dentro, ya domin\xE9 el arte de hacer una tostada sin quemarla\u2026"
+    - "\xA1Como un campe\xF3n! Mi barbijo y yo somos inseparables, hasta le puse
+      nombre\u2026"
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
     - "\xBFPresent\xF3 s\xEDntomas como picaz\xF3n o sarpullido? "
-    - "\xBFPuede bajarse el barbijo?"
-    - Es necesario para verificar su estado de salud.
+    - "Se nota, entonces\u2026 \xBFQu\xE9 estuvo haciendo todo este tiempo?"
+    - "\xBFC\xF3mo manejo las medidas de prevenci\xF3n hasta ahora?"
   - nombre: pj7
-    estado: 1
+    estado: 0
     dialogos:
-    - Hola 7
-    - De la ciudad, haciendo un recorrido en busca de provisiones
-    - "Me cruc\xE9 con un grupo de gente, pero mantuve distancia."
-    - No, solo me duele la cabeza por estar tantas horas bajo el sol.
-    - "\xBFEs realmente necesario?"
-    - "\xA1No pienso sacarlo! \xBFQuer\xE9s que me arriesgue a contagiarme? "
+    - "Hola, escuch\xE9 que en este lugar hay mucha gente."
+    - De la plaza, no hay nadie para jugar un partido, como siempre.
+    - "No, si todos est\xE1n encerrados, parece que soy el \xFAnico que quiere moverse."
+    - "Ninguno, mi estado f\xEDsico es excelente, no como todos los que se escondieron
+      en el sill\xF3n de su casa."
+    - Ejercitando en casa, no es lo mismo que un buen partido, pero al menos me mantengo
+      en forma.
+    - "\xBFNo ve que no tengo ning\xFAn s\xEDntoma? Me saco la remera de ser necesario,
+      pero d\xE9jeme entrar por favor, \xA1necesito jugar un partido!"
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
     - "\xBFPresent\xF3 s\xEDntomas como picaz\xF3n o sarpullido? "
-    - "\xBFPuede bajarse el barbijo?"
-    - Es necesario para verificar su estado de salud.
+    - "\xBFC\xF3mo mantuvo su estado f\xEDsico si no se pod\xEDa salir?"
+    - "\xBFC\xF3mo puedo estar seguro de que no se encontr\xF3 con otra gente para
+      jugar?"
   - nombre: pj8
     estado: 1
     dialogos:
-    - Hola 8
-    - De la ciudad, haciendo un recorrido en busca de provisiones
-    - "Me cruc\xE9 con un grupo de gente, pero mantuve distancia."
-    - No, solo me duele la cabeza por estar tantas horas bajo el sol.
-    - "\xBFEs realmente necesario?"
-    - "\xA1No pienso sacarlo! \xBFQuer\xE9s que me arriesgue a contagiarme? "
+    - Hola
+    - "Desde mi casa, desde que empez\xF3 la pandemia estoy trabajando desde ah\xED."
+    - "No en persona, solo a trav\xE9s de mis compa\xF1eros por videollamada."
+    - "Nada de eso, solo tos y cansancio, debe ser por el estr\xE9s."
+    - "Una vez, para retirar unos documentos, pero entr\xE9 y sal\xED r\xE1pidamente
+      para no cruzarme con nadie."
+    - "Si, el \xFAnico que me enferma es mi jefe, no tengo ning\xFAn s\xEDntoma del
+      virus."
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
     - "\xBFPresent\xF3 s\xEDntomas como picaz\xF3n o sarpullido? "
-    - "\xBFPuede bajarse el barbijo?"
-    - Es necesario para verificar su estado de salud.
+    - "\xBFTuvo que ir a la oficina recientemente?"
+    - "\xBFEst\xE1 segura que su malestar se debe al estr\xE9s?"
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
   uiManager: {fileID: 1709672043}
