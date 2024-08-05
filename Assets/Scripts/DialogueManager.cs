@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
     private List<string> respuestasActuales;
 
     private bool mostrandoRespuestas = false;
+    // private bool skipping = false;
     private bool textoCompleto = false;
 
     private int indexDialogo;
@@ -34,6 +35,8 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -41,7 +44,6 @@ public class DialogueManager : MonoBehaviour
             SkipDialogo();
         }
     }
-
     public void ComenzarDialogo(string[] dialogos, List<string> respuestas)
     {
         lineas = dialogos;
@@ -62,6 +64,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator EscribirRespuestas()
     {
+
         textoRespuesta.text = "";
 
         foreach (char letter in respuestasActuales[indexRespuestas].ToCharArray())
@@ -71,9 +74,9 @@ public class DialogueManager : MonoBehaviour
             if (textoCompleto) break;
         }
 
-        textoRespuesta.text = respuestasActuales[indexRespuestas]; // Completar el texto
+        textoRespuesta.text = respuestasActuales[indexRespuestas]; // Complete the text
 
-        textoCompleto = false; // Resetear flag
+        textoCompleto = false; // Reset skipping flag
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         PanelRespuestasClick();
@@ -105,13 +108,9 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator EscribirLinea()
     {
+
+
         textoDialogo.text = string.Empty;
-
-        if (indexDialogo >= lineas.Length)
-        {
-            yield break; // Salir de la coroutine si el índice está fuera de los límites
-        }
-
         foreach (char letter in lineas[indexDialogo].ToCharArray())
         {
             textoDialogo.text += letter;
@@ -119,7 +118,7 @@ public class DialogueManager : MonoBehaviour
             if (textoCompleto) break;
         }
 
-        textoDialogo.text = lineas[indexDialogo]; // Completar el texto
+        textoDialogo.text = lineas[indexDialogo]; // Complete the text
 
         textoCompleto = false;
 
@@ -141,16 +140,7 @@ public class DialogueManager : MonoBehaviour
         {
             mostrandoRespuestas = false;
             indexRespuestas++;
-            if (indexRespuestas < respuestasActuales.Count)
-            {
-                MostrarPanelDialogo();
-            }
-            else
-            {
-                panelRespuestas.gameObject.SetActive(false);
-                panelDialogo.gameObject.SetActive(false);
-                MostrarBotonSiguiente(); // Llamar al método para mostrar el botón de "Siguiente"
-            }
+            MostrarPanelDialogo();
         }
     }
 
@@ -159,17 +149,18 @@ public class DialogueManager : MonoBehaviour
         if (mostrandoRespuestas && indexRespuestas < respuestasActuales.Count)
         {
             indexDialogo++;
-            if (indexDialogo < lineas.Length)
-            {
-                MostrarPanelRespuestas();
-            }
-            else
+            MostrarPanelRespuestas();
+        }
+        else
+        {
+            if (indexDialogo == lineas.Length - 1)
             {
                 panelDialogo.gameObject.SetActive(false);
-                MostrarBotonSiguiente(); // Llamar al método para mostrar el botón de "Siguiente"
+                MostrarBotonSiguiente(); // Llama a un método para mostrar el botón de "Siguiente"
             }
         }
     }
+
 
     void MostrarBotonSiguiente()
     {
@@ -182,5 +173,6 @@ public class DialogueManager : MonoBehaviour
     {
         textoCompleto = true;
     }
+
 }
 
