@@ -37,7 +37,6 @@ public class DialogueManager : MonoBehaviour
 
 
 
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -111,7 +110,6 @@ public class DialogueManager : MonoBehaviour
     {
 
 
-
         textoDialogo.text = string.Empty;
         foreach (char letter in lineas[indexDialogo].ToCharArray())
         {
@@ -164,7 +162,6 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-
     void MostrarBotonSiguiente()
     {
         botonIngreso.interactable = true;
@@ -178,3 +175,4 @@ public class DialogueManager : MonoBehaviour
     }
 
 }
+
