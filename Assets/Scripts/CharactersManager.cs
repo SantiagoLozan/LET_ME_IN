@@ -15,11 +15,11 @@ public class Character
     public CharacterState estado;
     public List<string> dialogos;
     public List<string> respuestas;
+    public GameObject prefab; // Mantener la referencia al prefab en la clase Character
 }
 
 public class CharactersManager : MonoBehaviour
 {
-    public GameObject[] personajesPrefabs;
     public Transform spawnPoint;
     public Transform centerPoint;
     public Transform exitPoint;
@@ -39,6 +39,9 @@ public class CharactersManager : MonoBehaviour
 
     void Start()
     {
+        // Mezclar personajes
+        Shuffle(characters);
+
         if (uiManager != null)
         {
             // Suscribirse al evento OnPanelInicioDiaDesactivado
@@ -73,9 +76,9 @@ public class CharactersManager : MonoBehaviour
 
         yield return new WaitForSeconds(tiempoDeEspera);
 
-        if (index < personajesPrefabs.Length)
+        if (index < characters.Count)
         {
-            GameObject nuevoPersonaje = Instantiate(personajesPrefabs[index], spawnPoint.position, Quaternion.identity);
+            GameObject nuevoPersonaje = Instantiate(characters[index].prefab, spawnPoint.position, Quaternion.identity);
             personajesEnPantalla.Add(nuevoPersonaje);
             StartCoroutine(MoverPersonajeAlCentro(nuevoPersonaje, centerPoint.position, index));
             index++;
@@ -89,10 +92,10 @@ public class CharactersManager : MonoBehaviour
 
     private IEnumerator MoverPersonajeAlCentro(GameObject personaje, Vector3 destino, int characterIndex)
     {
+        
         Vector3 inicio = personaje.transform.position;
         float tiempoTranscurrido = 0f;
 
-        
         AudioSource audioSource = personaje.GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -117,7 +120,6 @@ public class CharactersManager : MonoBehaviour
             yield return null;
         }
 
-        
         audioSource.Stop();
 
         // Asegurarse de que el personaje esté exactamente en el destino final
@@ -160,7 +162,6 @@ public class CharactersManager : MonoBehaviour
         Vector3 inicio = personaje.transform.position;
         float tiempoTranscurrido = 0f;
 
-        
         AudioSource audioSource = personaje.GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -175,20 +176,16 @@ public class CharactersManager : MonoBehaviour
             tiempoTranscurrido += Time.deltaTime;
             float t = Mathf.Clamp01(tiempoTranscurrido / moveDuration);
 
-            
             personaje.transform.position = Vector3.Lerp(inicio, destino, t);
 
-           
             float offsetY = Mathf.Sin(tiempoTranscurrido * bounceSpeed) * bounceHeight;
             personaje.transform.position = new Vector3(personaje.transform.position.x, destino.y + offsetY, personaje.transform.position.z);
 
             yield return null;
         }
 
-
         audioSource.Stop();
 
-        
         personaje.transform.position = destino;
     }
 
@@ -253,5 +250,18 @@ public class CharactersManager : MonoBehaviour
             Destroy(personaje);
         }
         personajesEnPantalla.Clear();
+    }
+
+    private void Shuffle(List<Character> list)
+    {
+        System.Random random = new System.Random();
+        int n = list.Count;
+        for (int i = n - 1; i > 0; i--)
+        {
+            int j = random.Next(0, i + 1);
+            Character temp = list[i];
+            list[i] = list[j];
+            list[j] = temp;
+        }
     }
 }
