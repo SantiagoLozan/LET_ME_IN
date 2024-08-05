@@ -15,11 +15,14 @@ public class Character
     public CharacterState estado;
     public List<string> dialogos;
     public List<string> respuestas;
-    public GameObject prefab; // Mantener la referencia al prefab en la clase Character
+    public GameObject prefab;
+    public int nivel; // Nuevo atributo para el nivel
 }
 
 public class CharactersManager : MonoBehaviour
 {
+
+    public GameObject[] personajesPrefabs;
     public Transform spawnPoint;
     public Transform centerPoint;
     public Transform exitPoint;
@@ -29,18 +32,20 @@ public class CharactersManager : MonoBehaviour
     public UI_Manager uiManager;
 
     private List<GameObject> personajesEnPantalla = new List<GameObject>();
+    private List<Character> charactersForCurrentLevel = new List<Character>(); // Personajes para el nivel actual
+    private int personajesPorNivel = 10; 
     private int index = 0;
     public float tiempoDeEspera = 4.0f;
-    public float moveDuration = 4.0f; 
-    public float bounceHeight = 0.2f; 
-    public float bounceSpeed = 2.0f; 
+    public float moveDuration = 4.0f;
+    public float bounceHeight = 0.2f;
+    public float bounceSpeed = 2.0f;
 
-    public AudioClip footstepSound; 
+    public AudioClip footstepSound;
+
 
     void Start()
     {
-        // Mezclar personajes
-        Shuffle(characters);
+        ConfigurarPersonajesParaNivel(gameManager.NivelActual);
 
         if (uiManager != null)
         {
@@ -57,10 +62,52 @@ public class CharactersManager : MonoBehaviour
     {
         if (uiManager != null)
         {
-            // Desuscribirse del evento para evitar posibles errores
             uiManager.PanelInicioDesactivado -= AparecerSiguientePersonaje;
         }
     }
+
+    public void ConfigurarPersonajesParaNivel(int nivel)
+    {
+        charactersForCurrentLevel.Clear();
+
+        // Filtra los personajes para el nivel actual
+        foreach (var character in characters)
+        {
+            if (character.nivel == nivel)
+            {
+                charactersForCurrentLevel.Add(character);
+            }
+        }
+
+        Debug.Log($"Número de personajes para el nivel {nivel}: {charactersForCurrentLevel.Count}");
+
+        // Asegúrate de que la cantidad de personajes por nivel no exceda el número total de personajes configurados
+        if (charactersForCurrentLevel.Count > personajesPorNivel)
+        {
+            charactersForCurrentLevel = charactersForCurrentLevel.GetRange(0, personajesPorNivel);
+        }
+
+        // Mezcla la lista de personajes
+        Shuffle(charactersForCurrentLevel);
+     
+       /* Debug.Log("Lista de personajes para el nivel después de mezclar:");
+        foreach (var character in charactersForCurrentLevel)
+        {
+            Debug.Log($"Personaje: {character.nombre}, Nivel: {character.nivel}");
+        }*/
+    }
+
+    public void Shuffle<T>(List<T> list)
+    {
+        for (int i = list.Count - 1; i > 0; i--)
+        {
+            int rnd = Random.Range(0, i + 1);
+            T temp = list[i];
+            list[i] = list[rnd];
+            list[rnd] = temp;
+        }
+    }
+
 
     public void AparecerSiguientePersonaje()
     {
@@ -74,11 +121,19 @@ public class CharactersManager : MonoBehaviour
         dialogueManager.botonIngreso.interactable = false;
         dialogueManager.botonRechazo.interactable = false;
 
+        Debug.Log("Esperando antes de aparecer el siguiente personaje...");
         yield return new WaitForSeconds(tiempoDeEspera);
 
-        if (index < characters.Count)
+        Debug.Log("Tiempo de espera completado. Apareciendo el siguiente personaje.");
+
+        if (index < charactersForCurrentLevel.Count)
         {
-            GameObject nuevoPersonaje = Instantiate(characters[index].prefab, spawnPoint.position, Quaternion.identity);
+            Character character = charactersForCurrentLevel[index];
+            Debug.Log($"Instanciando personaje: {character.nombre} (Índice: {index})");
+
+            //GameObject personajePrefab = personajesPrefabs[Random.Range(0, personajesPrefabs.Length)];
+            GameObject nuevoPersonaje = Instantiate(character.prefab, spawnPoint.position, Quaternion.identity);
+
             personajesEnPantalla.Add(nuevoPersonaje);
             StartCoroutine(MoverPersonajeAlCentro(nuevoPersonaje, centerPoint.position, index));
             index++;
@@ -92,7 +147,7 @@ public class CharactersManager : MonoBehaviour
 
     private IEnumerator MoverPersonajeAlCentro(GameObject personaje, Vector3 destino, int characterIndex)
     {
-        
+
         Vector3 inicio = personaje.transform.position;
         float tiempoTranscurrido = 0f;
 
@@ -103,7 +158,7 @@ public class CharactersManager : MonoBehaviour
         }
         audioSource.clip = footstepSound;
         audioSource.loop = true;
-        audioSource.Play(); 
+        audioSource.Play();
 
         while (tiempoTranscurrido < moveDuration)
         {
@@ -169,7 +224,7 @@ public class CharactersManager : MonoBehaviour
         }
         audioSource.clip = footstepSound;
         audioSource.loop = true;
-        audioSource.Play(); 
+        audioSource.Play();
 
         while (tiempoTranscurrido < moveDuration)
         {
@@ -191,9 +246,9 @@ public class CharactersManager : MonoBehaviour
 
     public void MostrarDialogoPersonaje(int characterIndex)
     {
-        if (characterIndex < characters.Count)
+        if (characterIndex < charactersForCurrentLevel.Count)
         {
-            Character character = characters[characterIndex];
+            Character character = charactersForCurrentLevel[characterIndex];
             string[] dialogos = character.dialogos.ToArray();
             dialogueManager.ComenzarDialogo(dialogos, character.respuestas);
         }
@@ -210,9 +265,9 @@ public class CharactersManager : MonoBehaviour
 
     public Character GetCharacter(int index)
     {
-        if (index >= 0 && index < characters.Count)
+        if (index >= 0 && index < charactersForCurrentLevel.Count)
         {
-            return characters[index];
+            return charactersForCurrentLevel[index];
         }
         Debug.LogError("Índice de personaje fuera de rango");
         return null;
@@ -252,16 +307,6 @@ public class CharactersManager : MonoBehaviour
         personajesEnPantalla.Clear();
     }
 
-    private void Shuffle(List<Character> list)
-    {
-        System.Random random = new System.Random();
-        int n = list.Count;
-        for (int i = n - 1; i > 0; i--)
-        {
-            int j = random.Next(0, i + 1);
-            Character temp = list[i];
-            list[i] = list[j];
-            list[j] = temp;
-        }
-    }
 }
+
+

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+
+
     public TextMeshProUGUI textoDialogo;
     public RectTransform panelDialogo;
 
@@ -13,7 +15,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI textoRespuesta;
 
     public Button botonIngreso;
-    public Button botonRechazo;  // Referencia al botón de "Siguiente"
+    public Button botonRechazo;  
     public RectTransform panelSiguiente;
 
     public float velocidadTexto = 0.1f;
@@ -22,19 +24,12 @@ public class DialogueManager : MonoBehaviour
     private List<string> respuestasActuales;
 
     private bool mostrandoRespuestas = false;
-    // private bool skipping = false;
     private bool textoCompleto = false;
 
     private int indexDialogo;
     private int indexRespuestas;
 
     public s_GameManager gameManager;
-
-    void Start()
-    {
-
-    }
-
 
 
     void Update()
