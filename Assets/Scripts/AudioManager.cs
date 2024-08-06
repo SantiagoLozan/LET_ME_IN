@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     public bool estaHablando = false;
 
     public AudioClip[] gibberishClips;
+    public AudioClip[] gibberishClips2;
 
     void Awake()
     {

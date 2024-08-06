@@ -1192,6 +1192,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 945f1a2e6022cbc438671b00d5ca1268, type: 3}
   - {fileID: 8300000, guid: ec6fd963c40ad3b4795fae3880cec94b, type: 3}
   - {fileID: 8300000, guid: 6a69824bf135f9e4282d61e7f36a394e, type: 3}
+  gibberishClips2: []
 --- !u!1 &726205648
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,6 +2220,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 41e238b0632b60d46ac13a9f99daaf6f, type: 3}
   - {fileID: 8300000, guid: 91c89ff90c559d447afaff0fbc379849, type: 3}
   - {fileID: 8300000, guid: be82d2bc465d21241bf619402366ef03, type: 3}
+  gibberishClips2:
   - {fileID: 8300000, guid: c2c1a8f0cdfd77345ad28a141a0866e4, type: 3}
   - {fileID: 8300000, guid: eebd632e2437ea1458c60229852950dd, type: 3}
   - {fileID: 8300000, guid: c381bff39978dc441a0f028c74b06cfb, type: 3}
@@ -2775,7 +2777,8 @@ MonoBehaviour:
   velocidadTexto: 0.1
   gameManager: {fileID: 0}
   audioManager: {fileID: 1168009879}
-  gibberishClips:
+  gibberishClips: []
+  gibberishClips2:
   - {fileID: 8300000, guid: b2127898b47eae74a8a2b5f89d6b30b8, type: 3}
   - {fileID: 8300000, guid: 09648f40739854a4e858a4672f4fd3a8, type: 3}
   - {fileID: 8300000, guid: 66ba74b1177c6e24499beae9164f40d8, type: 3}
@@ -3928,6 +3931,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 945f1a2e6022cbc438671b00d5ca1268, type: 3}
   - {fileID: 8300000, guid: ec6fd963c40ad3b4795fae3880cec94b, type: 3}
   - {fileID: 8300000, guid: 6a69824bf135f9e4282d61e7f36a394e, type: 3}
+  gibberishClips2:
   - {fileID: 8300000, guid: b2127898b47eae74a8a2b5f89d6b30b8, type: 3}
   - {fileID: 8300000, guid: 09648f40739854a4e858a4672f4fd3a8, type: 3}
   - {fileID: 8300000, guid: 66ba74b1177c6e24499beae9164f40d8, type: 3}

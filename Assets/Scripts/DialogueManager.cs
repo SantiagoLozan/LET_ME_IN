@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour
     public s_GameManager gameManager;
     public AudioManager audioManager;
     public AudioClip[] gibberishClips;
-
+    public AudioClip[] gibberishClips2;
 
     void Update()
     {
@@ -61,7 +61,7 @@ public class DialogueManager : MonoBehaviour
     IEnumerator EscribirRespuestas()
     {
         textoRespuesta.text = "";
-        audioManager.HablarPalabrasEnLoop(gibberishClips);
+        AudioManager.instance.HablarPalabrasEnLoop(AudioManager.instance.gibberishClips);
 
         foreach (char letter in respuestasActuales[indexRespuestas].ToCharArray())
         {
