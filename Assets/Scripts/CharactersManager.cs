@@ -33,7 +33,7 @@ public class CharactersManager : MonoBehaviour
 
     private List<GameObject> personajesEnPantalla = new List<GameObject>();
     private List<Character> charactersForCurrentLevel = new List<Character>(); // Personajes para el nivel actual
-    private int personajesPorNivel = 10; 
+    private int personajesPorNivel = 10;
     private int index = 0;
     public float tiempoDeEspera = 4.0f;
     public float moveDuration = 4.0f;
@@ -89,12 +89,12 @@ public class CharactersManager : MonoBehaviour
 
         // Mezcla la lista de personajes
         Shuffle(charactersForCurrentLevel);
-     
-       /* Debug.Log("Lista de personajes para el nivel después de mezclar:");
-        foreach (var character in charactersForCurrentLevel)
-        {
-            Debug.Log($"Personaje: {character.nombre}, Nivel: {character.nivel}");
-        }*/
+
+        /* Debug.Log("Lista de personajes para el nivel después de mezclar:");
+         foreach (var character in charactersForCurrentLevel)
+         {
+             Debug.Log($"Personaje: {character.nombre}, Nivel: {character.nivel}");
+         }*/
     }
 
     public void Shuffle<T>(List<T> list)
@@ -308,5 +308,3 @@ public class CharactersManager : MonoBehaviour
     }
 
 }
-
-

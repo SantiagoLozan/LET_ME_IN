@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-
-
     public TextMeshProUGUI textoDialogo;
     public RectTransform panelDialogo;
 
@@ -15,7 +13,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI textoRespuesta;
 
     public Button botonIngreso;
-    public Button botonRechazo;  
+    public Button botonRechazo;
     public RectTransform panelSiguiente;
 
     public float velocidadTexto = 0.1f;
@@ -30,6 +28,8 @@ public class DialogueManager : MonoBehaviour
     private int indexRespuestas;
 
     public s_GameManager gameManager;
+    public AudioManager audioManager;
+    public AudioClip[] gibberishClips;
 
 
     void Update()
@@ -39,6 +39,7 @@ public class DialogueManager : MonoBehaviour
             SkipDialogo();
         }
     }
+
     public void ComenzarDialogo(string[] dialogos, List<string> respuestas)
     {
         lineas = dialogos;
@@ -59,8 +60,8 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator EscribirRespuestas()
     {
-
         textoRespuesta.text = "";
+        audioManager.HablarPalabrasEnLoop(gibberishClips);
 
         foreach (char letter in respuestasActuales[indexRespuestas].ToCharArray())
         {
@@ -69,9 +70,10 @@ public class DialogueManager : MonoBehaviour
             if (textoCompleto) break;
         }
 
-        textoRespuesta.text = respuestasActuales[indexRespuestas]; // Complete the text
+        textoRespuesta.text = respuestasActuales[indexRespuestas];
+        audioManager.DetenerHablar();
 
-        textoCompleto = false; // Reset skipping flag
+        textoCompleto = false;
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         PanelRespuestasClick();
@@ -103,9 +105,9 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator EscribirLinea()
     {
-
-
         textoDialogo.text = string.Empty;
+        audioManager.HablarPalabrasEnLoop(gibberishClips);
+
         foreach (char letter in lineas[indexDialogo].ToCharArray())
         {
             textoDialogo.text += letter;
@@ -113,7 +115,8 @@ public class DialogueManager : MonoBehaviour
             if (textoCompleto) break;
         }
 
-        textoDialogo.text = lineas[indexDialogo]; // Complete the text
+        textoDialogo.text = lineas[indexDialogo];
+        audioManager.DetenerHablar();
 
         textoCompleto = false;
 
@@ -151,11 +154,10 @@ public class DialogueManager : MonoBehaviour
             if (indexDialogo == lineas.Length - 1)
             {
                 panelDialogo.gameObject.SetActive(false);
-                MostrarBotonSiguiente(); // Llama a un método para mostrar el botón de "Siguiente"
+                MostrarBotonSiguiente();
             }
         }
     }
-
 
     void MostrarBotonSiguiente()
     {
@@ -168,6 +170,4 @@ public class DialogueManager : MonoBehaviour
     {
         textoCompleto = true;
     }
-
 }
-
