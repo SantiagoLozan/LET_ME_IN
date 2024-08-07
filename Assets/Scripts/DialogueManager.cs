@@ -61,7 +61,10 @@ public class DialogueManager : MonoBehaviour
     IEnumerator EscribirRespuestas()
     {
         textoRespuesta.text = "";
-        AudioManager.instance.HablarPalabrasEnLoop(AudioManager.instance.gibberishClips);
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.HablarPalabrasEnLoop(AudioManager.instance.gibberishClips);
+        }
 
         foreach (char letter in respuestasActuales[indexRespuestas].ToCharArray())
         {
@@ -71,7 +74,10 @@ public class DialogueManager : MonoBehaviour
         }
 
         textoRespuesta.text = respuestasActuales[indexRespuestas];
-        audioManager.DetenerHablar();
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.DetenerHablar();
+        }
 
         textoCompleto = false;
 
@@ -106,7 +112,10 @@ public class DialogueManager : MonoBehaviour
     IEnumerator EscribirLinea()
     {
         textoDialogo.text = string.Empty;
-        audioManager.HablarPalabrasEnLoop(gibberishClips);
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.HablarPalabrasEnLoop(gibberishClips);
+        }
 
         foreach (char letter in lineas[indexDialogo].ToCharArray())
         {
@@ -116,7 +125,10 @@ public class DialogueManager : MonoBehaviour
         }
 
         textoDialogo.text = lineas[indexDialogo];
-        audioManager.DetenerHablar();
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.DetenerHablar();
+        }
 
         textoCompleto = false;
 

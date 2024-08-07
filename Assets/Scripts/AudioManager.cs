@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
             AS = gameObject.AddComponent<AudioSource>();
         }
         Debug.Log("Número de clips cargados: " + gibberishClips.Length);
+        Debug.Log("Número de clips2 cargados: " + gibberishClips2.Length);
     }
 
     public void HablarPalabrasEnLoop(AudioClip[] gibberishClips)
@@ -43,11 +44,20 @@ public class AudioManager : MonoBehaviour
         }
 
         Debug.Log("Iniciando reproducción de clips de audio.");
-        StartCoroutine(HablarPalabrasEnLoopRoutine(gibberishClips));
+        if (instance != null)
+        {
+            StartCoroutine(HablarPalabrasEnLoopRoutine(gibberishClips));
+        }
     }
 
     IEnumerator HablarPalabrasEnLoopRoutine(AudioClip[] gibberishClips)
     {
+        if (AS == null)
+        {
+            Debug.LogError("AudioSource no está asignado.");
+            yield break;
+        }
+
         estaHablando = true;
         Debug.Log("Comienza la rutina de reproducción en loop.");
 
@@ -71,6 +81,9 @@ public class AudioManager : MonoBehaviour
     public void DetenerHablar()
     {
         estaHablando = false;
-        AS.Stop();
+        if (AS != null)
+        {
+            AS.Stop();
+        }
     }
 }

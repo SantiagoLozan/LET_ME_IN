@@ -1998,6 +1998,16 @@ MonoBehaviour:
   - {fileID: 4534030318338212612, guid: 77cf367750bdfd04780af06eff96079f, type: 3}
   - {fileID: 7820086166756251426, guid: ca9393d56879ad1429513eeb5d16d8f8, type: 3}
   - {fileID: 4691758249037950082, guid: be4380dea7ebb8d48843de1a376b4b05, type: 3}
+  - {fileID: 2573835153199593656, guid: 656587532b53f0f4595ef3a24ddb57ef, type: 3}
+  - {fileID: 2573835153199593656, guid: a7152580a841a8c43a40892441791e72, type: 3}
+  - {fileID: 2573835153199593656, guid: 6e00b6e0097661d46836bb67ad92d79c, type: 3}
+  - {fileID: 2573835153199593656, guid: 2c13e10de9ad66b4c8ef053671a158a3, type: 3}
+  - {fileID: 2573835153199593656, guid: 0e2d77ba5fb3fab47bbefc4da5d96d79, type: 3}
+  - {fileID: 2573835153199593656, guid: 20a160811651f9c40ad064946cdad38c, type: 3}
+  - {fileID: 2573835153199593656, guid: 18c28f3523fa5e84c90f569167b88aff, type: 3}
+  - {fileID: 2573835153199593656, guid: b694962cb524c9648a6388ee9310d537, type: 3}
+  - {fileID: 2573835153199593656, guid: 8644957925043e84abc6ec8c7a1d6a4f, type: 3}
+  - {fileID: 2573835153199593656, guid: 3a0bb5d985a32a14280ec05499dbafed, type: 3}
   spawnPoint: {fileID: 44192256}
   centerPoint: {fileID: 522612945}
   exitPoint: {fileID: 2029316075}
@@ -2191,6 +2201,136 @@ MonoBehaviour:
     - "\xBFPor qu\xE9 se separ\xF3 del grupo?"
     prefab: {fileID: 4691758249037950082, guid: be4380dea7ebb8d48843de1a376b4b05, type: 3}
     nivel: 1
+  - nombre: pj11
+    estado: 0
+    dialogos:
+    - Hola, necesito entrar ya mismo.
+    - Si no te enteraste estamos en medio de una pandemia, estoy tomando las precauciones
+      necesarias.
+    - Para que el gobierno no me lave el cerebro con las ondas que emiten.
+    - "Yo no me lo pienso quitar \xBF acaso quiere que me contagie? Seguro esta trabajando
+      para ellos."
+    respuestas:
+    - "\xBFDe d\xF3nde viene disfrazado as\xED?"
+    - "\xBFPuede explicarme por qu\xE9 los ajos y el colador?"
+    - 'No puedo dejarlo ingresar con todos esos elementos... Ademas no puedo ver
+      si presenta algun sintoma. '
+    prefab: {fileID: 2573835153199593656, guid: 656587532b53f0f4595ef3a24ddb57ef, type: 3}
+    nivel: 2
+  - nombre: pj12
+    estado: 0
+    dialogos:
+    - "\xA1Buenos d\xEDas!"
+    - No, estoy sola con mi gato.
+    - "Estuve aislada en mi casa, mi barrio es un caos y no quiero volver ah\xED."
+    - "Pero es mi FAMILIA, no puedo dejarlo \xA1por favor!"
+    respuestas:
+    - "\xBFEstuvo en contacto con otra gente? "
+    - "\xBFMantuvo precauciones? "
+    - "\xBFSabe que no puede ingresar con mascotas? "
+    prefab: {fileID: 2573835153199593656, guid: a7152580a841a8c43a40892441791e72, type: 3}
+    nivel: 2
+  - nombre: pj13
+    estado: 1
+    dialogos:
+    - Buenas, vengo con mi hijo.
+    - De mi casa, estamos preocupados por el virus.
+    - "Yo tuve que salir para buscar comida y mi hijo se qued\xF3 en casa jugando
+      en la compu, solo tuve contacto con el kiosquero."
+    - "Mi hijo est\xE1 sano, por favor, d\xE9jenos entrar, no puedo dejarlo solo."
+    respuestas:
+    - "\xBFDe d\xF3nde vienen? "
+    - "\xBFAlguno de los dos sali\xF3 de la casa o se reuni\xF3 con otras personas?"
+    - "Usted presenta todos los s\xEDntomas visibles de un infectado, no voy a poder
+      dejarlos pasar. "
+    prefab: {fileID: 2573835153199593656, guid: 6e00b6e0097661d46836bb67ad92d79c, type: 3}
+    nivel: 2
+  - nombre: pj14
+    estado: 1
+    dialogos:
+    - ...
+    - No, la gente tiende a evitarme y yo prefiero la soledad.
+    - Igual a mi vida normal, me gusta la oscuridad y el silencio.
+    - "No, aunque las cicatrices internas duelen m\xE1s que cualquier sintoma f\xEDsico."
+    respuestas:
+    - "\xBFHa estado en contacto con otras personas? "
+    - "\xBFComo estuvo manejando la cuarentena?"
+    - "\xBFPresent\xF3 s\xEDntomas del virus? "
+    prefab: {fileID: 2573835153199593656, guid: 2c13e10de9ad66b4c8ef053671a158a3, type: 3}
+    nivel: 2
+  - nombre: pj16
+    estado: 1
+    dialogos:
+    - Buenas tardes.
+    - "De mi peque\xF1a biblioteca en casa, pas\xE9 los \xFAltimos d\xEDas perdido
+      en los mundos de mis libros."
+    - Apenas, mis hijos ni me llaman, mi vecino me deja las compras en la puerta.
+    - "No creo en los barbijos, pero desinfect\xE9 todo con lavandina."
+    respuestas:
+    - "\xBFDe d\xF3nde viene? "
+    - "\xBFEstuvo en contacto con otras personas? "
+    - "\xBFTom\xF3 las precauciones necesarias?"
+    prefab: {fileID: 2573835153199593656, guid: 20a160811651f9c40ad064946cdad38c, type: 3}
+    nivel: 2
+  - nombre: pj17
+    estado: 0
+    dialogos:
+    - "Hola, \xBFc\xF3mo est\xE1s?"
+    - Ah, esto, traigo algo de comida casera para ofrecerle a todos, no se si tienen
+      alimentos en el bunker.
+    - "\xA1Por supuesto! utilice guantes, barbijo y desinfecte todo."
+    - "Porque vivo sola y no se como va a avanzar esto, prefiero estar en un lugar
+      donde haya atenci\xF3n m\xE9dica."
+    respuestas:
+    - "\xBFDe d\xF3nde viene con esa bandeja?"
+    - "\xBFTom\xF3 las precauciones necesarias en su cocina?"
+    - "\xBFPor qu\xE9 decidi\xF3 venir en lugar de quedarse en su casa?"
+    prefab: {fileID: 2573835153199593656, guid: 18c28f3523fa5e84c90f569167b88aff, type: 3}
+    nivel: 2
+  - nombre: pj18
+    estado: 0
+    dialogos:
+    - "Hola hermano\u2026"
+    - "Estuve en el campo haciendo meditaciones, cuando volv\xED me encontr\xE9 con
+      que hab\xEDa una pandemia."
+    - Solo mis amigos de la comunidad en el campo, estuve meditando con ellos.
+    - Ellos siguieron viajando porque no creen en el virus pero yo me asuste y me
+      acerque al primer refugio que vi.
+    respuestas:
+    - "\xBFD\xF3nde estuvo estos \xFAltimos d\xEDas?"
+    - "\xBFSe cruz\xF3 a otras personas en el camino?"
+    - "\xBFDonde estan sus amigos en este momento?"
+    prefab: {fileID: 2573835153199593656, guid: b694962cb524c9648a6388ee9310d537, type: 3}
+    nivel: 2
+  - nombre: pj19
+    estado: 1
+    dialogos:
+    - "Por fin \xBFno tienen un sistema m\xE1s lento? Hace media hora estoy esperando."
+    - "No, las medidas son una p\xE9rdida de tiempo porque nadie las cumple."
+    - No, tengo la calva sensible y estar esperando hace media hora abajo del sol
+      no ayuda.
+    - Porque estoy cansado de tener que buscar provisiones e interactuar con gente
+      inepta
+    respuestas:
+    - "Bueno se\xF1or, c\xE1lmese, hacemos lo que podemos \xBFTomo precauciones para
+      el virus?"
+    - "\xBFEso que tiene en la cabeza es sarpullido?"
+    - "\xBFPor qu\xE9 quiere entrar al bunker?"
+    prefab: {fileID: 2573835153199593656, guid: 8644957925043e84abc6ec8c7a1d6a4f, type: 3}
+    nivel: 2
+  - nombre: pj20
+    estado: 1
+    dialogos:
+    - "\xBFAc\xE1 es el after?"
+    - "Vengo de la clande del chechu, vi una fila y asum\xED que ac\xE1 segu\xEDa
+      la fiesta."
+    - "No me la bajes asi... Si seguro ah\xED adentro hay una re joda."
+    respuestas:
+    - "\xBFComo? "
+    - "Se\xF1or, esto es un refugio, hay un virus letal dando vueltas, las fiestas
+      est\xE1n prohibidas, no sea imprudente."
+    prefab: {fileID: 2573835153199593656, guid: 3a0bb5d985a32a14280ec05499dbafed, type: 3}
+    nivel: 2
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
   uiManager: {fileID: 1709672043}
