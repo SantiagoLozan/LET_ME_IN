@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1213276468240788583}
   - component: {fileID: 5924786301812912919}
-  - component: {fileID: -4100708714842549015}
+  - component: {fileID: 3318578525625107075}
   m_Layer: 0
   m_Name: personaje1
   m_TagString: Untagged
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f9d77583c8386be4198949d636aed258, type: 3}
+  m_Sprite: {fileID: 519977206, guid: a831f776d13a186419e64a0aff19eec0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &-4100708714842549015
+--- !u!95 &3318578525625107075
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 17dfdbc1af7ccf644888718425e7fe34
+guid: 85df35d3f459a814fa39033f30e54f41
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,18 +108,106 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: personaje6_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 505
+        height: 605
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7fc122cbc502dc4d813c3b4edf3815a
+      internalID: 1500361046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje6_1
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 0
+        width: 505
+        height: 605
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3392d68ef5ed4824f870ba954c45aaa3
+      internalID: -1791148353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje6_2
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 0
+        width: 505
+        height: 605
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccf77afce9838d94989ba1a419fb6230
+      internalID: -2086360794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje6_3
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 0
+        width: 505
+        height: 605
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec6d357ed696ef045b6410786cd736ae
+      internalID: -666071388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 5d00c756cd1552340bb13625466bb7e0
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      personaje6_0: 1500361046
+      personaje6_1: -1791148353
+      personaje6_2: -2086360794
+      personaje6_3: -666071388
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -391,7 +391,7 @@ Transform:
   m_GameObject: {fileID: 44192255}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.65, y: 1.39, z: 93}
+  m_LocalPosition: {x: -7.65, y: 0.5, z: 93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -795,7 +795,7 @@ Transform:
   m_GameObject: {fileID: 522612944}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 1.39, z: 93}
+  m_LocalPosition: {x: -0.08, y: 0.5, z: 93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1184,14 +1184,7 @@ MonoBehaviour:
   velocidadTexto: 0.1
   gameManager: {fileID: 0}
   audioManager: {fileID: 1168009879}
-  gibberishClips:
-  - {fileID: 8300000, guid: c2c1a8f0cdfd77345ad28a141a0866e4, type: 3}
-  - {fileID: 8300000, guid: eebd632e2437ea1458c60229852950dd, type: 3}
-  - {fileID: 8300000, guid: c381bff39978dc441a0f028c74b06cfb, type: 3}
-  - {fileID: 8300000, guid: bc5123d448fc88b48bb280b593d97cb2, type: 3}
-  - {fileID: 8300000, guid: 945f1a2e6022cbc438671b00d5ca1268, type: 3}
-  - {fileID: 8300000, guid: ec6fd963c40ad3b4795fae3880cec94b, type: 3}
-  - {fileID: 8300000, guid: 6a69824bf135f9e4282d61e7f36a394e, type: 3}
+  gibberishClips: []
   gibberishClips2: []
 --- !u!1 &726205648
 GameObject:
@@ -2003,6 +1996,8 @@ MonoBehaviour:
   - {fileID: 4534030318338212612, guid: cd3cc5b79305b0b49993641259778998, type: 3}
   - {fileID: 4534030318338212612, guid: 2158820591ed44b4e9d5edf3156379c0, type: 3}
   - {fileID: 4534030318338212612, guid: 77cf367750bdfd04780af06eff96079f, type: 3}
+  - {fileID: 7820086166756251426, guid: ca9393d56879ad1429513eeb5d16d8f8, type: 3}
+  - {fileID: 4691758249037950082, guid: be4380dea7ebb8d48843de1a376b4b05, type: 3}
   spawnPoint: {fileID: 44192256}
   centerPoint: {fileID: 522612945}
   exitPoint: {fileID: 2029316075}
@@ -2158,6 +2153,44 @@ MonoBehaviour:
     - "\xBFEst\xE1 segura que su malestar se debe al estr\xE9s?"
     prefab: {fileID: 4534030318338212612, guid: 77cf367750bdfd04780af06eff96079f, type: 3}
     nivel: 1
+  - nombre: pj9
+    estado: 0
+    dialogos:
+    - Hola
+    - Estaba encerrado en mi casa hasta que escuche en la radio que habilitaron la
+      entrada de civiles en los refugios.
+    - No, mi familia se fue apenas declararon la pandemia, pero yo no quise dejar
+      la casa sola.
+    - "Hasta ahora no, tom\xE9 todas las precauciones necesarias."
+    - "Me quede sin comida y agua, adem\xE1s vivo en una zona peligrosa "
+    - Si, si, no hay problema
+    respuestas:
+    - "\xBFDe d\xF3nde viene? "
+    - "\xBFEstuvo en contacto con otra gente? "
+    - "\xBFPresent\xF3 s\xEDntomas como picaz\xF3n o sarpullido? "
+    - "\xBFPor qu\xE9 quiere entrar a este lugar en lugar de quedarse en su casa?"
+    - "\xBFPuede retirarse la bufanda para comprobar que realmente no presenta s\xEDntomas?"
+    prefab: {fileID: 7820086166756251426, guid: ca9393d56879ad1429513eeb5d16d8f8, type: 3}
+    nivel: 1
+  - nombre: pj10
+    estado: 1
+    dialogos:
+    - Hola
+    - "Soy de la zona, tuve que irme del barrio porque hab\xEDan muchos disturbios
+      y saqueos."
+    - "Me fui con mi grupo de amigos pero me separ\xE9 de ellos hace unas horas."
+    - Solo tengo heridas, fui muy cuidadoso.
+    - Tuve una pelea al salir del barrio.
+    - 'Decidieron irse de la ciudad antes de anunciaran la apertura de puertas en
+      los refugios. '
+    respuestas:
+    - "\xBFDe d\xF3nde viene? "
+    - "\xBFEstuvo en contacto con otra gente? "
+    - "\xBFPresent\xF3 s\xEDntomas como picaz\xF3n o sarpullido? "
+    - "\xBFA qu\xE9 se debe el vendaje?"
+    - "\xBFPor qu\xE9 se separ\xF3 del grupo?"
+    prefab: {fileID: 4691758249037950082, guid: be4380dea7ebb8d48843de1a376b4b05, type: 3}
+    nivel: 1
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
   uiManager: {fileID: 1709672043}
@@ -2227,7 +2260,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bc5123d448fc88b48bb280b593d97cb2, type: 3}
   - {fileID: 8300000, guid: 945f1a2e6022cbc438671b00d5ca1268, type: 3}
   - {fileID: 8300000, guid: ec6fd963c40ad3b4795fae3880cec94b, type: 3}
-  - {fileID: 8300000, guid: 6a69824bf135f9e4282d61e7f36a394e, type: 3}
+  - {fileID: 8300000, guid: 458b3048c30fe6a4bab2101bc75e920e, type: 3}
+  - {fileID: 8300000, guid: 7142f9962873cb94885a3eebacf6896c, type: 3}
 --- !u!4 &1168009880
 Transform:
   m_ObjectHideFlags: 0
@@ -3878,7 +3912,7 @@ Transform:
   m_GameObject: {fileID: 2029316074}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.63, y: 1.39, z: 93}
+  m_LocalPosition: {x: 10.63, y: 0.5, z: 93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3930,7 +3964,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bc5123d448fc88b48bb280b593d97cb2, type: 3}
   - {fileID: 8300000, guid: 945f1a2e6022cbc438671b00d5ca1268, type: 3}
   - {fileID: 8300000, guid: ec6fd963c40ad3b4795fae3880cec94b, type: 3}
-  - {fileID: 8300000, guid: 6a69824bf135f9e4282d61e7f36a394e, type: 3}
+  - {fileID: 8300000, guid: 458b3048c30fe6a4bab2101bc75e920e, type: 3}
+  - {fileID: 8300000, guid: 7142f9962873cb94885a3eebacf6896c, type: 3}
   gibberishClips2:
   - {fileID: 8300000, guid: b2127898b47eae74a8a2b5f89d6b30b8, type: 3}
   - {fileID: 8300000, guid: 09648f40739854a4e858a4672f4fd3a8, type: 3}

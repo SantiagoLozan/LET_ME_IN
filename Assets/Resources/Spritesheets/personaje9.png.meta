@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 42f7e2ecc468e284f9d7cbc6aec4028e
+guid: 2881ed94c19f6a54591ba5aaa692f338
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: per3_0
+      name: personaje9_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 487
-        height: 674
+        width: 471
+        height: 648
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5c814ce7bfca1148b76dddf27533eda
-      internalID: 2004274167
+      spriteID: 29cad02d7dc249c43bbb8f66ae7b1a2b
+      internalID: -831636408
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: per3_1
+      name: personaje9_1
       rect:
         serializedVersion: 2
-        x: 487
+        x: 471
         y: 0
-        width: 487
-        height: 674
+        width: 471
+        height: 648
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84950bbb1a4513540a960c66d570ef1b
-      internalID: 445542540
+      spriteID: 2fddca7cf40ec87419261c19b9ab1084
+      internalID: 1576720267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: per3_2
+      name: personaje9_2
       rect:
         serializedVersion: 2
-        x: 974
+        x: 942
         y: 0
-        width: 487
-        height: 674
+        width: 471
+        height: 648
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d56a1fcbfd8c5074fa92695576f1bbc4
-      internalID: 1716522986
+      spriteID: 9f7f4c733fb30e64891848590714da02
+      internalID: -1303996930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje9_3
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 0
+        width: 471
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44f714557ec7c7c44a905102f5b09a4a
+      internalID: 480676328
       vertices: []
       indices: 
       edges: []
@@ -175,7 +196,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f9db91f6824483240855d0f7190991da
+    spriteID: 7ea84351bf8a49c4ca624330b73bb5c4
     internalID: 0
     vertices: []
     indices: 
@@ -183,9 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      per3_0: 2004274167
-      per3_1: 445542540
-      per3_2: 1716522986
+      personaje9_0: -831636408
+      personaje9_1: 1576720267
+      personaje9_2: -1303996930
+      personaje9_3: 480676328
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
