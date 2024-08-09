@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI textoRespuesta;
 
     public Button botonIngreso;
-    public Button botonRechazo;  // Referencia al botón de "Siguiente"
+    public Button botonRechazo;
     public RectTransform panelSiguiente;
 
     public float velocidadTexto = 0.1f;
@@ -22,20 +22,15 @@ public class DialogueManager : MonoBehaviour
     private List<string> respuestasActuales;
 
     private bool mostrandoRespuestas = false;
-    // private bool skipping = false;
     private bool textoCompleto = false;
 
     private int indexDialogo;
     private int indexRespuestas;
 
     public s_GameManager gameManager;
-
-    void Start()
-    {
-
-    }
-
-
+    public AudioManager audioManager;
+    public AudioClip[] gibberishClips;
+    public AudioClip[] gibberishClips2;
 
     void Update()
     {
@@ -44,6 +39,7 @@ public class DialogueManager : MonoBehaviour
             SkipDialogo();
         }
     }
+
     public void ComenzarDialogo(string[] dialogos, List<string> respuestas)
     {
         lineas = dialogos;
@@ -64,8 +60,11 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator EscribirRespuestas()
     {
-
         textoRespuesta.text = "";
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.HablarPalabrasEnLoop(AudioManager.instance.gibberishClips);
+        }
 
         foreach (char letter in respuestasActuales[indexRespuestas].ToCharArray())
         {
@@ -74,9 +73,13 @@ public class DialogueManager : MonoBehaviour
             if (textoCompleto) break;
         }
 
-        textoRespuesta.text = respuestasActuales[indexRespuestas]; // Complete the text
+        textoRespuesta.text = respuestasActuales[indexRespuestas];
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.DetenerHablar();
+        }
 
-        textoCompleto = false; // Reset skipping flag
+        textoCompleto = false;
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         PanelRespuestasClick();
@@ -108,9 +111,12 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator EscribirLinea()
     {
-
-
         textoDialogo.text = string.Empty;
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.HablarPalabrasEnLoop(gibberishClips);
+        }
+
         foreach (char letter in lineas[indexDialogo].ToCharArray())
         {
             textoDialogo.text += letter;
@@ -118,7 +124,11 @@ public class DialogueManager : MonoBehaviour
             if (textoCompleto) break;
         }
 
-        textoDialogo.text = lineas[indexDialogo]; // Complete the text
+        textoDialogo.text = lineas[indexDialogo];
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.DetenerHablar();
+        }
 
         textoCompleto = false;
 
@@ -156,11 +166,10 @@ public class DialogueManager : MonoBehaviour
             if (indexDialogo == lineas.Length - 1)
             {
                 panelDialogo.gameObject.SetActive(false);
-                MostrarBotonSiguiente(); // Llama a un método para mostrar el botón de "Siguiente"
+                MostrarBotonSiguiente();
             }
         }
     }
-
 
     void MostrarBotonSiguiente()
     {
@@ -173,6 +182,4 @@ public class DialogueManager : MonoBehaviour
     {
         textoCompleto = true;
     }
-
 }
-

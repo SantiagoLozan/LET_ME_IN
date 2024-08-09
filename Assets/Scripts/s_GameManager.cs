@@ -9,7 +9,7 @@ public class s_GameManager : MonoBehaviour
     public CharactersManager charactersManager;
     public DialogueManager dialogueManager;
 
-    public string mensajeInicioDia = "";
+    public string[] mensajesInicioDia; 
 
     public int sanosIngresados;
     public int enfermosIngresados;
@@ -19,11 +19,19 @@ public class s_GameManager : MonoBehaviour
     public GameObject Musica;
     public AudioSource backgroundMusic;
 
+    private int totalEnfermos;
+    public int NivelActual { get; private set; }
+
+
     void Start()
     {
-        if (uiManager != null && charactersManager != null)
+       NivelActual = GameData.NivelActual;
+
+
+          if (uiManager != null && charactersManager != null)
         {
-            uiManager.MostrarInicioDia(mensajeInicioDia);
+            string mensajeInicio = ObtenerMensajeInicioParaNivel(NivelActual);
+            uiManager.MostrarInicioDia(mensajeInicio);
         }
         else
         {
@@ -31,11 +39,7 @@ public class s_GameManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        // Actualizaciones de frame si es necesario
-    }
-
+ 
     public void ChangeScene(string name)
     {
         SceneManager.LoadScene(name);
@@ -48,7 +52,7 @@ public class s_GameManager : MonoBehaviour
 
     public void OnBotonIngresoClick()
     {
-        VerificarEstadoPersonaje(true); 
+        VerificarEstadoPersonaje(true);
         charactersManager.MoverPersonajeAlPunto(charactersManager.exitPoint.position);
     }
 
@@ -106,14 +110,37 @@ public class s_GameManager : MonoBehaviour
         if (enfermosIngresados == 0)
         {
             uiManager.mensajeReporte.text = "¡Buen trabajo!";
+            uiManager.botonSiguienteNivel.gameObject.SetActive(true);
         }
         else if (enfermosIngresados == 1)
         {
             uiManager.mensajeReporte.text = "Más cuidado la próxima vez.";
+             uiManager.botonSiguienteNivel.gameObject.SetActive(true);
         }
         else if (enfermosIngresados >= 2)
         {
             uiManager.mensajeReporte.text = "Fuiste retirado del puesto de trabajo.";
+        }
+    }
+
+    public void OnBotonSiguienteNivel()
+    {
+        Debug.Log("Botón Siguiente Nivel presionado");
+        NivelActual++;
+        GameData.NivelActual = NivelActual; // Guardar el nivel actual en la clase GameData
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private string ObtenerMensajeInicioParaNivel(int nivel)
+    {
+        // Asegurarse de que el índice esté dentro del rango del array
+        if (nivel - 1 >= 0 && nivel - 1 < mensajesInicioDia.Length)
+        {
+            return mensajesInicioDia[nivel - 1];
+        }
+        else
+        {
+            return "Mensaje de inicio no definido para este nivel.";
         }
     }
 }
