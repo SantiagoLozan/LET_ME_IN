@@ -1,6 +1,6 @@
 public static class GameData
 {
-    private static int nivelActual = 1;
+    private static int nivelActual = 2;
 
     public static int NivelActual
     {
