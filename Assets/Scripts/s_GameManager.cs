@@ -9,7 +9,7 @@ public class s_GameManager : MonoBehaviour
     public CharactersManager charactersManager;
     public DialogueManager dialogueManager;
 
-    public string[] mensajesInicioDia; 
+    public string[] mensajesInicioDia;
 
     public int sanosIngresados;
     public int enfermosIngresados;
@@ -25,10 +25,10 @@ public class s_GameManager : MonoBehaviour
 
     void Start()
     {
-       NivelActual = GameData.NivelActual;
+        NivelActual = GameData.NivelActual;
 
 
-          if (uiManager != null && charactersManager != null)
+        if (uiManager != null && charactersManager != null)
         {
             string mensajeInicio = ObtenerMensajeInicioParaNivel(NivelActual);
             uiManager.MostrarInicioDia(mensajeInicio);
@@ -39,7 +39,6 @@ public class s_GameManager : MonoBehaviour
         }
     }
 
- 
     public void ChangeScene(string name)
     {
         SceneManager.LoadScene(name);
@@ -95,7 +94,7 @@ public class s_GameManager : MonoBehaviour
             }
         }
 
-        // Avanzar al siguiente personaje
+    
         NextCharacter();
     }
 
@@ -115,7 +114,7 @@ public class s_GameManager : MonoBehaviour
         else if (enfermosIngresados == 1)
         {
             uiManager.mensajeReporte.text = "Más cuidado la próxima vez.";
-             uiManager.botonSiguienteNivel.gameObject.SetActive(true);
+            uiManager.botonSiguienteNivel.gameObject.SetActive(true);
         }
         else if (enfermosIngresados >= 2)
         {
@@ -143,4 +142,5 @@ public class s_GameManager : MonoBehaviour
             return "Mensaje de inicio no definido para este nivel.";
         }
     }
+
 }

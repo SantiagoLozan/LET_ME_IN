@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
 
     private bool mostrandoRespuestas = false;
     private bool textoCompleto = false;
+     private bool esAgresivo; // Agregada aquí
 
     private int indexDialogo;
     private int indexRespuestas;
@@ -32,6 +33,8 @@ public class DialogueManager : MonoBehaviour
     public AudioClip[] gibberishClips;
     public AudioClip[] gibberishClips2;
 
+     public AggressiveNPCs aggressiveNPCs;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -40,10 +43,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void ComenzarDialogo(string[] dialogos, List<string> respuestas)
+    public void ComenzarDialogo(string[] dialogos, List<string> respuestas,  bool esAgresivo)
     {
         lineas = dialogos;
         respuestasActuales = respuestas;
+        this.esAgresivo = esAgresivo;
 
         indexDialogo = 0;
         indexRespuestas = 0;
@@ -166,7 +170,19 @@ public class DialogueManager : MonoBehaviour
             if (indexDialogo == lineas.Length - 1)
             {
                 panelDialogo.gameObject.SetActive(false);
+                //MostrarBotonSiguiente();
+                 if (esAgresivo)
+            {
+                // Llama al método que maneja el comportamiento agresivo
+              //  MostrarComportamientoAgresivo();
+               aggressiveNPCs.MostrarComportamientoAgresivo();
+            }
+            else
+            {
                 MostrarBotonSiguiente();
+            }
+
+                
             }
         }
     }
@@ -182,4 +198,5 @@ public class DialogueManager : MonoBehaviour
     {
         textoCompleto = true;
     }
+
 }

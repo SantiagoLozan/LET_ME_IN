@@ -16,7 +16,8 @@ public class Character
     public List<string> dialogos;
     public List<string> respuestas;
     public GameObject prefab;
-    public int nivel; // Nuevo atributo para el nivel
+    public int nivel; 
+    public bool esAgresivo;
 }
 
 public class CharactersManager : MonoBehaviour
@@ -32,7 +33,7 @@ public class CharactersManager : MonoBehaviour
     public UI_Manager uiManager;
 
     private List<GameObject> personajesEnPantalla = new List<GameObject>();
-    private List<Character> charactersForCurrentLevel = new List<Character>(); // Personajes para el nivel actual
+    private List<Character> charactersForCurrentLevel = new List<Character>(); 
     private int personajesPorNivel = 10;
     private int index = 0;
     public float tiempoDeEspera = 4.0f;
@@ -49,7 +50,6 @@ public class CharactersManager : MonoBehaviour
 
         if (uiManager != null)
         {
-            // Suscribirse al evento OnPanelInicioDiaDesactivado
             uiManager.PanelInicioDesactivado += AparecerSiguientePersonaje;
         }
         else
@@ -89,12 +89,6 @@ public class CharactersManager : MonoBehaviour
 
         // Mezcla la lista de personajes
         Shuffle(charactersForCurrentLevel);
-
-        /* Debug.Log("Lista de personajes para el nivel después de mezclar:");
-         foreach (var character in charactersForCurrentLevel)
-         {
-             Debug.Log($"Personaje: {character.nombre}, Nivel: {character.nivel}");
-         }*/
     }
 
     public void Shuffle<T>(List<T> list)
@@ -279,7 +273,7 @@ public class CharactersManager : MonoBehaviour
         {
             Character character = charactersForCurrentLevel[characterIndex];
             string[] dialogos = character.dialogos.ToArray();
-            dialogueManager.ComenzarDialogo(dialogos, character.respuestas);
+            dialogueManager.ComenzarDialogo(dialogos, character.respuestas, character.esAgresivo);
         }
         else
         {
@@ -307,7 +301,7 @@ public class CharactersManager : MonoBehaviour
         get { return index - 1; }
     }
 
-    // Método para mover personajes según la decisión
+   
     public void MoverPersonajeAlPunto(Vector3 destino)
     {
         StartCoroutine(MoverPersonajesAlPunto(destino));

@@ -8,12 +8,12 @@ public class s_BotonSeguridad : MonoBehaviour
     public GameObject PanelSeguridad;
     private Coroutine toggleCoroutine;
     public AudioSource audioSeguridad;
-       public Button botonSeguridad;
+    public Button botonSeguridad;
 
 
    void Start()
     {
-botonSeguridad.interactable = false; 
+        botonSeguridad.interactable = false; 
     }
 
     public void Peligro()
@@ -56,4 +56,5 @@ botonSeguridad.interactable = false;
             audioSeguridad.Stop(); // Stop the sound when deactivating the panel
         }
     }
+
 }
