@@ -6,10 +6,15 @@ using UnityEngine.UI;
 
 public class AggressiveNPCs : MonoBehaviour
 {
-    public TextMeshProUGUI timerText; 
-    public s_GameManager gameManager; 
+    public TextMeshProUGUI timerText;
+    public s_GameManager gameManager;
     public CharactersManager charactersManager;
-    public GameObject panelPerdiste; 
+    public GameObject panelPerdiste;
+    public GameObject seguridadPrefab; // Prefab del personaje de seguridad
+    public Transform spawnPointSeguridad; // Punto de inicio del personaje de seguridad
+    public Transform targetPoint; // Punto al que empujará al personaje agresivo
+
+    private GameObject seguridadInstance;
 
     private float tiempoRestante;
     private bool temporizadorActivo = false;
@@ -22,6 +27,7 @@ public class AggressiveNPCs : MonoBehaviour
     {
         botonSeguridad.interactable = false;
     }
+
     void Update()
     {
         if (temporizadorActivo)
@@ -45,7 +51,7 @@ public class AggressiveNPCs : MonoBehaviour
     {
         Debug.Log("¡El personaje está actuando de manera agresiva!");
         botonSeguridad.interactable = true;
-        StartTimer(5); 
+        StartTimer(5);
         Peligro();
     }
 
@@ -60,7 +66,7 @@ public class AggressiveNPCs : MonoBehaviour
     {
         if (timerText != null)
         {
-            timerText.text = $"{tiempoRestante:F1}"; 
+            timerText.text = $"{tiempoRestante:F1}";
         }
     }
 
@@ -88,11 +94,11 @@ public class AggressiveNPCs : MonoBehaviour
             PanelSeguridad.SetActive(true);
             audioSeguridad.Play();
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
 
             PanelSeguridad.SetActive(false);
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -102,8 +108,8 @@ public class AggressiveNPCs : MonoBehaviour
         {
             StopCoroutine(toggleCoroutine);
             toggleCoroutine = null;
-            PanelSeguridad.SetActive(false); 
-            audioSeguridad.Stop(); 
+            PanelSeguridad.SetActive(false);
+            audioSeguridad.Stop();
         }
     }
 
@@ -114,8 +120,65 @@ public class AggressiveNPCs : MonoBehaviour
         if (temporizadorActivo)
         {
             temporizadorActivo = false;
-            timerText.gameObject.SetActive(false); 
+            timerText.gameObject.SetActive(false);
         }
+
+        // Invocar al personaje de seguridad
+        seguridadInstance = Instantiate(seguridadPrefab, spawnPointSeguridad.position, Quaternion.identity);
+
+        // Obtener el personaje agresivo actual desde CharactersManager
+        GameObject personajeAgresivoActual = charactersManager.GetCharacterGameObject();
+
+        if (personajeAgresivoActual != null)
+        {
+            // Mover al personaje agresivo
+            StartCoroutine(EmpujarPersonajeAggressivo(personajeAgresivoActual.transform));
+        }
+    }
+
+    IEnumerator EmpujarPersonajeAggressivo(Transform personajeAggressivo)
+    {
+        float distanciaSeguridadYAgresivo = 0.1f;
+        float velocidadMovimiento = 2f; // Velocidad del personaje agresivo
+        float velocidadSeguridad = 3.5f; // Velocidad del personaje de seguridad, un poco más rápido
+
+        // Determina un punto fuera de la pantalla para destruir al personaje agresivo
+        Vector3 puntoFueraDePantalla = new Vector3(targetPoint.position.x - 1f, personajeAggressivo.position.y, personajeAggressivo.position.z);
+
+        while (Vector3.Distance(personajeAggressivo.position, puntoFueraDePantalla) > 0.1f)
+        {
+            // Mover el personaje agresivo hacia el punto fuera de la pantalla
+            personajeAggressivo.position = Vector3.MoveTowards(personajeAggressivo.position, puntoFueraDePantalla, Time.deltaTime * velocidadMovimiento);
+
+            // Mantener al personaje de seguridad una distancia constante detrás del personaje agresivo
+            if (seguridadInstance != null)
+            {
+                Vector3 posicionSeguridad = personajeAggressivo.position - new Vector3(distanciaSeguridadYAgresivo, 0, 0);
+                seguridadInstance.transform.position = Vector3.MoveTowards(seguridadInstance.transform.position, posicionSeguridad, Time.deltaTime * velocidadSeguridad);
+            }
+
+            yield return null;
+        }
+
+        // Destruir el personaje agresivo después de moverlo fuera de la pantalla
+        if (personajeAggressivo != null)
+        {
+            Destroy(personajeAggressivo.gameObject);
+        }
+
+        // Destruir el personaje de seguridad después de empujar
+        if (seguridadInstance != null)
+        {
+            Destroy(seguridadInstance);
+        }
+
+        // Esperar 2 segundos antes de llamar a la función para aparecer el siguiente personaje
+        yield return new WaitForSeconds(1f);
+
+        // Llamar la función de aparición del siguiente personaje
         charactersManager.AparecerSiguientePersonaje();
     }
+
+
+
 }

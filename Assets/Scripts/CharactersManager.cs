@@ -16,7 +16,7 @@ public class Character
     public List<string> dialogos;
     public List<string> respuestas;
     public GameObject prefab;
-    public int nivel; 
+    public int nivel;
     public bool esAgresivo;
 }
 
@@ -33,7 +33,7 @@ public class CharactersManager : MonoBehaviour
     public UI_Manager uiManager;
 
     private List<GameObject> personajesEnPantalla = new List<GameObject>();
-    private List<Character> charactersForCurrentLevel = new List<Character>(); 
+    private List<Character> charactersForCurrentLevel = new List<Character>();
     private int personajesPorNivel = 10;
     private int index = 0;
     public float tiempoDeEspera = 4.0f;
@@ -140,57 +140,57 @@ public class CharactersManager : MonoBehaviour
     }
 
     private IEnumerator MoverPersonajeAlCentro(GameObject personaje, Vector3 destino, int characterIndex)
-{
-    if (personaje == null)
-    {
-        yield break;
-    }
-
-    Vector3 inicio = personaje.transform.position;
-    float tiempoTranscurrido = 0f;
-
-    AudioSource audioSource = personaje.GetComponent<AudioSource>();
-    if (audioSource == null)
-    {
-        audioSource = personaje.AddComponent<AudioSource>();
-    }
-    audioSource.clip = footstepSound;
-    audioSource.loop = true;
-    audioSource.Play();
-
-    while (tiempoTranscurrido < moveDuration)
     {
         if (personaje == null)
         {
             yield break;
         }
 
-        tiempoTranscurrido += Time.deltaTime;
-        float t = Mathf.Clamp01(tiempoTranscurrido / moveDuration);
+        Vector3 inicio = personaje.transform.position;
+        float tiempoTranscurrido = 0f;
 
-        // Movimiento de deslizamiento
-        personaje.transform.position = Vector3.Lerp(inicio, destino, t);
+        AudioSource audioSource = personaje.GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = personaje.AddComponent<AudioSource>();
+        }
+        audioSource.clip = footstepSound;
+        audioSource.loop = true;
+        audioSource.Play();
 
-        // Movimiento caminar
-        float offsetY = Mathf.Sin(tiempoTranscurrido * bounceSpeed) * bounceHeight;
-        personaje.transform.position = new Vector3(personaje.transform.position.x, destino.y + offsetY, personaje.transform.position.z);
+        while (tiempoTranscurrido < moveDuration)
+        {
+            if (personaje == null)
+            {
+                yield break;
+            }
 
-        yield return null;
+            tiempoTranscurrido += Time.deltaTime;
+            float t = Mathf.Clamp01(tiempoTranscurrido / moveDuration);
+
+            // Movimiento de deslizamiento
+            personaje.transform.position = Vector3.Lerp(inicio, destino, t);
+
+            // Movimiento caminar
+            float offsetY = Mathf.Sin(tiempoTranscurrido * bounceSpeed) * bounceHeight;
+            personaje.transform.position = new Vector3(personaje.transform.position.x, destino.y + offsetY, personaje.transform.position.z);
+
+            yield return null;
+        }
+
+        if (personaje == null)
+        {
+            yield break;
+        }
+
+        audioSource.Stop();
+
+        // Asegurarse de que el personaje esté exactamente en el destino final
+        personaje.transform.position = destino;
+
+        // Mostrar el diálogo del personaje
+        MostrarDialogoPersonaje(characterIndex);
     }
-
-    if (personaje == null)
-    {
-        yield break;
-    }
-
-    audioSource.Stop();
-
-    // Asegurarse de que el personaje esté exactamente en el destino final
-    personaje.transform.position = destino;
-
-    // Mostrar el diálogo del personaje
-    MostrarDialogoPersonaje(characterIndex);
-}
 
     public void LimpiarPersonajes()
     {
@@ -221,51 +221,51 @@ public class CharactersManager : MonoBehaviour
     }
 
     private IEnumerator MoverPersonajeFueraDePantalla(GameObject personaje, Vector3 destino)
-{
-    if (personaje == null)
-    {
-        yield break;
-    }
-
-    Vector3 inicio = personaje.transform.position;
-    float tiempoTranscurrido = 0f;
-
-    AudioSource audioSource = personaje.GetComponent<AudioSource>();
-    if (audioSource == null)
-    {
-        audioSource = personaje.AddComponent<AudioSource>();
-    }
-    audioSource.clip = footstepSound;
-    audioSource.loop = true;
-    audioSource.Play();
-
-    while (tiempoTranscurrido < moveDuration)
     {
         if (personaje == null)
         {
             yield break;
         }
 
-        tiempoTranscurrido += Time.deltaTime;
-        float t = Mathf.Clamp01(tiempoTranscurrido / moveDuration);
+        Vector3 inicio = personaje.transform.position;
+        float tiempoTranscurrido = 0f;
 
-        personaje.transform.position = Vector3.Lerp(inicio, destino, t);
+        AudioSource audioSource = personaje.GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = personaje.AddComponent<AudioSource>();
+        }
+        audioSource.clip = footstepSound;
+        audioSource.loop = true;
+        audioSource.Play();
 
-        float offsetY = Mathf.Sin(tiempoTranscurrido * bounceSpeed) * bounceHeight;
-        personaje.transform.position = new Vector3(personaje.transform.position.x, destino.y + offsetY, personaje.transform.position.z);
+        while (tiempoTranscurrido < moveDuration)
+        {
+            if (personaje == null)
+            {
+                yield break;
+            }
 
-        yield return null;
+            tiempoTranscurrido += Time.deltaTime;
+            float t = Mathf.Clamp01(tiempoTranscurrido / moveDuration);
+
+            personaje.transform.position = Vector3.Lerp(inicio, destino, t);
+
+            float offsetY = Mathf.Sin(tiempoTranscurrido * bounceSpeed) * bounceHeight;
+            personaje.transform.position = new Vector3(personaje.transform.position.x, destino.y + offsetY, personaje.transform.position.z);
+
+            yield return null;
+        }
+
+        if (personaje == null)
+        {
+            yield break;
+        }
+
+        audioSource.Stop();
+
+        personaje.transform.position = destino;
     }
-
-    if (personaje == null)
-    {
-        yield break;
-    }
-
-    audioSource.Stop();
-
-    personaje.transform.position = destino;
-}
 
     public void MostrarDialogoPersonaje(int characterIndex)
     {
@@ -301,7 +301,7 @@ public class CharactersManager : MonoBehaviour
         get { return index - 1; }
     }
 
-   
+
     public void MoverPersonajeAlPunto(Vector3 destino)
     {
         StartCoroutine(MoverPersonajesAlPunto(destino));
@@ -329,5 +329,15 @@ public class CharactersManager : MonoBehaviour
         }
         personajesEnPantalla.Clear();
     }
+
+    public GameObject GetCharacterGameObject()
+    {
+        if (personajesEnPantalla.Count > 0)
+        {
+            return personajesEnPantalla[personajesEnPantalla.Count - 1];
+        }
+        return null;
+    }
+
 
 }
