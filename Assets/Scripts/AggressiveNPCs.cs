@@ -25,6 +25,7 @@ public class AggressiveNPCs : MonoBehaviour
 
     void Start()
     {
+         audioSeguridad.Stop();
         botonSeguridad.interactable = false;
     }
 
