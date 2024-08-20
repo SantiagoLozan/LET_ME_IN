@@ -117,7 +117,7 @@ public class AggressiveNPCs : MonoBehaviour
     public void LlamarSeguridad()
     {
         DetenerPeligro();
-
+ botonSeguridad.interactable = false;
         if (temporizadorActivo)
         {
             temporizadorActivo = false;
