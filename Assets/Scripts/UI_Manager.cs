@@ -16,14 +16,15 @@ public class UI_Manager : MonoBehaviour
     public TextMeshProUGUI mensajeReporte;
     public TextMeshProUGUI reporteText;
 
-    public Button botonSiguienteNivel; 
+    public Button botonSiguienteNivel;
 
     public event Action PanelInicioDesactivado;
 
     public DialogueManager dialogueManager;
     public s_GameManager gameManager;
 
- 
+    public AudioSource audioTecleo;
+
     void Start()
     {
 
@@ -51,11 +52,16 @@ public class UI_Manager : MonoBehaviour
     {
         textoInicioDia.text = "";
 
+        audioTecleo.Play();
+
         foreach (char letter in mensaje)
         {
             textoInicioDia.text += letter;
             yield return new WaitForSeconds(velocidadTexto);
+
         }
+
+        audioTecleo.Stop();
 
         yield return new WaitForSeconds(duracionPanel);
 
@@ -72,7 +78,7 @@ public class UI_Manager : MonoBehaviour
         panelReporte.gameObject.SetActive(true);
         // botonSiguienteNivel.gameObject.SetActive(true);
 
-        int diaActual = gameManager.NivelActual; 
+        int diaActual = gameManager.NivelActual;
         string tituloReporte = $"Reporte Día {diaActual}\n\n";
         reporteText.text = $"{tituloReporte}" +
                         $"Sanos ingresados: {sanosIngresados}\n" +

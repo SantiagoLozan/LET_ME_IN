@@ -18,6 +18,8 @@ public class s_GameManager : MonoBehaviour
 
     public GameObject Musica;
     public AudioSource backgroundMusic;
+    public AudioSource sonidoBoton;
+    public AudioSource puertaAbriendose;
 
     private int totalEnfermos;
     public int NivelActual { get; private set; }
@@ -51,12 +53,25 @@ public class s_GameManager : MonoBehaviour
 
     public void OnBotonIngresoClick()
     {
+        sonidoBoton.Play();
+        puertaAbriendose.Play();
+        StartCoroutine(DetenerSonidoPuerta(2f)); // Detener sonido después de 2 segundos
         VerificarEstadoPersonaje(true);
         charactersManager.MoverPersonajeAlPunto(charactersManager.exitPoint.position);
     }
 
+    private IEnumerator DetenerSonidoPuerta(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (puertaAbriendose.isPlaying)
+        {
+            puertaAbriendose.Stop();
+        }
+    }
+
     public void OnBotonRechazoClick()
     {
+        sonidoBoton.Play();
         VerificarEstadoPersonaje(false);
         charactersManager.MoverPersonajeAlPunto(charactersManager.spawnPoint.position);
     }
@@ -94,7 +109,7 @@ public class s_GameManager : MonoBehaviour
             }
         }
 
-    
+
         NextCharacter();
     }
 

@@ -10,9 +10,9 @@ public class AggressiveNPCs : MonoBehaviour
     public s_GameManager gameManager;
     public CharactersManager charactersManager;
     public GameObject panelPerdiste;
-    public GameObject seguridadPrefab; // Prefab del personaje de seguridad
-    public Transform spawnPointSeguridad; // Punto de inicio del personaje de seguridad
-    public Transform targetPoint; // Punto al que empujará al personaje agresivo
+    public GameObject seguridadPrefab;
+    public Transform spawnPointSeguridad;
+    public Transform targetPoint;
 
     private GameObject seguridadInstance;
 
@@ -21,11 +21,16 @@ public class AggressiveNPCs : MonoBehaviour
     public GameObject PanelSeguridad;
     private Coroutine toggleCoroutine;
     public AudioSource audioSeguridad;
+    public AudioSource pasosSeguridad;
+    public AudioSource escobaSeguridad;
+
     public Button botonSeguridad;
 
     void Start()
     {
-         audioSeguridad.Stop();
+        audioSeguridad.Stop();
+          pasosSeguridad.Stop();
+        escobaSeguridad.Stop();
         botonSeguridad.interactable = false;
     }
 
@@ -117,21 +122,38 @@ public class AggressiveNPCs : MonoBehaviour
     public void LlamarSeguridad()
     {
         DetenerPeligro();
- botonSeguridad.interactable = false;
+        botonSeguridad.interactable = false;
         if (temporizadorActivo)
         {
             temporizadorActivo = false;
             timerText.gameObject.SetActive(false);
         }
 
+
+        // Esperar unos segundos antes de que el personaje de seguridad aparezca y empiece el movimiento
+        StartCoroutine(EsperarAntesDeLlamarSeguridad(3f)); 
+
+        //habría que agregar sonido aca para anticipar al llegada del guardia
+    }
+
+    IEnumerator EsperarAntesDeLlamarSeguridad(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
         // Invocar al personaje de seguridad
         seguridadInstance = Instantiate(seguridadPrefab, spawnPointSeguridad.position, Quaternion.identity);
+
+        pasosSeguridad.Play();
+        escobaSeguridad.Play();
 
         // Obtener el personaje agresivo actual desde CharactersManager
         GameObject personajeAgresivoActual = charactersManager.GetCharacterGameObject();
 
         if (personajeAgresivoActual != null)
         {
+            // Esperar otros segundos antes de empezar a mover al personaje agresivo
+            yield return new WaitForSeconds(1f); // Espera 1 segundo
+
             // Mover al personaje agresivo
             StartCoroutine(EmpujarPersonajeAggressivo(personajeAgresivoActual.transform));
         }
@@ -140,18 +162,18 @@ public class AggressiveNPCs : MonoBehaviour
     IEnumerator EmpujarPersonajeAggressivo(Transform personajeAggressivo)
     {
         float distanciaSeguridadYAgresivo = 0.1f;
-        float velocidadMovimiento = 2f; // Velocidad del personaje agresivo
-        float velocidadSeguridad = 3.5f; // Velocidad del personaje de seguridad, un poco más rápido
+        float velocidadMovimiento = 2f;
+        float velocidadSeguridad = 3.5f;
 
-        // Determina un punto fuera de la pantalla para destruir al personaje agresivo
+        // Punto fuera de la pantalla
         Vector3 puntoFueraDePantalla = new Vector3(targetPoint.position.x - 1f, personajeAggressivo.position.y, personajeAggressivo.position.z);
 
         while (Vector3.Distance(personajeAggressivo.position, puntoFueraDePantalla) > 0.1f)
         {
-            // Mover el personaje agresivo hacia el punto fuera de la pantalla
+            // Mover el personaje fuera de la pantalla
             personajeAggressivo.position = Vector3.MoveTowards(personajeAggressivo.position, puntoFueraDePantalla, Time.deltaTime * velocidadMovimiento);
 
-            // Mantener al personaje de seguridad una distancia constante detrás del personaje agresivo
+            // Mantener al personaje de seguridad una distancia constante detrás del personaje 
             if (seguridadInstance != null)
             {
                 Vector3 posicionSeguridad = personajeAggressivo.position - new Vector3(distanciaSeguridadYAgresivo, 0, 0);
@@ -161,25 +183,22 @@ public class AggressiveNPCs : MonoBehaviour
             yield return null;
         }
 
-        // Destruir el personaje agresivo después de moverlo fuera de la pantalla
+        // Destruir el personaje 
         if (personajeAggressivo != null)
         {
             Destroy(personajeAggressivo.gameObject);
         }
 
-        // Destruir el personaje de seguridad después de empujar
+        // Destruir el personaje de seguridad 
         if (seguridadInstance != null)
         {
             Destroy(seguridadInstance);
         }
 
-        // Esperar 2 segundos antes de llamar a la función para aparecer el siguiente personaje
-        yield return new WaitForSeconds(1f);
+         pasosSeguridad.Stop();
+        escobaSeguridad.Stop();
 
-        // Llamar la función de aparición del siguiente personaje
+        yield return new WaitForSeconds(1f);
         charactersManager.AparecerSiguientePersonaje();
     }
-
-
-
 }
