@@ -20,6 +20,7 @@ public class s_GameManager : MonoBehaviour
     public AudioSource backgroundMusic;
     public AudioSource sonidoBoton;
     public AudioSource puertaAbriendose;
+    public AudioSource ruidoAmbiente;
 
     private int totalEnfermos;
     public int NivelActual { get; private set; }
@@ -28,7 +29,7 @@ public class s_GameManager : MonoBehaviour
     void Start()
     {
         NivelActual = GameData.NivelActual;
-
+        ruidoAmbiente.Play();
 
         if (uiManager != null && charactersManager != null)
         {
@@ -115,6 +116,7 @@ public class s_GameManager : MonoBehaviour
 
     public void MostrarPanelReporte()
     {
+        ruidoAmbiente.Stop();
         uiManager.ActualizarPanelReporte(sanosIngresados, enfermosIngresados, sanosRechazados, enfermosRechazados);
     }
 
