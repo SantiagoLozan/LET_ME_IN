@@ -19,6 +19,7 @@ public class AggressiveNPCs : MonoBehaviour
     private float tiempoRestante;
     private bool temporizadorActivo = false;
     public GameObject PanelSeguridad;
+    public GameObject PanelTimer;
     private Coroutine toggleCoroutine;
     public AudioSource audioSeguridad;
     public AudioSource pasosSeguridad;
@@ -64,6 +65,7 @@ public class AggressiveNPCs : MonoBehaviour
 
     void StartTimer(float tiempo)
     {
+        PanelTimer.SetActive(true);
         tiempoRestante = tiempo;
         temporizadorActivo = true;
         ActualizarTextoTemporizador();
@@ -116,6 +118,7 @@ public class AggressiveNPCs : MonoBehaviour
             StopCoroutine(toggleCoroutine);
             toggleCoroutine = null;
             PanelSeguridad.SetActive(false);
+            PanelTimer.SetActive(false);
             audioSeguridad.Stop();
         }
     }
