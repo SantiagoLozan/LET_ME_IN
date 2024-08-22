@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414745, b: 0.12107873, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1486,7 +1486,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Los disturbios permitieron el ingreso de gente infectada que contamin\xF3
-    el b\xFAnker.\n\nYa no es un lugar seguro.\n\nbad ending"
+    el b\xFAnker.\n\nYa no es un lugar seguro.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 03236771ded7dc64ba30963d224c3506, type: 2}
   m_sharedMaterial: {fileID: -2196365467430178636, guid: 03236771ded7dc64ba30963d224c3506, type: 2}
@@ -3580,7 +3580,7 @@ MonoBehaviour:
     - DEJAME ENTRAR YA
     - TE DIJE QUE ME DEJES ENTRAR
     respuestas:
-    - "se\xF1or calmese y otme distancia..."
+    - "se\xF1or calmese y tome distancia..."
     prefab: {fileID: 2573835153199593656, guid: 0e2d77ba5fb3fab47bbefc4da5d96d79, type: 3}
     nivel: 1
     esAgresivo: 1
@@ -3665,8 +3665,8 @@ MonoBehaviour:
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
   uiManager: {fileID: 1709672043}
-  tiempoDeEspera: 2
-  moveDuration: 2
+  tiempoDeEspera: 4
+  moveDuration: 4
   bounceHeight: 0.2
   bounceSpeed: 2
   footstepSound: {fileID: 8300000, guid: f02fdb5ceaa2f504fab136ae5915f269, type: 3}
@@ -3722,7 +3722,137 @@ Transform:
   - {fileID: 1182969596}
   - {fileID: 865461284}
   - {fileID: 152417383}
+  - {fileID: 1148588653}
+  - {fileID: 1369693168}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1148588651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1148588653}
+  - component: {fileID: 1148588652}
+  m_Layer: 0
+  m_Name: golpe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1148588652
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148588651}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 00a477e4e6a467740833f76b152c5f2a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1148588653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148588651}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.032545134, y: -1.5638797, z: -3.6926444}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1004175586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1168009878
 GameObject:
@@ -4408,12 +4538,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369693166}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.032545134, y: -1.5638797, z: -3.6926444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1004175586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1394926788
 GameObject:
@@ -5673,6 +5803,7 @@ MonoBehaviour:
   audioSeguridad: {fileID: 267658869}
   pasosSeguridad: {fileID: 483689032}
   escobaSeguridad: {fileID: 2001823987}
+  golpe: {fileID: 1148588652}
   botonSeguridad: {fileID: 5076804}
 --- !u!4 &1727551769
 Transform:
@@ -6416,4 +6547,3 @@ SceneRoots:
   - {fileID: 1317177460}
   - {fileID: 12685435}
   - {fileID: 1004175586}
-  - {fileID: 1369693168}

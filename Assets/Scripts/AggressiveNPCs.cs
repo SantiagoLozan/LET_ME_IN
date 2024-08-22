@@ -23,6 +23,7 @@ public class AggressiveNPCs : MonoBehaviour
     public AudioSource audioSeguridad;
     public AudioSource pasosSeguridad;
     public AudioSource escobaSeguridad;
+    public AudioSource golpe;
 
     public Button botonSeguridad;
 
@@ -195,8 +196,9 @@ public class AggressiveNPCs : MonoBehaviour
             Destroy(seguridadInstance);
         }
 
-         pasosSeguridad.Stop();
+        pasosSeguridad.Stop();
         escobaSeguridad.Stop();
+        golpe.Play();
 
         yield return new WaitForSeconds(1f);
         charactersManager.AparecerSiguientePersonaje();

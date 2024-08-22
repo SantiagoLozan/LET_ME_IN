@@ -56,7 +56,7 @@ public class s_GameManager : MonoBehaviour
     {
         sonidoBoton.Play();
         puertaAbriendose.Play();
-        StartCoroutine(DetenerSonidoPuerta(2f)); // Detener sonido después de 2 segundos
+        StartCoroutine(DetenerSonidoPuerta(4f)); // Detener sonido después de 2 segundos
         VerificarEstadoPersonaje(true);
         charactersManager.MoverPersonajeAlPunto(charactersManager.exitPoint.position);
     }
