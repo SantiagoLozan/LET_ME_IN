@@ -1833,7 +1833,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 864ed43df212a044f9d422076a29e1ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 03dce57ec6039a743ab59e5a7246a2d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1853,8 +1853,8 @@ Transform:
   m_GameObject: {fileID: 515418246}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 2.04, z: 80}
-  m_LocalScale: {x: 0.73653257, y: 0.7319423, z: 1}
+  m_LocalPosition: {x: -0.02, y: 0.87, z: 80}
+  m_LocalScale: {x: 0.93, y: 0.93, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2419,8 +2419,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -170}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 15, y: -122.890015}
+  m_SizeDelta: {x: 279.22, y: 522.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &699868703
 MonoBehaviour:
@@ -2435,15 +2435,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7913849, g: 0.7948987, b: 0.9811321, a: 0.52156866}
+  m_Color: {r: 0.7913849, g: 0.7948987, b: 0.9811321, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 07feb2baa7a26c844b9282c7d343f455, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3038,7 +3038,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -73.79237, y: -25.165749, z: -820.3813, w: -109.25596}
+  m_margin: {x: -100.56523, y: -52.55719, z: -839.12225, w: -109.25596}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4349,7 +4349,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6587d704601fcac4e922466820b418c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 11ca71af163ee47448c9ba6c4678b07d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4411,7 +4411,7 @@ Transform:
   m_GameObject: {fileID: 1317177459}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.5, y: 0.81, z: 93}
+  m_LocalPosition: {x: 14.42, y: 0.81, z: 93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4660,8 +4660,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -413}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 15, y: -417}
+  m_SizeDelta: {x: 279.22, y: 112.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1412460605
 MonoBehaviour:
@@ -4709,15 +4709,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7921569, g: 0.79607844, b: 0.9843137, a: 0.52156866}
+  m_Color: {r: 0.7921569, g: 0.79607844, b: 0.9843137, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e60ecec5e0acf9845aa4a710527e23a2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5508,7 +5508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -583, y: 152}
+  m_AnchoredPosition: {x: -583, y: -71}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1687713437
@@ -5594,7 +5594,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -70.27847, y: -25.165825, z: -813.3536, w: -105.66088}
+  m_margin: {x: -80.987625, y: -25.165825, z: -832.0945, w: -119.3566}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5796,7 +5796,7 @@ MonoBehaviour:
   gameManager: {fileID: 926031996}
   charactersManager: {fileID: 943274571}
   panelPerdiste: {fileID: 17082859}
-  seguridadPrefab: {fileID: 3813683240060992076, guid: 7ab9a5369cba78142a23e6e41ee2b5b1, type: 3}
+  seguridadPrefab: {fileID: 8813863680895928580, guid: b717939d0047fa143bf95a7aa253ec66, type: 3}
   spawnPointSeguridad: {fileID: 1317177460}
   targetPoint: {fileID: 12685435}
   PanelSeguridad: {fileID: 1262971201}
