@@ -56,6 +56,14 @@ public class UI_Manager : MonoBehaviour
 
         foreach (char letter in mensaje)
         {
+
+            //adelantar texto con la tecla espacio
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                textoInicioDia.text = mensaje;
+                break;
+            }
+
             textoInicioDia.text += letter;
             yield return new WaitForSeconds(velocidadTexto);
 
