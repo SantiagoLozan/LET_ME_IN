@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414745, b: 0.12107873, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1751,7 +1751,7 @@ Transform:
   m_GameObject: {fileID: 292356773}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.27, y: 0.75, z: 94}
+  m_LocalPosition: {x: 9.23, y: 0.42, z: 93.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1846,8 +1846,8 @@ MonoBehaviour:
   puntoSalidaMedico: {fileID: 639765274}
   charactersManager: {fileID: 943274571}
   dialogueManager: {fileID: 2085731922}
-  botonMedico: {fileID: 204005907}
   gameManager: {fileID: 926031996}
+  botonMedico: {fileID: 204005907}
 --- !u!4 &341145153
 Transform:
   m_ObjectHideFlags: 0
@@ -3518,6 +3518,7 @@ Transform:
   - {fileID: 1727551769}
   - {fileID: 341145153}
   - {fileID: 1180345088}
+  - {fileID: 1143945139}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &694884341
@@ -4873,7 +4874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &912134672
 Transform:
   m_ObjectHideFlags: 0
@@ -4883,7 +4884,7 @@ Transform:
   m_GameObject: {fileID: 912134671}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5171967, y: 2.32, z: 102}
+  m_LocalPosition: {x: 7.72, y: 3.64, z: 102}
   m_LocalScale: {x: 0.93, y: 0.93, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4909,7 +4910,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ffc30907946ad294fa66d74e43e05ad1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5553,6 +5554,55 @@ Transform:
   - {fileID: 1369693168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1143945138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1143945139}
+  - component: {fileID: 1143945140}
+  m_Layer: 0
+  m_Name: BackgroundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1143945139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143945138}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 678873980}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1143945140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143945138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d52d81fc1929942a29d8413626bb5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundElements:
+  - renderer: {fileID: 1234913903}
+    speed: 0.01
+  - renderer: {fileID: 912134673}
+    speed: 0.05
 --- !u!1 &1148588651
 GameObject:
   m_ObjectHideFlags: 0
@@ -5712,23 +5762,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estaHablando: 0
   gibberishClips:
-  - {fileID: 8300000, guid: b2127898b47eae74a8a2b5f89d6b30b8, type: 3}
-  - {fileID: 8300000, guid: 09648f40739854a4e858a4672f4fd3a8, type: 3}
-  - {fileID: 8300000, guid: 66ba74b1177c6e24499beae9164f40d8, type: 3}
-  - {fileID: 8300000, guid: 15f431638b23fad4aa01d47a50e87824, type: 3}
-  - {fileID: 8300000, guid: fecc671da8913474cb74791b7fd07a4e, type: 3}
-  - {fileID: 8300000, guid: 41e238b0632b60d46ac13a9f99daaf6f, type: 3}
-  - {fileID: 8300000, guid: 91c89ff90c559d447afaff0fbc379849, type: 3}
-  - {fileID: 8300000, guid: be82d2bc465d21241bf619402366ef03, type: 3}
+  - {fileID: 8300000, guid: 8e4e7e99a5270fc449cec4181bb587e8, type: 3}
   gibberishClips2:
-  - {fileID: 8300000, guid: c2c1a8f0cdfd77345ad28a141a0866e4, type: 3}
-  - {fileID: 8300000, guid: eebd632e2437ea1458c60229852950dd, type: 3}
-  - {fileID: 8300000, guid: c381bff39978dc441a0f028c74b06cfb, type: 3}
-  - {fileID: 8300000, guid: bc5123d448fc88b48bb280b593d97cb2, type: 3}
-  - {fileID: 8300000, guid: 945f1a2e6022cbc438671b00d5ca1268, type: 3}
-  - {fileID: 8300000, guid: ec6fd963c40ad3b4795fae3880cec94b, type: 3}
-  - {fileID: 8300000, guid: 458b3048c30fe6a4bab2101bc75e920e, type: 3}
-  - {fileID: 8300000, guid: 7142f9962873cb94885a3eebacf6896c, type: 3}
+  - {fileID: 8300000, guid: bf2163e50b24fbc4292a32bff6b617d4, type: 3}
 --- !u!4 &1168009880
 Transform:
   m_ObjectHideFlags: 0
@@ -5773,7 +5809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76147b9809568c14d86c3ebfb1a7da7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 1515895186}
+  pauseMenuUI: {fileID: 0}
 --- !u!4 &1180345088
 Transform:
   m_ObjectHideFlags: 0
@@ -6288,7 +6324,7 @@ Transform:
   m_GameObject: {fileID: 1234913901}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.99, y: 1.67, z: 103}
+  m_LocalPosition: {x: 7.23, y: 2.41, z: 103}
   m_LocalScale: {x: 0.93, y: 0.93, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6314,7 +6350,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4c003dc991048ee478399a7c71306a3b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6857,15 +6893,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   audioManager: {fileID: 1168009879}
   gibberishClips: []
-  gibberishClips2:
-  - {fileID: 8300000, guid: b2127898b47eae74a8a2b5f89d6b30b8, type: 3}
-  - {fileID: 8300000, guid: 09648f40739854a4e858a4672f4fd3a8, type: 3}
-  - {fileID: 8300000, guid: 66ba74b1177c6e24499beae9164f40d8, type: 3}
-  - {fileID: 8300000, guid: 15f431638b23fad4aa01d47a50e87824, type: 3}
-  - {fileID: 8300000, guid: fecc671da8913474cb74791b7fd07a4e, type: 3}
-  - {fileID: 8300000, guid: 41e238b0632b60d46ac13a9f99daaf6f, type: 3}
-  - {fileID: 8300000, guid: 91c89ff90c559d447afaff0fbc379849, type: 3}
-  - {fileID: 8300000, guid: be82d2bc465d21241bf619402366ef03, type: 3}
+  gibberishClips2: []
   aggressiveNPCs: {fileID: 0}
   checkCondition: {fileID: 0}
   medicoUsado: 0
@@ -9359,23 +9387,9 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   audioManager: {fileID: 1168009879}
   gibberishClips:
-  - {fileID: 8300000, guid: c2c1a8f0cdfd77345ad28a141a0866e4, type: 3}
-  - {fileID: 8300000, guid: eebd632e2437ea1458c60229852950dd, type: 3}
-  - {fileID: 8300000, guid: c381bff39978dc441a0f028c74b06cfb, type: 3}
-  - {fileID: 8300000, guid: bc5123d448fc88b48bb280b593d97cb2, type: 3}
-  - {fileID: 8300000, guid: 945f1a2e6022cbc438671b00d5ca1268, type: 3}
-  - {fileID: 8300000, guid: ec6fd963c40ad3b4795fae3880cec94b, type: 3}
-  - {fileID: 8300000, guid: 458b3048c30fe6a4bab2101bc75e920e, type: 3}
-  - {fileID: 8300000, guid: 7142f9962873cb94885a3eebacf6896c, type: 3}
+  - {fileID: 8300000, guid: bf2163e50b24fbc4292a32bff6b617d4, type: 3}
   gibberishClips2:
-  - {fileID: 8300000, guid: b2127898b47eae74a8a2b5f89d6b30b8, type: 3}
-  - {fileID: 8300000, guid: 09648f40739854a4e858a4672f4fd3a8, type: 3}
-  - {fileID: 8300000, guid: 66ba74b1177c6e24499beae9164f40d8, type: 3}
-  - {fileID: 8300000, guid: 15f431638b23fad4aa01d47a50e87824, type: 3}
-  - {fileID: 8300000, guid: fecc671da8913474cb74791b7fd07a4e, type: 3}
-  - {fileID: 8300000, guid: 41e238b0632b60d46ac13a9f99daaf6f, type: 3}
-  - {fileID: 8300000, guid: 91c89ff90c559d447afaff0fbc379849, type: 3}
-  - {fileID: 8300000, guid: be82d2bc465d21241bf619402366ef03, type: 3}
+  - {fileID: 8300000, guid: 8e4e7e99a5270fc449cec4181bb587e8, type: 3}
   aggressiveNPCs: {fileID: 1727551768}
   checkCondition: {fileID: 341145152}
   medicoUsado: 0
