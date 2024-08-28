@@ -23,7 +23,7 @@ public class DialogueManager : MonoBehaviour
 
     private bool mostrandoRespuestas = false;
     private bool textoCompleto = false;
-     private bool esAgresivo; // Agregada aquí
+    private bool esAgresivo; 
 
     private int indexDialogo;
     private int indexRespuestas;
@@ -33,7 +33,10 @@ public class DialogueManager : MonoBehaviour
     public AudioClip[] gibberishClips;
     public AudioClip[] gibberishClips2;
 
-     public AggressiveNPCs aggressiveNPCs;
+    public AggressiveNPCs aggressiveNPCs;
+    public CheckCondition checkCondition;
+
+    public bool medicoUsado = false; 
 
     void Update()
     {
@@ -43,7 +46,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void ComenzarDialogo(string[] dialogos, List<string> respuestas,  bool esAgresivo)
+    public void ComenzarDialogo(string[] dialogos, List<string> respuestas, bool esAgresivo)
     {
         lineas = dialogos;
         respuestasActuales = respuestas;
@@ -171,18 +174,16 @@ public class DialogueManager : MonoBehaviour
             {
                 panelDialogo.gameObject.SetActive(false);
                 //MostrarBotonSiguiente();
-                 if (esAgresivo)
-            {
-                // Llama al método que maneja el comportamiento agresivo
-              //  MostrarComportamientoAgresivo();
-               aggressiveNPCs.MostrarComportamientoAgresivo();
-            }
-            else
-            {
-                MostrarBotonSiguiente();
-            }
-
-                
+                if (esAgresivo)
+                {
+                    // Llama al método que maneja el comportamiento agresivo
+                    //  MostrarComportamientoAgresivo();
+                    aggressiveNPCs.MostrarComportamientoAgresivo();
+                }
+                else
+                {
+                    MostrarBotonSiguiente();
+                }
             }
         }
     }
@@ -192,6 +193,12 @@ public class DialogueManager : MonoBehaviour
         botonIngreso.interactable = true;
         botonRechazo.interactable = true;
         panelSiguiente.gameObject.SetActive(true);
+
+        if (!medicoUsado)
+        {
+            checkCondition.botonMedico.interactable = true;
+        }
+
     }
 
     public void SkipDialogo()

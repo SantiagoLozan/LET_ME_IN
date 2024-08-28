@@ -22,6 +22,12 @@ public class s_GameManager : MonoBehaviour
     public AudioSource puertaAbriendose;
     public AudioSource ruidoAmbiente;
 
+    public GameObject capaPuerta; // Referencia al objeto de la capa
+    public float alturaMovimiento = 7f; // La altura que se levantará la capa
+    public float tiempoMovimiento = 1f; // El tiempo que tarda en levantar la capa
+    public float tiempoEspera = 3f; // El tiempo que esperará antes de volver a su posición original
+
+
     private int totalEnfermos;
     public int NivelActual { get; private set; }
 
@@ -55,11 +61,46 @@ public class s_GameManager : MonoBehaviour
     public void OnBotonIngresoClick()
     {
         sonidoBoton.Play();
-        puertaAbriendose.Play();
+
         StartCoroutine(DetenerSonidoPuerta(4f)); // Detener sonido después de 2 segundos
         VerificarEstadoPersonaje(true);
         charactersManager.MoverPersonajeAlPunto(charactersManager.exitPoint.position);
+
+        StartCoroutine(AbrirPuerta());
     }
+
+    public IEnumerator AbrirPuerta(float? tiempoEsperaExtendido = null)
+    {
+
+        puertaAbriendose.Play();
+        Vector3 posicionInicial = capaPuerta.transform.position;
+        Vector3 posicionFinal = new Vector3(posicionInicial.x, posicionInicial.y + alturaMovimiento, posicionInicial.z);
+
+        // Levantar la capaPuerta hacia arriba
+        float tiempoTranscurrido = 0f;
+        while (tiempoTranscurrido < tiempoMovimiento)
+        {
+            capaPuerta.transform.position = Vector3.Lerp(posicionInicial, posicionFinal, tiempoTranscurrido / tiempoMovimiento);
+            tiempoTranscurrido += Time.deltaTime;
+            yield return null;
+        }
+        capaPuerta.transform.position = posicionFinal;
+
+        // Esperar el tiempo extendido o el tiempo por defecto
+        float tiempoEsperaActual = tiempoEsperaExtendido ?? tiempoEspera;
+        yield return new WaitForSeconds(tiempoEsperaActual);
+
+        // Devolver la capa a su posición original
+        tiempoTranscurrido = 0f;
+        while (tiempoTranscurrido < tiempoMovimiento)
+        {
+            capaPuerta.transform.position = Vector3.Lerp(posicionFinal, posicionInicial, tiempoTranscurrido / tiempoMovimiento);
+            tiempoTranscurrido += Time.deltaTime;
+            yield return null;
+        }
+        capaPuerta.transform.position = posicionInicial;
+    }
+
 
     private IEnumerator DetenerSonidoPuerta(float delay)
     {
@@ -117,7 +158,15 @@ public class s_GameManager : MonoBehaviour
     public void MostrarPanelReporte()
     {
         ruidoAmbiente.Stop();
-        uiManager.ActualizarPanelReporte(sanosIngresados, enfermosIngresados, sanosRechazados, enfermosRechazados);
+
+        if (GameData.Faltas <= 0)
+        {
+            uiManager.ActualizarPanelReporte(sanosIngresados, enfermosIngresados, sanosRechazados, enfermosRechazados);
+        }
+        else
+        {
+            uiManager.PanelReporte();
+        }
     }
 
     public void MostrarMensaje()
@@ -128,12 +177,13 @@ public class s_GameManager : MonoBehaviour
             uiManager.mensajeReporte.text = "¡Buen trabajo!";
             uiManager.botonSiguienteNivel.gameObject.SetActive(true);
         }
-        else if (enfermosIngresados == 1)
+        else if (enfermosIngresados >= 1 && enfermosIngresados <= 3)
         {
-            uiManager.mensajeReporte.text = "Más cuidado la próxima vez.";
+            uiManager.mensajeReporte.text = "Más cuidado la próxima vez...";
+            GameData.Faltas++;
             uiManager.botonSiguienteNivel.gameObject.SetActive(true);
         }
-        else if (enfermosIngresados >= 2)
+        else if (enfermosIngresados > 3)
         {
             uiManager.mensajeReporte.text = "Fuiste retirado del puesto de trabajo.";
         }
@@ -159,5 +209,4 @@ public class s_GameManager : MonoBehaviour
             return "Mensaje de inicio no definido para este nivel.";
         }
     }
-
 }

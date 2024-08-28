@@ -31,6 +31,7 @@ public class CharactersManager : MonoBehaviour
     public DialogueManager dialogueManager;
     public s_GameManager gameManager;
     public UI_Manager uiManager;
+    public CheckCondition checkCondition;
 
     private List<GameObject> personajesEnPantalla = new List<GameObject>();
     private List<Character> charactersForCurrentLevel = new List<Character>();
@@ -42,6 +43,11 @@ public class CharactersManager : MonoBehaviour
     public float bounceSpeed = 2.0f;
 
     public AudioClip footstepSound;
+
+   public Light sceneLight; // Referencia a la luz de la escena
+    public float intensidadDecremento = 0.5f; // Cuánto se reduce la intensidad cada vez
+    public int personajesPorDecremento = 2; // Cada cuántos personajes se decrementa la intensidad
+    public float duracionOscurecimiento = 2.0f; // Duración del cambio de intensidad en segundos
 
 
     void Start()
@@ -114,6 +120,7 @@ public class CharactersManager : MonoBehaviour
 
         dialogueManager.botonIngreso.interactable = false;
         dialogueManager.botonRechazo.interactable = false;
+        checkCondition.botonMedico.interactable = false;
 
         Debug.Log("Esperando antes de aparecer el siguiente personaje...");
         yield return new WaitForSeconds(tiempoDeEspera);
@@ -131,6 +138,12 @@ public class CharactersManager : MonoBehaviour
             personajesEnPantalla.Add(nuevoPersonaje);
             StartCoroutine(MoverPersonajeAlCentro(nuevoPersonaje, centerPoint.position, index));
             index++;
+
+
+          /*  if (index % personajesPorDecremento == 0)
+            {
+                StartCoroutine(OscurecerLuzGradualmente());
+            }*/
         }
         else
         {
@@ -138,6 +151,37 @@ public class CharactersManager : MonoBehaviour
             gameManager.MostrarPanelReporte();
         }
     }
+
+
+   /* private IEnumerator OscurecerLuzGradualmente()
+    {
+        if (sceneLight != null)
+        {
+            float startIntensity = sceneLight.intensity;
+            float targetIntensity = Mathf.Max(0, startIntensity - intensidadDecremento);
+
+            Debug.Log($"Oscureciendo luz: Intensidad inicial = {startIntensity}, Intensidad objetivo = {targetIntensity}");
+
+            float elapsedTime = 0;
+
+            while (elapsedTime < duracionOscurecimiento)
+            {
+                sceneLight.intensity = Mathf.Lerp(startIntensity, targetIntensity, elapsedTime / duracionOscurecimiento);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            sceneLight.intensity = targetIntensity;
+
+            Debug.Log($"Oscurecimiento completado: Intensidad final = {sceneLight.intensity}");
+        }
+        else
+        {
+            Debug.LogError("La luz de la escena no está asignada.");
+        }
+    }*/
+
+
 
     private IEnumerator MoverPersonajeAlCentro(GameObject personaje, Vector3 destino, int characterIndex)
     {

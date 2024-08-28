@@ -31,7 +31,7 @@ public class AggressiveNPCs : MonoBehaviour
     void Start()
     {
         audioSeguridad.Stop();
-          pasosSeguridad.Stop();
+        pasosSeguridad.Stop();
         escobaSeguridad.Stop();
         botonSeguridad.interactable = false;
     }
@@ -135,7 +135,7 @@ public class AggressiveNPCs : MonoBehaviour
 
 
         // Esperar unos segundos antes de que el personaje de seguridad aparezca y empiece el movimiento
-        StartCoroutine(EsperarAntesDeLlamarSeguridad(3f)); 
+        StartCoroutine(EsperarAntesDeLlamarSeguridad(3f));
 
         //habría que agregar sonido aca para anticipar al llegada del guardia
     }
@@ -143,6 +143,8 @@ public class AggressiveNPCs : MonoBehaviour
     IEnumerator EsperarAntesDeLlamarSeguridad(float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        StartCoroutine(gameManager.AbrirPuerta(10f));
 
         // Invocar al personaje de seguridad
         seguridadInstance = Instantiate(seguridadPrefab, spawnPointSeguridad.position, Quaternion.identity);
