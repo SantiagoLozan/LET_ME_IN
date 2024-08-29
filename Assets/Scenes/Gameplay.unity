@@ -5066,9 +5066,9 @@ MonoBehaviour:
     dialogos:
     - "Hola. \xA1Necesito ayuda!"
     - "Soy de un pueblo cercano, vengo caminando hace tres d\xEDas por favor necesito
-      ayuda "
-    - "No me cruc\xE9 con nadie en el camino "
-    - "Ninguno adem\xE1s del agotamiento y el hambre "
+      ayuda."
+    - "No me cruc\xE9 con nadie en el camino."
+    - "Ninguno adem\xE1s del agotamiento y el hambre."
     - "Por favor no estoy infectada, me agarr\xF3 la lluvia en el camino de tierra. "
     - "Mire mi piel, no tengo ning\xFAn s\xEDntoma solo necesito una ducha. "
     respuestas:
@@ -5086,8 +5086,8 @@ MonoBehaviour:
     - Dejenme pasar por favor
     - "Estaba en un refugio cercano pero me echaron porque hab\xEDa escasez de comida. "
     - 'Solamente con la gente del refugio, estaban todos sanos. '
-    - 'No, no, me siento perfectamente '
-    - "Acn\xE9, lo tengo desde los 15 a\xF1os, ya intente de todo "
+    - No, no, me siento perfectamente.
+    - "Acn\xE9, lo tengo desde los 15 a\xF1os, ya intente de todo."
     - "Justamente \xBFQu\xE9 pod\xE9s saber vos entonces? ya te dije que estoy sana
       vengo de una zona segura. "
     respuestas:
@@ -5103,7 +5103,7 @@ MonoBehaviour:
     estado: 1
     dialogos:
     - Hola
-    - De la ciudad, haciendo un recorrido en busca de provisiones
+    - De la ciudad, haciendo un recorrido en busca de provisiones.
     - "Me cruc\xE9 con un grupo de gente, pero mantuve distancia."
     - No, solo me duele la cabeza por estar tantas horas bajo el sol.
     - "\xBFEs realmente necesario?"
@@ -5120,7 +5120,7 @@ MonoBehaviour:
   - nombre: pj4
     estado: 0
     dialogos:
-    - Hola, necesito ayuda
+    - Hola, necesito ayuda.
     - "Vengo deambulando entre ciudades, me qued\xE9 varado en un pueblo donde fui
       a tocar cuando arranc\xF3 la pandemia."
     - No, si no fue a verme nadie, tengo una bronca.
@@ -5203,7 +5203,7 @@ MonoBehaviour:
   - nombre: pj8
     estado: 1
     dialogos:
-    - Hola
+    - Hola.
     - "Desde mi casa, desde que empez\xF3 la pandemia estoy trabajando desde ah\xED."
     - "No en persona, solo a trav\xE9s de mis compa\xF1eros por videollamada."
     - "Nada de eso, solo tos y cansancio, debe ser por el estr\xE9s."
@@ -5229,8 +5229,8 @@ MonoBehaviour:
     - No, mi familia se fue apenas declararon la pandemia, pero yo no quise dejar
       la casa sola.
     - "Hasta ahora no, tom\xE9 todas las precauciones necesarias."
-    - "Me quede sin comida y agua, adem\xE1s vivo en una zona peligrosa "
-    - Si, si, no hay problema
+    - "Me quede sin comida y agua, adem\xE1s vivo en una zona peligrosa."
+    - Si, si, no hay problema.
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
@@ -5243,7 +5243,7 @@ MonoBehaviour:
   - nombre: pj10
     estado: 1
     dialogos:
-    - Hola
+    - Hmm... Buenas tardes
     - "Soy de la zona, tuve que irme del barrio porque hab\xEDan muchos disturbios
       y saqueos."
     - "Me fui con mi grupo de amigos pero me separ\xE9 de ellos hace unas horas."
@@ -5287,7 +5287,7 @@ MonoBehaviour:
     respuestas:
     - "\xBFEstuvo en contacto con otra gente? "
     - "\xBFMantuvo precauciones? "
-    - "\xBFSabe que no puede ingresar con mascotas? "
+    - "\xBFSabe que no puede ingresar con mascotas?"
     prefab: {fileID: 2573835153199593656, guid: a7152580a841a8c43a40892441791e72, type: 3}
     nivel: 2
     esAgresivo: 0
@@ -5327,7 +5327,7 @@ MonoBehaviour:
     - DEJAME ENTRAR YA
     - TE DIJE QUE ME DEJES ENTRAR
     respuestas:
-    - "se\xF1or calmese y tome distancia..."
+    - "Se\xF1or calmese y tome distancia..."
     prefab: {fileID: 2573835153199593656, guid: 0e2d77ba5fb3fab47bbefc4da5d96d79, type: 3}
     nivel: 2
     esAgresivo: 1
@@ -5386,7 +5386,7 @@ MonoBehaviour:
     - No, tengo la calva sensible y estar esperando hace media hora abajo del sol
       no ayuda.
     - Porque estoy cansado de tener que buscar provisiones e interactuar con gente
-      inepta
+      inepta.
     respuestas:
     - "Bueno se\xF1or, c\xE1lmese, hacemos lo que podemos \xBFTomo precauciones para
       el virus?"
