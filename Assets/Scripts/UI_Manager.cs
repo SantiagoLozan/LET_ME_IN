@@ -13,20 +13,24 @@ public class UI_Manager : MonoBehaviour
     public float duracionPanel = 1.0f;
 
     public RectTransform panelReporte;
+    public RectTransform panelPerdiste;
     public TextMeshProUGUI mensajeReporte;
     public TextMeshProUGUI reporteText;
 
-    public Button botonSiguienteNivel; 
+    public Button botonSiguienteNivel;
 
     public event Action PanelInicioDesactivado;
 
     public DialogueManager dialogueManager;
     public s_GameManager gameManager;
 
- 
+    public AudioSource audioTecleo;
+
+      private Coroutine panelInicioDiaCoroutine; // Guardar referencia de la corrutina
+
     void Start()
     {
-
+        // Cualquier inicialización que necesites
     }
 
     public void MostrarInicioDia(string mensaje)
@@ -38,49 +42,80 @@ public class UI_Manager : MonoBehaviour
         dialogueManager.botonRechazo.interactable = false;
 
         panelReporte.gameObject.SetActive(false);
+        panelPerdiste.gameObject.SetActive(false);
         botonSiguienteNivel.gameObject.SetActive(false);
 
         panelInicioDia.gameObject.SetActive(true);
         int diaActual = gameManager.NivelActual;
         string titulo = $"Día {diaActual}\n\n";
-        StartCoroutine(MostrarPanelInicioDiaCoroutine(titulo + mensaje));
-    }
 
+        // Iniciar la corrutina y guardar su referencia
+        panelInicioDiaCoroutine = StartCoroutine(MostrarPanelInicioDiaCoroutine(titulo + mensaje));
+    }
 
     private IEnumerator MostrarPanelInicioDiaCoroutine(string mensaje)
     {
         textoInicioDia.text = "";
 
+        audioTecleo.Play();
+
         foreach (char letter in mensaje)
         {
+            // adelantar texto con la tecla espacio
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                textoInicioDia.text = mensaje;
+                break;
+            }
+
             textoInicioDia.text += letter;
             yield return new WaitForSeconds(velocidadTexto);
         }
+
+        audioTecleo.Stop();
 
         yield return new WaitForSeconds(duracionPanel);
 
         panelInicioDia.gameObject.SetActive(false);
 
-
-        //invoca el evento cuando el panel se desactive
+        // invoca el evento cuando el panel se desactive
         PanelInicioDesactivado?.Invoke();
     }
 
+    public void CerrarPanelInicioDia()
+    {
+        // Detener la corrutina si está en ejecución
+        if (panelInicioDiaCoroutine != null)
+        {
+            StopCoroutine(panelInicioDiaCoroutine);
+            panelInicioDiaCoroutine = null;
+        }
+
+        // Detener el sonido y desactivar el panel
+        audioTecleo.Stop();
+        panelInicioDia.gameObject.SetActive(false);
+
+        // Invocar el evento
+        PanelInicioDesactivado?.Invoke();
+    }
 
     public void ActualizarPanelReporte(int sanosIngresados, int enfermosIngresados, int sanosRechazados, int enfermosRechazados)
     {
         panelReporte.gameObject.SetActive(true);
         // botonSiguienteNivel.gameObject.SetActive(true);
 
-        int diaActual = gameManager.NivelActual; 
-        string tituloReporte = $"Reporte Día {diaActual}\n\n";
+        int diaActual = gameManager.NivelActual;
+        string tituloReporte = $"Reporte Día {diaActual}\n";
         reporteText.text = $"{tituloReporte}" +
                         $"Sanos ingresados: {sanosIngresados}\n" +
                         $"Enfermos ingresados: {enfermosIngresados}\n" +
                         $"Sanos rechazados: {sanosRechazados}\n" +
                         $"Enfermos rechazados: {enfermosRechazados}";
-
         gameManager.MostrarMensaje();
     }
 
+    public void PanelReporte()
+    {
+        panelPerdiste.gameObject.SetActive(true);
+    }
 }
