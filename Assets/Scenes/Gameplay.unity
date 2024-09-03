@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414745, b: 0.12107873, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1751,7 +1751,7 @@ Transform:
   m_GameObject: {fileID: 292356773}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.27, y: 0.75, z: 94}
+  m_LocalPosition: {x: 9.23, y: 0.42, z: 93.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1846,8 +1846,8 @@ MonoBehaviour:
   puntoSalidaMedico: {fileID: 639765274}
   charactersManager: {fileID: 943274571}
   dialogueManager: {fileID: 2085731922}
-  botonMedico: {fileID: 204005907}
   gameManager: {fileID: 926031996}
+  botonMedico: {fileID: 204005907}
 --- !u!4 &341145153
 Transform:
   m_ObjectHideFlags: 0
@@ -3518,6 +3518,7 @@ Transform:
   - {fileID: 1727551769}
   - {fileID: 341145153}
   - {fileID: 1180345088}
+  - {fileID: 1143945139}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &694884341
@@ -4873,7 +4874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &912134672
 Transform:
   m_ObjectHideFlags: 0
@@ -4883,7 +4884,7 @@ Transform:
   m_GameObject: {fileID: 912134671}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5171967, y: 2.32, z: 102}
+  m_LocalPosition: {x: 7.72, y: 3.64, z: 102}
   m_LocalScale: {x: 0.93, y: 0.93, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4909,7 +4910,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ffc30907946ad294fa66d74e43e05ad1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5065,9 +5066,9 @@ MonoBehaviour:
     dialogos:
     - "Hola. \xA1Necesito ayuda!"
     - "Soy de un pueblo cercano, vengo caminando hace tres d\xEDas por favor necesito
-      ayuda "
-    - "No me cruc\xE9 con nadie en el camino "
-    - "Ninguno adem\xE1s del agotamiento y el hambre "
+      ayuda."
+    - "No me cruc\xE9 con nadie en el camino."
+    - "Ninguno adem\xE1s del agotamiento y el hambre."
     - "Por favor no estoy infectada, me agarr\xF3 la lluvia en el camino de tierra. "
     - "Mire mi piel, no tengo ning\xFAn s\xEDntoma solo necesito una ducha. "
     respuestas:
@@ -5085,8 +5086,8 @@ MonoBehaviour:
     - Dejenme pasar por favor
     - "Estaba en un refugio cercano pero me echaron porque hab\xEDa escasez de comida. "
     - 'Solamente con la gente del refugio, estaban todos sanos. '
-    - 'No, no, me siento perfectamente '
-    - "Acn\xE9, lo tengo desde los 15 a\xF1os, ya intente de todo "
+    - No, no, me siento perfectamente.
+    - "Acn\xE9, lo tengo desde los 15 a\xF1os, ya intente de todo."
     - "Justamente \xBFQu\xE9 pod\xE9s saber vos entonces? ya te dije que estoy sana
       vengo de una zona segura. "
     respuestas:
@@ -5102,7 +5103,7 @@ MonoBehaviour:
     estado: 1
     dialogos:
     - Hola
-    - De la ciudad, haciendo un recorrido en busca de provisiones
+    - De la ciudad, haciendo un recorrido en busca de provisiones.
     - "Me cruc\xE9 con un grupo de gente, pero mantuve distancia."
     - No, solo me duele la cabeza por estar tantas horas bajo el sol.
     - "\xBFEs realmente necesario?"
@@ -5114,12 +5115,12 @@ MonoBehaviour:
     - "\xBFPuede bajarse el barbijo?"
     - Es necesario para verificar su estado de salud.
     prefab: {fileID: 4534030318338212612, guid: 645f903f2aa46bd42bf0a0bb99722dbf, type: 3}
-    nivel: 3
+    nivel: 1
     esAgresivo: 0
   - nombre: pj4
     estado: 0
     dialogos:
-    - Hola, necesito ayuda
+    - Hola, necesito ayuda.
     - "Vengo deambulando entre ciudades, me qued\xE9 varado en un pueblo donde fui
       a tocar cuando arranc\xF3 la pandemia."
     - No, si no fue a verme nadie, tengo una bronca.
@@ -5136,7 +5137,7 @@ MonoBehaviour:
     - "\xBFEstuvo en alg\xFAn lugar concurrido? Aparte de su recital, donde claramente
       no lo fue a ver nadie."
     prefab: {fileID: 4534030318338212612, guid: 65ba1a6c5e42cbc4cbc0efac8b3cee5a, type: 3}
-    nivel: 3
+    nivel: 1
     esAgresivo: 0
   - nombre: pj5
     estado: 1
@@ -5154,7 +5155,7 @@ MonoBehaviour:
     - "\xBFEntonces a qu\xE9 se deben las marcas en el cuello?"
     - "\xBFVino hasta ac\xE1 sola?\xBFQu\xE9 pas\xF3 con sus gatos?"
     prefab: {fileID: 4534030318338212612, guid: ff8449d53c377fd41a6c4d2f229fd278, type: 3}
-    nivel: 3
+    nivel: 1
     esAgresivo: 0
   - nombre: pj6
     estado: 0
@@ -5175,7 +5176,7 @@ MonoBehaviour:
     - "Se nota, entonces\u2026 \xBFQu\xE9 estuvo haciendo todo este tiempo?"
     - "\xBFC\xF3mo manejo las medidas de prevenci\xF3n hasta ahora?"
     prefab: {fileID: 4534030318338212612, guid: cd3cc5b79305b0b49993641259778998, type: 3}
-    nivel: 3
+    nivel: 1
     esAgresivo: 0
   - nombre: pj7
     estado: 0
@@ -5197,12 +5198,12 @@ MonoBehaviour:
     - "\xBFC\xF3mo puedo estar seguro de que no se encontr\xF3 con otra gente para
       jugar?"
     prefab: {fileID: 4534030318338212612, guid: 2158820591ed44b4e9d5edf3156379c0, type: 3}
-    nivel: 3
+    nivel: 1
     esAgresivo: 0
   - nombre: pj8
     estado: 1
     dialogos:
-    - Hola
+    - Hola.
     - "Desde mi casa, desde que empez\xF3 la pandemia estoy trabajando desde ah\xED."
     - "No en persona, solo a trav\xE9s de mis compa\xF1eros por videollamada."
     - "Nada de eso, solo tos y cansancio, debe ser por el estr\xE9s."
@@ -5217,7 +5218,7 @@ MonoBehaviour:
     - "\xBFTuvo que ir a la oficina recientemente?"
     - "\xBFEst\xE1 segura que su malestar se debe al estr\xE9s?"
     prefab: {fileID: 4534030318338212612, guid: 77cf367750bdfd04780af06eff96079f, type: 3}
-    nivel: 3
+    nivel: 1
     esAgresivo: 0
   - nombre: pj9
     estado: 0
@@ -5228,8 +5229,8 @@ MonoBehaviour:
     - No, mi familia se fue apenas declararon la pandemia, pero yo no quise dejar
       la casa sola.
     - "Hasta ahora no, tom\xE9 todas las precauciones necesarias."
-    - "Me quede sin comida y agua, adem\xE1s vivo en una zona peligrosa "
-    - Si, si, no hay problema
+    - "Me quede sin comida y agua, adem\xE1s vivo en una zona peligrosa."
+    - Si, si, no hay problema.
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
@@ -5237,12 +5238,12 @@ MonoBehaviour:
     - "\xBFPor qu\xE9 quiere entrar a este lugar en lugar de quedarse en su casa?"
     - "\xBFPuede retirarse la bufanda para comprobar que realmente no presenta s\xEDntomas?"
     prefab: {fileID: 7820086166756251426, guid: ca9393d56879ad1429513eeb5d16d8f8, type: 3}
-    nivel: 3
+    nivel: 1
     esAgresivo: 0
   - nombre: pj10
     estado: 1
     dialogos:
-    - Hola
+    - Hmm... Buenas tardes
     - "Soy de la zona, tuve que irme del barrio porque hab\xEDan muchos disturbios
       y saqueos."
     - "Me fui con mi grupo de amigos pero me separ\xE9 de ellos hace unas horas."
@@ -5257,7 +5258,7 @@ MonoBehaviour:
     - "\xBFA qu\xE9 se debe el vendaje?"
     - "\xBFPor qu\xE9 se separ\xF3 del grupo?"
     prefab: {fileID: 4691758249037950082, guid: be4380dea7ebb8d48843de1a376b4b05, type: 3}
-    nivel: 3
+    nivel: 1
     esAgresivo: 0
   - nombre: pj11
     estado: 0
@@ -5286,7 +5287,7 @@ MonoBehaviour:
     respuestas:
     - "\xBFEstuvo en contacto con otra gente? "
     - "\xBFMantuvo precauciones? "
-    - "\xBFSabe que no puede ingresar con mascotas? "
+    - "\xBFSabe que no puede ingresar con mascotas?"
     prefab: {fileID: 2573835153199593656, guid: a7152580a841a8c43a40892441791e72, type: 3}
     nivel: 2
     esAgresivo: 0
@@ -5326,9 +5327,9 @@ MonoBehaviour:
     - DEJAME ENTRAR YA
     - TE DIJE QUE ME DEJES ENTRAR
     respuestas:
-    - "se\xF1or calmese y tome distancia..."
+    - "Se\xF1or calmese y tome distancia..."
     prefab: {fileID: 2573835153199593656, guid: 0e2d77ba5fb3fab47bbefc4da5d96d79, type: 3}
-    nivel: 1
+    nivel: 2
     esAgresivo: 1
   - nombre: pj16
     estado: 1
@@ -5385,7 +5386,7 @@ MonoBehaviour:
     - No, tengo la calva sensible y estar esperando hace media hora abajo del sol
       no ayuda.
     - Porque estoy cansado de tener que buscar provisiones e interactuar con gente
-      inepta
+      inepta.
     respuestas:
     - "Bueno se\xF1or, c\xE1lmese, hacemos lo que podemos \xBFTomo precauciones para
       el virus?"
@@ -5553,6 +5554,55 @@ Transform:
   - {fileID: 1369693168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1143945138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1143945139}
+  - component: {fileID: 1143945140}
+  m_Layer: 0
+  m_Name: BackgroundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1143945139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143945138}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 678873980}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1143945140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143945138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d52d81fc1929942a29d8413626bb5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundElements:
+  - renderer: {fileID: 1234913903}
+    speed: 0.01
+  - renderer: {fileID: 912134673}
+    speed: 0.05
 --- !u!1 &1148588651
 GameObject:
   m_ObjectHideFlags: 0
@@ -5712,23 +5762,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estaHablando: 0
   gibberishClips:
-  - {fileID: 8300000, guid: b2127898b47eae74a8a2b5f89d6b30b8, type: 3}
-  - {fileID: 8300000, guid: 09648f40739854a4e858a4672f4fd3a8, type: 3}
-  - {fileID: 8300000, guid: 66ba74b1177c6e24499beae9164f40d8, type: 3}
-  - {fileID: 8300000, guid: 15f431638b23fad4aa01d47a50e87824, type: 3}
-  - {fileID: 8300000, guid: fecc671da8913474cb74791b7fd07a4e, type: 3}
-  - {fileID: 8300000, guid: 41e238b0632b60d46ac13a9f99daaf6f, type: 3}
-  - {fileID: 8300000, guid: 91c89ff90c559d447afaff0fbc379849, type: 3}
-  - {fileID: 8300000, guid: be82d2bc465d21241bf619402366ef03, type: 3}
+  - {fileID: 8300000, guid: 8e4e7e99a5270fc449cec4181bb587e8, type: 3}
   gibberishClips2:
-  - {fileID: 8300000, guid: c2c1a8f0cdfd77345ad28a141a0866e4, type: 3}
-  - {fileID: 8300000, guid: eebd632e2437ea1458c60229852950dd, type: 3}
-  - {fileID: 8300000, guid: c381bff39978dc441a0f028c74b06cfb, type: 3}
-  - {fileID: 8300000, guid: bc5123d448fc88b48bb280b593d97cb2, type: 3}
-  - {fileID: 8300000, guid: 945f1a2e6022cbc438671b00d5ca1268, type: 3}
-  - {fileID: 8300000, guid: ec6fd963c40ad3b4795fae3880cec94b, type: 3}
-  - {fileID: 8300000, guid: 458b3048c30fe6a4bab2101bc75e920e, type: 3}
-  - {fileID: 8300000, guid: 7142f9962873cb94885a3eebacf6896c, type: 3}
+  - {fileID: 8300000, guid: bf2163e50b24fbc4292a32bff6b617d4, type: 3}
 --- !u!4 &1168009880
 Transform:
   m_ObjectHideFlags: 0
@@ -5773,7 +5809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76147b9809568c14d86c3ebfb1a7da7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 1515895186}
+  pauseMenuUI: {fileID: 0}
 --- !u!4 &1180345088
 Transform:
   m_ObjectHideFlags: 0
@@ -6288,7 +6324,7 @@ Transform:
   m_GameObject: {fileID: 1234913901}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.99, y: 1.67, z: 103}
+  m_LocalPosition: {x: 7.23, y: 2.41, z: 103}
   m_LocalScale: {x: 0.93, y: 0.93, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6314,7 +6350,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4c003dc991048ee478399a7c71306a3b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6857,15 +6893,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   audioManager: {fileID: 1168009879}
   gibberishClips: []
-  gibberishClips2:
-  - {fileID: 8300000, guid: b2127898b47eae74a8a2b5f89d6b30b8, type: 3}
-  - {fileID: 8300000, guid: 09648f40739854a4e858a4672f4fd3a8, type: 3}
-  - {fileID: 8300000, guid: 66ba74b1177c6e24499beae9164f40d8, type: 3}
-  - {fileID: 8300000, guid: 15f431638b23fad4aa01d47a50e87824, type: 3}
-  - {fileID: 8300000, guid: fecc671da8913474cb74791b7fd07a4e, type: 3}
-  - {fileID: 8300000, guid: 41e238b0632b60d46ac13a9f99daaf6f, type: 3}
-  - {fileID: 8300000, guid: 91c89ff90c559d447afaff0fbc379849, type: 3}
-  - {fileID: 8300000, guid: be82d2bc465d21241bf619402366ef03, type: 3}
+  gibberishClips2: []
   aggressiveNPCs: {fileID: 0}
   checkCondition: {fileID: 0}
   medicoUsado: 0
@@ -8474,7 +8502,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897245215}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 77821a1b38e050744abfa604a01423d6, type: 3}
@@ -9359,23 +9387,9 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   audioManager: {fileID: 1168009879}
   gibberishClips:
-  - {fileID: 8300000, guid: c2c1a8f0cdfd77345ad28a141a0866e4, type: 3}
-  - {fileID: 8300000, guid: eebd632e2437ea1458c60229852950dd, type: 3}
-  - {fileID: 8300000, guid: c381bff39978dc441a0f028c74b06cfb, type: 3}
-  - {fileID: 8300000, guid: bc5123d448fc88b48bb280b593d97cb2, type: 3}
-  - {fileID: 8300000, guid: 945f1a2e6022cbc438671b00d5ca1268, type: 3}
-  - {fileID: 8300000, guid: ec6fd963c40ad3b4795fae3880cec94b, type: 3}
-  - {fileID: 8300000, guid: 458b3048c30fe6a4bab2101bc75e920e, type: 3}
-  - {fileID: 8300000, guid: 7142f9962873cb94885a3eebacf6896c, type: 3}
+  - {fileID: 8300000, guid: bf2163e50b24fbc4292a32bff6b617d4, type: 3}
   gibberishClips2:
-  - {fileID: 8300000, guid: b2127898b47eae74a8a2b5f89d6b30b8, type: 3}
-  - {fileID: 8300000, guid: 09648f40739854a4e858a4672f4fd3a8, type: 3}
-  - {fileID: 8300000, guid: 66ba74b1177c6e24499beae9164f40d8, type: 3}
-  - {fileID: 8300000, guid: 15f431638b23fad4aa01d47a50e87824, type: 3}
-  - {fileID: 8300000, guid: fecc671da8913474cb74791b7fd07a4e, type: 3}
-  - {fileID: 8300000, guid: 41e238b0632b60d46ac13a9f99daaf6f, type: 3}
-  - {fileID: 8300000, guid: 91c89ff90c559d447afaff0fbc379849, type: 3}
-  - {fileID: 8300000, guid: be82d2bc465d21241bf619402366ef03, type: 3}
+  - {fileID: 8300000, guid: 8e4e7e99a5270fc449cec4181bb587e8, type: 3}
   aggressiveNPCs: {fileID: 1727551768}
   checkCondition: {fileID: 341145152}
   medicoUsado: 0
