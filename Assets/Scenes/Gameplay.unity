@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414745, b: 0.12107873, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -386,6 +386,8 @@ MonoBehaviour:
   panelPerdiste: {fileID: 0}
   mensajeReporte: {fileID: 0}
   reporteText: {fileID: 0}
+  indicaciones: {fileID: 0}
+  duracionIndicaciones: 3
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
@@ -1271,14 +1273,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6351904, g: 0.64452314, b: 0.735849, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 198937065, guid: 63d041466a4914a4d8052827035629e8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d73c679762d94424781b2ab064634c78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1848,6 +1850,7 @@ MonoBehaviour:
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
   botonMedico: {fileID: 204005907}
+  sonidoBoton: {fileID: 1897245216}
 --- !u!4 &341145153
 Transform:
   m_ObjectHideFlags: 0
@@ -5324,10 +5327,10 @@ MonoBehaviour:
   - nombre: pj15
     estado: 1
     dialogos:
-    - DEJAME ENTRAR YA
-    - TE DIJE QUE ME DEJES ENTRAR
+    - "DEJAME ENTRAR \xA1YA!"
+    - "\xA1TE DIJE QUE ME DEJES ENTRAR!"
     respuestas:
-    - "Se\xF1or calmese y tome distancia..."
+    - "Se\xF1or, calmese y tome distancia..."
     prefab: {fileID: 2573835153199593656, guid: 0e2d77ba5fb3fab47bbefc4da5d96d79, type: 3}
     nivel: 2
     esAgresivo: 1
@@ -5809,7 +5812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76147b9809568c14d86c3ebfb1a7da7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
+  pauseMenuUI: {fileID: 1515895186}
 --- !u!4 &1180345088
 Transform:
   m_ObjectHideFlags: 0
@@ -7081,6 +7084,8 @@ MonoBehaviour:
   panelPerdiste: {fileID: 0}
   mensajeReporte: {fileID: 1199752089}
   reporteText: {fileID: 0}
+  indicaciones: {fileID: 0}
+  duracionIndicaciones: 3
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
@@ -7290,6 +7295,8 @@ MonoBehaviour:
   panelPerdiste: {fileID: 0}
   mensajeReporte: {fileID: 0}
   reporteText: {fileID: 0}
+  indicaciones: {fileID: 0}
+  duracionIndicaciones: 3
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 0}
   gameManager: {fileID: 0}
@@ -7671,6 +7678,8 @@ MonoBehaviour:
   panelPerdiste: {fileID: 0}
   mensajeReporte: {fileID: 0}
   reporteText: {fileID: 0}
+  indicaciones: {fileID: 0}
+  duracionIndicaciones: 3
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
@@ -8220,6 +8229,8 @@ MonoBehaviour:
   panelPerdiste: {fileID: 1658696441}
   mensajeReporte: {fileID: 1199752089}
   reporteText: {fileID: 789335826}
+  indicaciones: {fileID: 0}
+  duracionIndicaciones: 3
   botonSiguienteNivel: {fileID: 219588691}
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
@@ -8337,6 +8348,8 @@ MonoBehaviour:
   panelPerdiste: {fileID: 0}
   mensajeReporte: {fileID: 0}
   reporteText: {fileID: 0}
+  indicaciones: {fileID: 0}
+  duracionIndicaciones: 3
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 0}
   gameManager: {fileID: 0}
@@ -8384,6 +8397,7 @@ MonoBehaviour:
   escobaSeguridad: {fileID: 2001823987}
   golpe: {fileID: 1148588652}
   botonSeguridad: {fileID: 5076804}
+  sonidoBoton: {fileID: 1897245216}
 --- !u!4 &1727551769
 Transform:
   m_ObjectHideFlags: 0
@@ -8502,7 +8516,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897245215}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 77821a1b38e050744abfa604a01423d6, type: 3}

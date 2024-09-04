@@ -172,18 +172,30 @@ public class s_GameManager : MonoBehaviour
     public void MostrarMensaje()
     {
         // Mostrar mensaje según la cantidad de enfermos ingresados
-        if (enfermosIngresados == 0)
+        if (enfermosIngresados == 0 && sanosRechazados == 0)
         {
             uiManager.mensajeReporte.text = "¡Buen trabajo!";
-            uiManager.botonSiguienteNivel.gameObject.SetActive(true);
+
+            //modificacion temporal para que no apse al nivel 3
+            if (NivelActual == 1)
+            {
+                uiManager.botonSiguienteNivel.gameObject.SetActive(true);
+            };
+
         }
-        else if (enfermosIngresados >= 1 && enfermosIngresados <= 3)
+        else if ((enfermosIngresados >= 1 && enfermosIngresados <= 3) || (sanosRechazados >= 1 && sanosRechazados <= 3))
         {
             uiManager.mensajeReporte.text = "Más cuidado la próxima vez...";
-            GameData.Faltas++;
-            uiManager.botonSiguienteNivel.gameObject.SetActive(true);
+            // GameData.Faltas++;
+
+
+            //modificacion temporal para que no apse al nivel 3
+            if (NivelActual == 1)
+            {
+                uiManager.botonSiguienteNivel.gameObject.SetActive(true);
+            };
         }
-        else if (enfermosIngresados > 3)
+        else if (enfermosIngresados > 3 || sanosRechazados > 3)
         {
             uiManager.mensajeReporte.text = "Fuiste retirado del puesto de trabajo.";
         }

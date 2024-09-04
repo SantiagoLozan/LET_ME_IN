@@ -17,6 +17,9 @@ public class UI_Manager : MonoBehaviour
     public TextMeshProUGUI mensajeReporte;
     public TextMeshProUGUI reporteText;
 
+    public RectTransform indicaciones; // Panel para la introducción del nivel 1
+    public float duracionIndicaciones = 3.0f; 
+
     public Button botonSiguienteNivel;
 
     public event Action PanelInicioDesactivado;
@@ -26,13 +29,8 @@ public class UI_Manager : MonoBehaviour
 
     public AudioSource audioTecleo;
 
-      private Coroutine panelInicioDiaCoroutine; // Guardar referencia de la corrutina
-
-    void Start()
-    {
-        // Cualquier inicialización que necesites
-    }
-
+    private Coroutine panelInicioDiaCoroutine; // Guardar referencia de la corrutina
+ 
     public void MostrarInicioDia(string mensaje)
     {
         dialogueManager.panelDialogo.gameObject.SetActive(false);

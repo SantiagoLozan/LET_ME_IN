@@ -28,6 +28,8 @@ public class AggressiveNPCs : MonoBehaviour
 
     public Button botonSeguridad;
 
+    public AudioSource sonidoBoton;
+
     void Start()
     {
         audioSeguridad.Stop();
@@ -125,6 +127,7 @@ public class AggressiveNPCs : MonoBehaviour
 
     public void LlamarSeguridad()
     {
+        sonidoBoton.Play();
         DetenerPeligro();
         botonSeguridad.interactable = false;
         if (temporizadorActivo)
