@@ -32,12 +32,24 @@ public class AggressiveNPCs : MonoBehaviour
 
     public AudioSource sonidoBoton;
 
+    public float tiempoBaseTemporizador;
+
     void Start()
     {
         audioSeguridad.Stop();
         pasosSeguridad.Stop();
         escobaSeguridad.Stop();
         botonSeguridad.interactable = false;
+
+
+        if (gameManager.NivelActual == 2) // Verifica si estás en el nivel 2
+        {
+            tiempoBaseTemporizador = 3f; // 3 segundos en nivel 2
+        }
+        else
+        {
+            tiempoBaseTemporizador = 5f; // 5 segundos en otros niveles
+        }
     }
 
     void Update()
@@ -62,14 +74,22 @@ public class AggressiveNPCs : MonoBehaviour
     public void MostrarComportamientoAgresivo()
     {
         Debug.Log("¡El personaje está actuando de manera agresiva!");
+
+        // Asegúrate de que el temporizador siempre se reinicie cuando un nuevo personaje aparece
+        if (temporizadorActivo)
+        {
+            temporizadorActivo = false;
+        }
+
         botonSeguridad.interactable = true;
-        StartTimer(5);
+        StartTimer(tiempoBaseTemporizador);
         Peligro();
     }
 
     void StartTimer(float tiempo)
     {
         PanelTimer.SetActive(true);
+         timerText.gameObject.SetActive(true); 
         tiempoRestante = tiempo;
         temporizadorActivo = true;
         ActualizarTextoTemporizador();

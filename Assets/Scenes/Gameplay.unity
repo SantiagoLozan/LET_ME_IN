@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414745, b: 0.12107873, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -320,6 +320,7 @@ Transform:
   - {fileID: 405117985}
   - {fileID: 1629803148}
   - {fileID: 657224204}
+  - {fileID: 1208056167}
   - {fileID: 880250571}
   - {fileID: 292356774}
   - {fileID: 912134672}
@@ -3295,7 +3296,7 @@ Transform:
   m_GameObject: {fileID: 639765273}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.156075, y: 1.3507587, z: 82.21642}
+  m_LocalPosition: {x: 12.46, y: 1.16, z: 82.21642}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3401,7 +3402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &657224204
 Transform:
   m_ObjectHideFlags: 0
@@ -4665,7 +4666,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -100.56523, y: -52.55719, z: -839.12225, w: -109.25596}
+  m_margin: {x: -100.56523, y: -62.46888, z: -839.12225, w: -126.60145}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5672,30 +5673,22 @@ MonoBehaviour:
   - nombre: pj21
     estado: 1
     dialogos:
-    - "\xBFAc\xE1 es el after?"
-    - "Vengo de la clande del chechu, vi una fila y asum\xED que ac\xE1 segu\xEDa
-      la fiesta."
-    - "No me la bajes asi... Si seguro ah\xED adentro hay una re joda."
+    - "\xBFEste es el refugio?"
+    - Las preguntas no van a ser necesarias...
     respuestas:
-    - "\xBFComo? "
-    - "Se\xF1or, esto es un refugio, hay un virus letal dando vueltas, las fiestas
-      est\xE1n prohibidas, no sea imprudente."
+    - "S\xED, \xBFDe donde viene?"
     prefab: {fileID: 841363440324422405, guid: cfc627d5ff0e33e40a141873f5d8aed5, type: 3}
-    nivel: 3
+    nivel: 2
     esAgresivo: 1
   - nombre: pj22
     estado: 1
     dialogos:
-    - "\xBFAc\xE1 es el after?"
-    - "Vengo de la clande del chechu, vi una fila y asum\xED que ac\xE1 segu\xEDa
-      la fiesta."
-    - "No me la bajes asi... Si seguro ah\xED adentro hay una re joda."
+    - Abrime la puerta...
+    - "\xA1ABRIME LA PUERTA!"
     respuestas:
-    - "\xBFComo? "
-    - "Se\xF1or, esto es un refugio, hay un virus letal dando vueltas, las fiestas
-      est\xE1n prohibidas, no sea imprudente."
+    - "No puedo dejarlo pasar as\xED nom\xE1s, primero debo evaluar su estado."
     prefab: {fileID: 1526593497047026833, guid: 018373af6d4e2f547816b99ce66d7b80, type: 3}
-    nivel: 4
+    nivel: 2
     esAgresivo: 1
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
@@ -6547,6 +6540,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199752087}
   m_CullTransparentMesh: 1
+--- !u!1 &1208056165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1208056167}
+  - component: {fileID: 1208056166}
+  m_Layer: 0
+  m_Name: fila
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1208056166
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208056165}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e01cef581c6af0b459a88465f57de687, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 19.23, y: 10.82}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1208056167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208056165}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.7910782, y: -0.30773562, z: 86.30546}
+  m_LocalScale: {x: 0.9242, y: 0.88256353, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 16034164}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1228093868
 GameObject:
   m_ObjectHideFlags: 0
@@ -8712,7 +8789,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -80.987625, y: -25.165825, z: -832.0945, w: -119.3566}
+  m_margin: {x: -80.987625, y: -35.107838, z: -832.0945, w: -119.3566}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8921,7 +8998,7 @@ MonoBehaviour:
   gameManager: {fileID: 926031996}
   charactersManager: {fileID: 943274571}
   panelPerdiste: {fileID: 17082859}
-  seguridadPrefab: {fileID: 8813863680895928580, guid: b717939d0047fa143bf95a7aa253ec66, type: 3}
+  seguridadPrefab: {fileID: 3651874300117595769, guid: 30862105c20057b4ca752ba28962d4a4, type: 3}
   spawnPointSeguridad: {fileID: 1317177460}
   targetPoint: {fileID: 12685435}
   PanelSeguridad: {fileID: 1262971201}
@@ -8933,6 +9010,7 @@ MonoBehaviour:
   filtroVidrio: {fileID: 659998728}
   botonSeguridad: {fileID: 5076804}
   sonidoBoton: {fileID: 1897245216}
+  tiempoBaseTemporizador: 0
 --- !u!4 &1727551769
 Transform:
   m_ObjectHideFlags: 0
@@ -9859,7 +9937,7 @@ Transform:
   m_GameObject: {fileID: 2029294333}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.71, y: 0.5507587, z: 82.21642}
+  m_LocalPosition: {x: 5.81, y: 1.27, z: 82.21642}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
