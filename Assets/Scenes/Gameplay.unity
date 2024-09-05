@@ -5589,7 +5589,7 @@ MonoBehaviour:
     respuestas:
     - "Se\xF1or, calmese y tome distancia..."
     prefab: {fileID: 2573835153199593656, guid: 0e2d77ba5fb3fab47bbefc4da5d96d79, type: 3}
-    nivel: 3
+    nivel: 1
     esAgresivo: 1
   - nombre: pj16
     estado: 1
@@ -5669,6 +5669,34 @@ MonoBehaviour:
     prefab: {fileID: 2573835153199593656, guid: 3a0bb5d985a32a14280ec05499dbafed, type: 3}
     nivel: 2
     esAgresivo: 0
+  - nombre: pj21
+    estado: 1
+    dialogos:
+    - "\xBFAc\xE1 es el after?"
+    - "Vengo de la clande del chechu, vi una fila y asum\xED que ac\xE1 segu\xEDa
+      la fiesta."
+    - "No me la bajes asi... Si seguro ah\xED adentro hay una re joda."
+    respuestas:
+    - "\xBFComo? "
+    - "Se\xF1or, esto es un refugio, hay un virus letal dando vueltas, las fiestas
+      est\xE1n prohibidas, no sea imprudente."
+    prefab: {fileID: 841363440324422405, guid: cfc627d5ff0e33e40a141873f5d8aed5, type: 3}
+    nivel: 3
+    esAgresivo: 1
+  - nombre: pj22
+    estado: 1
+    dialogos:
+    - "\xBFAc\xE1 es el after?"
+    - "Vengo de la clande del chechu, vi una fila y asum\xED que ac\xE1 segu\xEDa
+      la fiesta."
+    - "No me la bajes asi... Si seguro ah\xED adentro hay una re joda."
+    respuestas:
+    - "\xBFComo? "
+    - "Se\xF1or, esto es un refugio, hay un virus letal dando vueltas, las fiestas
+      est\xE1n prohibidas, no sea imprudente."
+    prefab: {fileID: 1526593497047026833, guid: 018373af6d4e2f547816b99ce66d7b80, type: 3}
+    nivel: 4
+    esAgresivo: 1
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
   uiManager: {fileID: 1709672043}
