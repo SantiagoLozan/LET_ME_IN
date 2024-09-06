@@ -26,7 +26,13 @@ public class AggressiveNPCs : MonoBehaviour
     public AudioSource escobaSeguridad;
     public AudioSource golpe;
 
+    public GameObject filtroVidrio;
+
     public Button botonSeguridad;
+
+    public AudioSource sonidoBoton;
+
+    public float tiempoBaseTemporizador;
 
     void Start()
     {
@@ -34,6 +40,16 @@ public class AggressiveNPCs : MonoBehaviour
         pasosSeguridad.Stop();
         escobaSeguridad.Stop();
         botonSeguridad.interactable = false;
+
+
+        if (gameManager.NivelActual == 2) // Verifica si estás en el nivel 2
+        {
+            tiempoBaseTemporizador = 3f; // 3 segundos en nivel 2
+        }
+        else
+        {
+            tiempoBaseTemporizador = 5f; // 5 segundos en otros niveles
+        }
     }
 
     void Update()
@@ -58,14 +74,22 @@ public class AggressiveNPCs : MonoBehaviour
     public void MostrarComportamientoAgresivo()
     {
         Debug.Log("¡El personaje está actuando de manera agresiva!");
+
+        // Asegúrate de que el temporizador siempre se reinicie cuando un nuevo personaje aparece
+        if (temporizadorActivo)
+        {
+            temporizadorActivo = false;
+        }
+
         botonSeguridad.interactable = true;
-        StartTimer(5);
+        StartTimer(tiempoBaseTemporizador);
         Peligro();
     }
 
     void StartTimer(float tiempo)
     {
         PanelTimer.SetActive(true);
+         timerText.gameObject.SetActive(true); 
         tiempoRestante = tiempo;
         temporizadorActivo = true;
         ActualizarTextoTemporizador();
@@ -93,9 +117,37 @@ public class AggressiveNPCs : MonoBehaviour
             {
                 toggleCoroutine = StartCoroutine(TogglePanel());
             }
+
+            GameObject personajeAgresivoActual = charactersManager.GetCharacterGameObject();
+            if (personajeAgresivoActual != null)
+            {
+                NPCAnimationController animController = personajeAgresivoActual.GetComponent<NPCAnimationController>();
+                animController?.StartDangerAnimation();
+            }
+
+
+            if (filtroVidrio != null)
+            {
+                filtroVidrio.SetActive(true);
+
+
+                GlassCrackController crackController = filtroVidrio.GetComponent<GlassCrackController>();
+                if (crackController != null)
+                {
+                    Debug.Log("GlassCrackController encontrado y StartCracking será llamado.");
+                    crackController.StartCracking();
+                }
+                else
+                {
+                    Debug.LogError("GlassCrackController no se encontró en FiltroVidrio.");
+                }
+            }
+            else
+            {
+                Debug.LogError("FiltroVidrio no está asignado en el inspector.");
+            }
         }
     }
-
     IEnumerator TogglePanel()
     {
         while (true)
@@ -121,10 +173,19 @@ public class AggressiveNPCs : MonoBehaviour
             PanelTimer.SetActive(false);
             audioSeguridad.Stop();
         }
+
+
+        GameObject personajeAgresivoActual = charactersManager.GetCharacterGameObject();
+        if (personajeAgresivoActual != null)
+        {
+            NPCAnimationController animController = personajeAgresivoActual.GetComponent<NPCAnimationController>();
+            animController?.StopDangerAnimation();
+        }
     }
 
     public void LlamarSeguridad()
     {
+        sonidoBoton.Play();
         DetenerPeligro();
         botonSeguridad.interactable = false;
         if (temporizadorActivo)
@@ -134,10 +195,7 @@ public class AggressiveNPCs : MonoBehaviour
         }
 
 
-        // Esperar unos segundos antes de que el personaje de seguridad aparezca y empiece el movimiento
         StartCoroutine(EsperarAntesDeLlamarSeguridad(3f));
-
-        //habría que agregar sonido aca para anticipar al llegada del guardia
     }
 
     IEnumerator EsperarAntesDeLlamarSeguridad(float delay)
@@ -146,21 +204,21 @@ public class AggressiveNPCs : MonoBehaviour
 
         StartCoroutine(gameManager.AbrirPuerta(10f));
 
-        // Invocar al personaje de seguridad
+
         seguridadInstance = Instantiate(seguridadPrefab, spawnPointSeguridad.position, Quaternion.identity);
 
         pasosSeguridad.Play();
         escobaSeguridad.Play();
 
-        // Obtener el personaje agresivo actual desde CharactersManager
+
         GameObject personajeAgresivoActual = charactersManager.GetCharacterGameObject();
 
         if (personajeAgresivoActual != null)
         {
-            // Esperar otros segundos antes de empezar a mover al personaje agresivo
-            yield return new WaitForSeconds(1f); // Espera 1 segundo
 
-            // Mover al personaje agresivo
+            yield return new WaitForSeconds(1f);
+
+
             StartCoroutine(EmpujarPersonajeAggressivo(personajeAgresivoActual.transform));
         }
     }
@@ -171,15 +229,15 @@ public class AggressiveNPCs : MonoBehaviour
         float velocidadMovimiento = 2f;
         float velocidadSeguridad = 3.5f;
 
-        // Punto fuera de la pantalla
+
         Vector3 puntoFueraDePantalla = new Vector3(targetPoint.position.x - 1f, personajeAggressivo.position.y, personajeAggressivo.position.z);
 
         while (Vector3.Distance(personajeAggressivo.position, puntoFueraDePantalla) > 0.1f)
         {
-            // Mover el personaje fuera de la pantalla
+
             personajeAggressivo.position = Vector3.MoveTowards(personajeAggressivo.position, puntoFueraDePantalla, Time.deltaTime * velocidadMovimiento);
 
-            // Mantener al personaje de seguridad una distancia constante detrás del personaje 
+
             if (seguridadInstance != null)
             {
                 Vector3 posicionSeguridad = personajeAggressivo.position - new Vector3(distanciaSeguridadYAgresivo, 0, 0);
@@ -189,13 +247,13 @@ public class AggressiveNPCs : MonoBehaviour
             yield return null;
         }
 
-        // Destruir el personaje 
+
         if (personajeAggressivo != null)
         {
             Destroy(personajeAggressivo.gameObject);
         }
 
-        // Destruir el personaje de seguridad 
+
         if (seguridadInstance != null)
         {
             Destroy(seguridadInstance);

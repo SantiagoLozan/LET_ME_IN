@@ -18,6 +18,7 @@ public class CheckCondition : MonoBehaviour
     private GameObject medicoInstance;
 
     public Button botonMedico;
+    public AudioSource sonidoBoton;
 
     public void Start()
     {
@@ -26,7 +27,7 @@ public class CheckCondition : MonoBehaviour
 
     public void EvaluarSalud()
     {
-
+     sonidoBoton.Play();
         if (medicoInstance == null)
         {
             medicoInstance = Instantiate(medicoPrefab, spawnPointMedico.position, Quaternion.identity);
@@ -43,7 +44,7 @@ public class CheckCondition : MonoBehaviour
         dialogueManager.botonIngreso.interactable = false;
         dialogueManager.botonRechazo.interactable = false;
 
-        StartCoroutine(gameManager.AbrirPuerta(10f));
+        StartCoroutine(gameManager.AbrirPuerta(8f));
 
         yield return StartCoroutine(MoverPersonaje(medicoInstance.transform, centroPantalla.position));
 
