@@ -66,8 +66,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PauseManager.cs" />
     <Compile Include="Assets\Scripts\GameData.cs" />
+    <Compile Include="Assets\Scripts\GlassCrackController.cs" />
     <Compile Include="Assets\Scripts\s_VideoScript.cs" />
     <Compile Include="Assets\Scripts\AggressiveNPCs.cs" />
+    <Compile Include="Assets\Scripts\AnimationController.cs" />
     <Compile Include="Assets\Scripts\CheckCondition.cs" />
     <Compile Include="Assets\Scripts\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\s_BotonSeguridad.cs" />
