@@ -4337,14 +4337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a14a3603a573340ab0515f5a7c440b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LaunchOnStart: 1
-  timeOut: 1
-  Charstype: 0
-  ORIGINAL_TEXT: 
-  time: 0
-  "\u0441harIndex": 0
-  start: 0
-  n_l_list: 
 --- !u!1 &744323517
 GameObject:
   m_ObjectHideFlags: 0
@@ -7871,7 +7863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1515895187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10190,10 +10182,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 926031996}
-        m_TargetAssemblyTypeName: s_GameManager, Assembly-CSharp
-        m_MethodName: ChangeScene
-        m_Mode: 5
+      - m_Target: {fileID: 1180345087}
+        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
+        m_MethodName: ReturnToMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
