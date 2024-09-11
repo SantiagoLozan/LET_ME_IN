@@ -26,13 +26,22 @@ public class AggressiveNPCs : MonoBehaviour
     public AudioSource escobaSeguridad;
     public AudioSource golpe;
 
-    public GameObject filtroVidrio;
+    public GameObject vidrioRoto;
 
     public Button botonSeguridad;
 
     public AudioSource sonidoBoton;
 
     public float tiempoBaseTemporizador;
+
+
+    public Transform cameraTransform; // Referencia al transform de la cámara
+    public float shakeIntensity = 0.1f; // Intensidad del temblor
+    public float shakeDuration = 3f;  // Duración del temblor
+    private Vector3 originalCameraPosition;
+    private bool isShaking = false;
+    private Coroutine shakeCoroutine;
+
 
     void Start()
     {
@@ -41,6 +50,10 @@ public class AggressiveNPCs : MonoBehaviour
         escobaSeguridad.Stop();
         botonSeguridad.interactable = false;
 
+        if (cameraTransform != null)
+        {
+            originalCameraPosition = cameraTransform.position;
+        }
 
         if (gameManager.NivelActual == 2) // Verifica si estás en el nivel 2
         {
@@ -71,6 +84,34 @@ public class AggressiveNPCs : MonoBehaviour
         }
     }
 
+
+    void ShakeCamera()
+    {
+        if (!isShaking)
+        {
+            shakeCoroutine = StartCoroutine(ShakeCameraCoroutine());
+        }
+    }
+
+    IEnumerator ShakeCameraCoroutine()
+    {
+        isShaking = true;
+        float elapsed = 0f;
+
+        while (elapsed < shakeDuration)
+        {
+            float x = Random.Range(-1f, 1f) * shakeIntensity;
+            float y = Random.Range(-1f, 1f) * shakeIntensity;
+            cameraTransform.position = originalCameraPosition + new Vector3(x, y, 0);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        cameraTransform.position = originalCameraPosition;
+        isShaking = false;
+    }
+
     public void MostrarComportamientoAgresivo()
     {
         Debug.Log("¡El personaje está actuando de manera agresiva!");
@@ -84,12 +125,23 @@ public class AggressiveNPCs : MonoBehaviour
         botonSeguridad.interactable = true;
         StartTimer(tiempoBaseTemporizador);
         Peligro();
+
+        // Agrega el temblor de cámara aquí
+        if (cameraTransform != null)
+        {
+            ShakeCamera();
+        }
+
+        if (vidrioRoto != null)
+        {
+            vidrioRoto.SetActive(true);
+        }
     }
 
     void StartTimer(float tiempo)
     {
         PanelTimer.SetActive(true);
-         timerText.gameObject.SetActive(true); 
+        timerText.gameObject.SetActive(true);
         tiempoRestante = tiempo;
         temporizadorActivo = true;
         ActualizarTextoTemporizador();
@@ -125,29 +177,10 @@ public class AggressiveNPCs : MonoBehaviour
                 animController?.StartDangerAnimation();
             }
 
-
-            if (filtroVidrio != null)
-            {
-                filtroVidrio.SetActive(true);
-
-
-                GlassCrackController crackController = filtroVidrio.GetComponent<GlassCrackController>();
-                if (crackController != null)
-                {
-                    Debug.Log("GlassCrackController encontrado y StartCracking será llamado.");
-                    crackController.StartCracking();
-                }
-                else
-                {
-                    Debug.LogError("GlassCrackController no se encontró en FiltroVidrio.");
-                }
-            }
-            else
-            {
-                Debug.LogError("FiltroVidrio no está asignado en el inspector.");
-            }
         }
     }
+
+
     IEnumerator TogglePanel()
     {
         while (true)
@@ -174,6 +207,15 @@ public class AggressiveNPCs : MonoBehaviour
             audioSeguridad.Stop();
         }
 
+
+        // Detener el temblor de la cámara
+        if (shakeCoroutine != null)
+        {
+            StopCoroutine(shakeCoroutine);
+            shakeCoroutine = null;
+            cameraTransform.position = originalCameraPosition; // Restablecer la posición de la cámara
+            isShaking = false;
+        }
 
         GameObject personajeAgresivoActual = charactersManager.GetCharacterGameObject();
         if (personajeAgresivoActual != null)

@@ -383,6 +383,7 @@ MonoBehaviour:
   textoInicioDia: {fileID: 0}
   velocidadTexto: 0.1
   duracionPanel: 1
+  intervaloCursor: 0.5
   panelReporte: {fileID: 17082860}
   panelPerdiste: {fileID: 0}
   mensajeReporte: {fileID: 0}
@@ -2661,11 +2662,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &453434209 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1309772750572801002, guid: 9ffc1384ecc2fa14e9d1c51e18ed4c2e, type: 3}
-  m_PrefabInstance: {fileID: 124700775}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &453434210 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2967066134130799968, guid: 9ffc1384ecc2fa14e9d1c51e18ed4c2e, type: 3}
@@ -3150,6 +3146,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601041673}
   m_CullTransparentMesh: 1
+--- !u!1 &601108438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 601108440}
+  - component: {fileID: 601108439}
+  m_Layer: 0
+  m_Name: vidiro roto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!212 &601108439
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601108438}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 04d04ab0ecd9ae64ca4699bb79477766, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 19.2, y: 10.8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &601108440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601108438}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.333, y: 1.1346, z: 92}
+  m_LocalScale: {x: 0.2809461, y: 0.26060808, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &609001610
 GameObject:
   m_ObjectHideFlags: 0
@@ -3470,57 +3550,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &659998728
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 659998729}
-  - component: {fileID: 659998730}
-  m_Layer: 0
-  m_Name: FiltroVidrio
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &659998729
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659998728}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6960747, y: -0.11075878, z: 10.783577}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &659998730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659998728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e84b68f989f674eb6f724c065fa397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crackPrefabs:
-  - {fileID: 1169642895}
-  - {fileID: 1099301438}
-  - {fileID: 1635911098}
-  - {fileID: 686974105}
-  - {fileID: 453434209}
-  delayBetweenCracks: 0.5
 --- !u!1 &669778915
 GameObject:
   m_ObjectHideFlags: 0
@@ -3732,11 +3761,6 @@ Transform:
   - {fileID: 1143945139}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &686974105 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1309772750572801002, guid: 9ffc1384ecc2fa14e9d1c51e18ed4c2e, type: 3}
-  m_PrefabInstance: {fileID: 1540513120}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &686974106 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2967066134130799968, guid: 9ffc1384ecc2fa14e9d1c51e18ed4c2e, type: 3}
@@ -3979,6 +4003,7 @@ MonoBehaviour:
   aggressiveNPCs: {fileID: 0}
   checkCondition: {fileID: 0}
   medicoUsado: 0
+  intervaloCursor: 0.5
 --- !u!1 &726205648
 GameObject:
   m_ObjectHideFlags: 0
@@ -4176,6 +4201,7 @@ GameObject:
   - component: {fileID: 732569428}
   - component: {fileID: 732569430}
   - component: {fileID: 732569429}
+  - component: {fileID: 732569431}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4231,7 +4257,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4289331215
+    rgba: 4281001289
   m_fontColor: {r: 0.056894474, g: 0, b: 0.6666667, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -4299,6 +4325,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732569427}
   m_CullTransparentMesh: 1
+--- !u!114 &732569431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732569427}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35a14a3603a573340ab0515f5a7c440b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LaunchOnStart: 1
+  timeOut: 1
+  Charstype: 0
+  ORIGINAL_TEXT: 
+  time: 0
+  "\u0441harIndex": 0
+  start: 0
+  n_l_list: 
 --- !u!1 &744323517
 GameObject:
   m_ObjectHideFlags: 0
@@ -4339,6 +4385,37 @@ RectTransform:
   m_AnchoredPosition: {x: -74.47999, y: -1224841.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &778483690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 778483691}
+  m_Layer: 0
+  m_Name: cursor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &778483691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778483690}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.3825324, y: 3.2773957, z: -0.02275519}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &779819319
 GameObject:
   m_ObjectHideFlags: 0
@@ -5236,8 +5313,8 @@ MonoBehaviour:
   charactersManager: {fileID: 943274571}
   dialogueManager: {fileID: 2085731922}
   mensajesInicioDia:
-  - "Mantente alerta a las personas que presentan s\xEDntomas de sarpullido."
-  - Mantente alerta a las personas con los ojos enrojecidos.
+  - "Mantente alerta a las personas que presentan s\xEDntomas de sarpullido"
+  - Mantente alerta a las personas con los ojos enrojecidos
   - bla bla bla
   - bla bla bla
   sanosIngresados: 0
@@ -5327,16 +5404,16 @@ MonoBehaviour:
     dialogos:
     - "Hola. \xA1Necesito ayuda!"
     - "Soy de un pueblo cercano, vengo caminando hace tres d\xEDas por favor necesito
-      ayuda."
-    - "No me cruc\xE9 con nadie en el camino."
-    - "Ninguno adem\xE1s del agotamiento y el hambre."
-    - "Por favor no estoy infectada, me agarr\xF3 la lluvia en el camino de tierra. "
-    - "Mire mi piel, no tengo ning\xFAn s\xEDntoma solo necesito una ducha. "
+      ayuda"
+    - "No me cruc\xE9 con nadie en el camino"
+    - "Ninguno adem\xE1s del agotamiento y el hambre"
+    - "Por favor no estoy infectada, me agarr\xF3 la lluvia en el camino de tierra"
+    - "Mire mi piel, no tengo ning\xFAn s\xEDntoma solo necesito una ducha"
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
     - "\xBFPresent\xF3 s\xEDntomas como picaz\xF3n o sarpullido? "
-    - "No puedo realizar un diagn\xF3stico por el estado en que se encuentra. "
+    - "No puedo realizar un diagn\xF3stico por el estado en que se encuentra"
     - "\xBFC\xF3mo puedo saber que no me est\xE1 mintiendo? "
     prefab: {fileID: 818472440953356866, guid: 3ca1d4bf8f02a6749a5cf75e353ccb3d, type: 3}
     nivel: 1
@@ -5345,12 +5422,12 @@ MonoBehaviour:
     estado: 1
     dialogos:
     - Dejenme pasar por favor
-    - "Estaba en un refugio cercano pero me echaron porque hab\xEDa escasez de comida. "
-    - 'Solamente con la gente del refugio, estaban todos sanos. '
-    - No, no, me siento perfectamente.
-    - "Acn\xE9, lo tengo desde los 15 a\xF1os, ya intente de todo."
+    - "Estaba en un refugio cercano pero me echaron porque hab\xEDa escasez de comida"
+    - Solamente con la gente del refugio, estaban todos sanos
+    - No, no, me siento perfectamente
+    - "Acn\xE9, lo tengo desde los 15 a\xF1os, ya intente de todo"
     - "Justamente \xBFQu\xE9 pod\xE9s saber vos entonces? ya te dije que estoy sana
-      vengo de una zona segura. "
+      vengo de una zona segura"
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
@@ -5365,8 +5442,8 @@ MonoBehaviour:
     dialogos:
     - Hola
     - De la ciudad, haciendo un recorrido en busca de provisiones.
-    - "Me cruc\xE9 con un grupo de gente, pero mantuve distancia."
-    - No, solo me duele la cabeza por estar tantas horas bajo el sol.
+    - "Me cruc\xE9 con un grupo de gente, pero mantuve distancia"
+    - No, solo me duele la cabeza por estar tantas horas bajo el sol
     - "\xBFEs realmente necesario?"
     - "\xA1No pienso sacarlo! \xBFQuer\xE9s que me arriesgue a contagiarme? "
     respuestas:
@@ -5374,21 +5451,21 @@ MonoBehaviour:
     - "\xBFEstuvo en contacto con otra gente? "
     - "\xBFPresent\xF3 s\xEDntomas como picaz\xF3n o sarpullido? "
     - "\xBFPuede bajarse el barbijo?"
-    - Es necesario para verificar su estado de salud.
+    - Es necesario para verificar su estado de salud
     prefab: {fileID: 4534030318338212612, guid: 645f903f2aa46bd42bf0a0bb99722dbf, type: 3}
     nivel: 1
     esAgresivo: 0
   - nombre: pj4
     estado: 0
     dialogos:
-    - Hola, necesito ayuda.
+    - Hola, necesito ayuda
     - "Vengo deambulando entre ciudades, me qued\xE9 varado en un pueblo donde fui
-      a tocar cuando arranc\xF3 la pandemia."
-    - No, si no fue a verme nadie, tengo una bronca.
-    - No, nada raro en la piel.
-    - "S\xED, ped\xED prestada la guitarra, no me alcanza para comprarme una."
+      a tocar cuando arranc\xF3 la pandemia"
+    - No, si no fue a verme nadie, tengo una bronca
+    - No, nada raro en la piel
+    - "S\xED, ped\xED prestada la guitarra, no me alcanza para comprarme una"
     - "No, solo interactu\xE9 con mi banda, que me abandon\xF3 apenas se anunci\xF3
-      lo del virus."
+      lo del virus"
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
@@ -5404,9 +5481,9 @@ MonoBehaviour:
     estado: 1
     dialogos:
     - "Hola \xA1Buen d\xEDa!"
-    - "De mi casa, no sal\xED para nada m\xE1s que buscar comida."
-    - No, vivo sola con mis gatos, y tampoco tengo amigos.
-    - Nada de momento.
+    - "De mi casa, no sal\xED para nada m\xE1s que buscar comida"
+    - No, vivo sola con mis gatos, y tampoco tengo amigos
+    - Nada de momento
     - "Es mi alergia, estos cambios de clima me est\xE1n matando\u2026"
     - "\xBFEh?\xBFQu\xE9 gatos\u2026? AH, si, eso\u2026 los deje de mi t\xEDa\u2026"
     respuestas:
@@ -5442,13 +5519,13 @@ MonoBehaviour:
   - nombre: pj7
     estado: 0
     dialogos:
-    - "Hola, escuch\xE9 que en este lugar hay mucha gente."
-    - De la plaza, no hay nadie para jugar un partido, como siempre.
-    - "No, si todos est\xE1n encerrados, parece que soy el \xFAnico que quiere moverse."
+    - "Hola, escuch\xE9 que en este lugar hay mucha gente"
+    - De la plaza, no hay nadie para jugar un partido, como siempre
+    - "No, si todos est\xE1n encerrados, parece que soy el \xFAnico que quiere moverse"
     - "Ninguno, mi estado f\xEDsico es excelente, no como todos los que se escondieron
-      en el sill\xF3n de su casa."
+      en el sill\xF3n de su casa"
     - Ejercitando en casa, no es lo mismo que un buen partido, pero al menos me mantengo
-      en forma.
+      en forma
     - "\xBFNo ve que no tengo ning\xFAn s\xEDntoma? Me saco la remera de ser necesario,
       pero d\xE9jeme entrar por favor, \xA1necesito jugar un partido!"
     respuestas:
@@ -5464,14 +5541,14 @@ MonoBehaviour:
   - nombre: pj8
     estado: 1
     dialogos:
-    - Hola.
-    - "Desde mi casa, desde que empez\xF3 la pandemia estoy trabajando desde ah\xED."
-    - "No en persona, solo a trav\xE9s de mis compa\xF1eros por videollamada."
-    - "Nada de eso, solo tos y cansancio, debe ser por el estr\xE9s."
+    - Hola
+    - "Desde mi casa, desde que empez\xF3 la pandemia estoy trabajando desde ah\xED"
+    - "No en persona, solo a trav\xE9s de mis compa\xF1eros por videollamada"
+    - "Nada de eso, solo tos y cansancio, debe ser por el estr\xE9s"
     - "Una vez, para retirar unos documentos, pero entr\xE9 y sal\xED r\xE1pidamente
-      para no cruzarme con nadie."
+      para no cruzarme con nadie"
     - "Si, el \xFAnico que me enferma es mi jefe, no tengo ning\xFAn s\xEDntoma del
-      virus."
+      virus"
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
@@ -5486,12 +5563,12 @@ MonoBehaviour:
     dialogos:
     - Hola
     - Estaba encerrado en mi casa hasta que escuche en la radio que habilitaron la
-      entrada de civiles en los refugios.
+      entrada de civiles en los refugios
     - No, mi familia se fue apenas declararon la pandemia, pero yo no quise dejar
-      la casa sola.
-    - "Hasta ahora no, tom\xE9 todas las precauciones necesarias."
-    - "Me quede sin comida y agua, adem\xE1s vivo en una zona peligrosa."
-    - Si, si, no hay problema.
+      la casa sola
+    - "Hasta ahora no, tom\xE9 todas las precauciones necesarias"
+    - "Me quede sin comida y agua, adem\xE1s vivo en una zona peligrosa"
+    - Si, si, no hay problema
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
@@ -5506,12 +5583,12 @@ MonoBehaviour:
     dialogos:
     - Hmm... Buenas tardes
     - "Soy de la zona, tuve que irme del barrio porque hab\xEDan muchos disturbios
-      y saqueos."
-    - "Me fui con mi grupo de amigos pero me separ\xE9 de ellos hace unas horas."
-    - Solo tengo heridas, fui muy cuidadoso.
-    - Tuve una pelea al salir del barrio.
-    - 'Decidieron irse de la ciudad antes de anunciaran la apertura de puertas en
-      los refugios. '
+      y saqueos"
+    - "Me fui con mi grupo de amigos pero me separ\xE9 de ellos hace unas horas"
+    - Solo tengo heridas, fui muy cuidadoso
+    - Tuve una pelea al salir del barrio
+    - Decidieron irse de la ciudad antes de anunciaran la apertura de puertas en
+      los refugios
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otra gente? "
@@ -5524,17 +5601,17 @@ MonoBehaviour:
   - nombre: pj11
     estado: 0
     dialogos:
-    - Hola, necesito entrar ya mismo.
+    - Hola, necesito entrar ya mismo
     - Si no te enteraste estamos en medio de una pandemia, estoy tomando las precauciones
-      necesarias.
-    - Para que el gobierno no me lave el cerebro con las ondas que emiten.
-    - "Yo no me lo pienso quitar \xBF acaso quiere que me contagie? Seguro esta trabajando
-      para ellos."
+      necesarias
+    - Para que el gobierno no me lave el cerebro con las ondas que emiten
+    - "Yo no me lo pienso quitar \xBFAcaso quiere que me contagie? Seguro esta trabajando
+      para ellos"
     respuestas:
     - "\xBFDe d\xF3nde viene disfrazado as\xED?"
     - "\xBFPuede explicarme por qu\xE9 los ajos y el colador?"
-    - 'No puedo dejarlo ingresar con todos esos elementos... Ademas no puedo ver
-      si presenta algun sintoma. '
+    - No puedo dejarlo ingresar con todos esos elementos... Ademas no puedo ver si
+      presenta algun sintoma
     prefab: {fileID: 2573835153199593656, guid: 656587532b53f0f4595ef3a24ddb57ef, type: 3}
     nivel: 2
     esAgresivo: 0
@@ -5542,8 +5619,8 @@ MonoBehaviour:
     estado: 0
     dialogos:
     - "\xA1Buenos d\xEDas!"
-    - No, estoy sola con mi gato.
-    - "Estuve aislada en mi casa, mi barrio es un caos y no quiero volver ah\xED."
+    - No, estoy sola con mi gato
+    - "Estuve aislada en mi casa, mi barrio es un caos y no quiero volver ah\xED"
     - "Pero es mi FAMILIA, no puedo dejarlo \xA1por favor!"
     respuestas:
     - "\xBFEstuvo en contacto con otra gente? "
@@ -5555,16 +5632,16 @@ MonoBehaviour:
   - nombre: pj13
     estado: 1
     dialogos:
-    - Buenas, vengo con mi hijo.
-    - De mi casa, estamos preocupados por el virus.
+    - Buenas, vengo con mi hijo
+    - De mi casa, estamos preocupados por el virus
     - "Yo tuve que salir para buscar comida y mi hijo se qued\xF3 en casa jugando
-      en la compu, solo tuve contacto con el kiosquero."
-    - "Mi hijo est\xE1 sano, por favor, d\xE9jenos entrar, no puedo dejarlo solo."
+      en la compu, solo tuve contacto con el kiosquero"
+    - "Mi hijo est\xE1 sano, por favor, d\xE9jenos entrar, no puedo dejarlo solo"
     respuestas:
     - "\xBFDe d\xF3nde vienen? "
     - "\xBFAlguno de los dos sali\xF3 de la casa o se reuni\xF3 con otras personas?"
     - "Usted presenta todos los s\xEDntomas visibles de un infectado, no voy a poder
-      dejarlos pasar. "
+      dejarlos pasar"
     prefab: {fileID: 2573835153199593656, guid: 6e00b6e0097661d46836bb67ad92d79c, type: 3}
     nivel: 2
     esAgresivo: 0
@@ -5572,9 +5649,9 @@ MonoBehaviour:
     estado: 1
     dialogos:
     - ...
-    - No, la gente tiende a evitarme y yo prefiero la soledad.
-    - Igual a mi vida normal, me gusta la oscuridad y el silencio.
-    - "No, aunque las cicatrices internas duelen m\xE1s que cualquier sintoma f\xEDsico."
+    - No, la gente tiende a evitarme y yo prefiero la soledad
+    - Igual a mi vida normal, me gusta la oscuridad y el silencio
+    - "No, aunque las cicatrices internas duelen m\xE1s que cualquier sintoma f\xEDsico"
     respuestas:
     - "\xBFHa estado en contacto con otras personas? "
     - "\xBFComo estuvo manejando la cuarentena?"
@@ -5590,16 +5667,16 @@ MonoBehaviour:
     respuestas:
     - "Se\xF1or, calmese y tome distancia..."
     prefab: {fileID: 2573835153199593656, guid: 0e2d77ba5fb3fab47bbefc4da5d96d79, type: 3}
-    nivel: 1
+    nivel: 2
     esAgresivo: 1
   - nombre: pj16
     estado: 1
     dialogos:
-    - Buenas tardes.
+    - Buenas tardes
     - "De mi peque\xF1a biblioteca en casa, pas\xE9 los \xFAltimos d\xEDas perdido
-      en los mundos de mis libros."
-    - Apenas, mis hijos ni me llaman, mi vecino me deja las compras en la puerta.
-    - "No creo en los barbijos, pero desinfect\xE9 todo con lavandina."
+      en los mundos de mis libros"
+    - Apenas, mis hijos ni me llaman, mi vecino me deja las compras en la puerta
+    - "No creo en los barbijos, pero desinfect\xE9 todo con lavandina"
     respuestas:
     - "\xBFDe d\xF3nde viene? "
     - "\xBFEstuvo en contacto con otras personas? "
@@ -5612,10 +5689,10 @@ MonoBehaviour:
     dialogos:
     - "Hola, \xBFc\xF3mo est\xE1s?"
     - Ah, esto, traigo algo de comida casera para ofrecerle a todos, no se si tienen
-      alimentos en el bunker.
-    - "\xA1Por supuesto! utilice guantes, barbijo y desinfecte todo."
+      alimentos en el bunker
+    - "\xA1Por supuesto! utilice guantes, barbijo y desinfecte todo"
     - "Porque vivo sola y no se como va a avanzar esto, prefiero estar en un lugar
-      donde haya atenci\xF3n m\xE9dica."
+      donde haya atenci\xF3n m\xE9dica"
     respuestas:
     - "\xBFDe d\xF3nde viene con esa bandeja?"
     - "\xBFTom\xF3 las precauciones necesarias en su cocina?"
@@ -5628,10 +5705,10 @@ MonoBehaviour:
     dialogos:
     - "Hola hermano\u2026"
     - "Estuve en el campo haciendo meditaciones, cuando volv\xED me encontr\xE9 con
-      que hab\xEDa una pandemia."
-    - Solo mis amigos de la comunidad en el campo, estuve meditando con ellos.
+      que hab\xEDa una pandemia"
+    - Solo mis amigos de la comunidad en el campo, estuve meditando con ellos
     - Ellos siguieron viajando porque no creen en el virus pero yo me asuste y me
-      acerque al primer refugio que vi.
+      acerque al primer refugio que vi
     respuestas:
     - "\xBFD\xF3nde estuvo estos \xFAltimos d\xEDas?"
     - "\xBFSe cruz\xF3 a otras personas en el camino?"
@@ -5642,12 +5719,12 @@ MonoBehaviour:
   - nombre: pj19
     estado: 1
     dialogos:
-    - "Por fin \xBFno tienen un sistema m\xE1s lento? Hace media hora estoy esperando."
-    - "No, las medidas son una p\xE9rdida de tiempo porque nadie las cumple."
+    - "Por fin \xBFNo tienen un sistema m\xE1s lento? Hace media hora estoy esperando."
+    - "No, las medidas son una p\xE9rdida de tiempo porque nadie las cumple"
     - No, tengo la calva sensible y estar esperando hace media hora abajo del sol
-      no ayuda.
+      no ayuda
     - Porque estoy cansado de tener que buscar provisiones e interactuar con gente
-      inepta.
+      inepta
     respuestas:
     - "Bueno se\xF1or, c\xE1lmese, hacemos lo que podemos \xBFTomo precauciones para
       el virus?"
@@ -5661,12 +5738,12 @@ MonoBehaviour:
     dialogos:
     - "\xBFAc\xE1 es el after?"
     - "Vengo de la clande del chechu, vi una fila y asum\xED que ac\xE1 segu\xEDa
-      la fiesta."
-    - "No me la bajes asi... Si seguro ah\xED adentro hay una re joda."
+      la fiesta"
+    - "No me la bajes asi... Si seguro ah\xED adentro hay una re joda"
     respuestas:
     - "\xBFComo? "
     - "Se\xF1or, esto es un refugio, hay un virus letal dando vueltas, las fiestas
-      est\xE1n prohibidas, no sea imprudente."
+      est\xE1n prohibidas, no sea imprudente"
     prefab: {fileID: 2573835153199593656, guid: 3a0bb5d985a32a14280ec05499dbafed, type: 3}
     nivel: 2
     esAgresivo: 0
@@ -5686,9 +5763,9 @@ MonoBehaviour:
     - Abrime la puerta...
     - "\xA1ABRIME LA PUERTA!"
     respuestas:
-    - "No puedo dejarlo pasar as\xED nom\xE1s, primero debo evaluar su estado."
+    - "No puedo dejarlo pasar as\xED nom\xE1s, primero debo evaluar su estado"
     prefab: {fileID: 1526593497047026833, guid: 018373af6d4e2f547816b99ce66d7b80, type: 3}
-    nivel: 2
+    nivel: 3
     esAgresivo: 1
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
@@ -5835,11 +5912,6 @@ Transform:
   - {fileID: 1369693168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1099301438 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1309772750572801002, guid: 9ffc1384ecc2fa14e9d1c51e18ed4c2e, type: 3}
-  m_PrefabInstance: {fileID: 477703342}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1099301439 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2967066134130799968, guid: 9ffc1384ecc2fa14e9d1c51e18ed4c2e, type: 3}
@@ -6144,11 +6216,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 678873980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1169642895 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1309772750572801002, guid: 9ffc1384ecc2fa14e9d1c51e18ed4c2e, type: 3}
-  m_PrefabInstance: {fileID: 1308735090}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1169642897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2967066134130799968, guid: 9ffc1384ecc2fa14e9d1c51e18ed4c2e, type: 3}
@@ -7428,6 +7495,7 @@ MonoBehaviour:
   aggressiveNPCs: {fileID: 0}
   checkCondition: {fileID: 0}
   medicoUsado: 0
+  intervaloCursor: 0.5
 --- !u!114 &1412460606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7608,6 +7676,7 @@ MonoBehaviour:
   textoInicioDia: {fileID: 0}
   velocidadTexto: 0.1
   duracionPanel: 1
+  intervaloCursor: 0.5
   panelReporte: {fileID: 1493280882}
   panelPerdiste: {fileID: 0}
   mensajeReporte: {fileID: 1199752089}
@@ -7819,6 +7888,7 @@ MonoBehaviour:
   textoInicioDia: {fileID: 1992671362}
   velocidadTexto: 0.1
   duracionPanel: 2
+  intervaloCursor: 0.5
   panelReporte: {fileID: 0}
   panelPerdiste: {fileID: 0}
   mensajeReporte: {fileID: 0}
@@ -8219,11 +8289,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1635911098 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1309772750572801002, guid: 9ffc1384ecc2fa14e9d1c51e18ed4c2e, type: 3}
-  m_PrefabInstance: {fileID: 1125938971}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1635911099 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2967066134130799968, guid: 9ffc1384ecc2fa14e9d1c51e18ed4c2e, type: 3}
@@ -8285,6 +8350,7 @@ MonoBehaviour:
   textoInicioDia: {fileID: 0}
   velocidadTexto: 0.1
   duracionPanel: 1
+  intervaloCursor: 0.5
   panelReporte: {fileID: 1658696441}
   panelPerdiste: {fileID: 0}
   mensajeReporte: {fileID: 0}
@@ -8836,6 +8902,7 @@ MonoBehaviour:
   textoInicioDia: {fileID: 732569429}
   velocidadTexto: 0.1
   duracionPanel: 5
+  intervaloCursor: 0.5
   panelReporte: {fileID: 1493280882}
   panelPerdiste: {fileID: 1658696441}
   mensajeReporte: {fileID: 1199752089}
@@ -8955,6 +9022,7 @@ MonoBehaviour:
   textoInicioDia: {fileID: 732569429}
   velocidadTexto: 0.1
   duracionPanel: 2
+  intervaloCursor: 0.5
   panelReporte: {fileID: 0}
   panelPerdiste: {fileID: 0}
   mensajeReporte: {fileID: 0}
@@ -9007,10 +9075,13 @@ MonoBehaviour:
   pasosSeguridad: {fileID: 483689032}
   escobaSeguridad: {fileID: 2001823987}
   golpe: {fileID: 1148588652}
-  filtroVidrio: {fileID: 659998728}
+  vidrioRoto: {fileID: 601108438}
   botonSeguridad: {fileID: 5076804}
   sonidoBoton: {fileID: 1897245216}
   tiempoBaseTemporizador: 0
+  cameraTransform: {fileID: 779819322}
+  shakeIntensity: 0.1
+  shakeDuration: 3
 --- !u!4 &1727551769
 Transform:
   m_ObjectHideFlags: 0
@@ -10010,7 +10081,7 @@ MonoBehaviour:
   botonIngreso: {fileID: 1228093870}
   botonRechazo: {fileID: 1941776353}
   panelSiguiente: {fileID: 1947946919}
-  velocidadTexto: 0.1
+  velocidadTexto: 0.05
   gameManager: {fileID: 0}
   audioManager: {fileID: 1168009879}
   gibberishClips:
@@ -10020,6 +10091,7 @@ MonoBehaviour:
   aggressiveNPCs: {fileID: 1727551768}
   checkCondition: {fileID: 341145152}
   medicoUsado: 0
+  intervaloCursor: 0.5
 --- !u!4 &2085731923
 Transform:
   m_ObjectHideFlags: 0
@@ -10308,8 +10380,8 @@ SceneRoots:
   - {fileID: 779819322}
   - {fileID: 1561024535}
   - {fileID: 426232798}
+  - {fileID: 601108440}
   - {fileID: 744323518}
-  - {fileID: 659998729}
   - {fileID: 21822969}
   - {fileID: 515418248}
   - {fileID: 24140127}
@@ -10325,3 +10397,4 @@ SceneRoots:
   - {fileID: 145293874}
   - {fileID: 727933491}
   - {fileID: 114025056}
+  - {fileID: 778483691}

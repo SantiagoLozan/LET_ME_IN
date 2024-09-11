@@ -16,14 +16,14 @@ public class DialogueManager : MonoBehaviour
     public Button botonRechazo;
     public RectTransform panelSiguiente;
 
-    public float velocidadTexto = 0.1f;
+    public float velocidadTexto = 0.05f;
 
     private string[] lineas;
     private List<string> respuestasActuales;
 
     private bool mostrandoRespuestas = false;
     private bool textoCompleto = false;
-    private bool esAgresivo; 
+    private bool esAgresivo;
 
     private int indexDialogo;
     private int indexRespuestas;
@@ -36,7 +36,26 @@ public class DialogueManager : MonoBehaviour
     public AggressiveNPCs aggressiveNPCs;
     public CheckCondition checkCondition;
 
-    public bool medicoUsado = false; 
+    public bool medicoUsado = false;
+
+    public float intervaloCursor = 0.5f; // Intervalo para el titileo del cursor
+    private bool cursorVisible = true;
+    private float tiempoUltimaActualizacion; // Para el control del tiempo del cursor
+
+
+    void Start()
+    {
+        /* var imageIngreso = botonIngreso.GetComponent<Image>();
+           var imageRechazo = botonRechazo.GetComponent<Image>();
+
+           if (imageIngreso != null) {
+               imageIngreso.alphaHitTestMinimumThreshold = 0.1f;
+           }
+
+           if (imageRechazo != null) {
+               imageRechazo.alphaHitTestMinimumThreshold = 0.1f;
+           }*/
+    }
 
     void Update()
     {
@@ -44,6 +63,31 @@ public class DialogueManager : MonoBehaviour
         {
             SkipDialogo();
         }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            SaltarTodosLosDialogos();
+        }
+    }
+
+    void SaltarTodosLosDialogos()
+    {
+        StopAllCoroutines();
+         panelDialogo.gameObject.SetActive(false);
+        panelRespuestas.gameObject.SetActive(false);
+
+         if (esAgresivo)
+    {
+        aggressiveNPCs.MostrarComportamientoAgresivo();
+    }
+    else
+    {
+        MostrarBotonSiguiente();
+    }
+
+       
+
+       
     }
 
     public void ComenzarDialogo(string[] dialogos, List<string> respuestas, bool esAgresivo)
@@ -73,24 +117,69 @@ public class DialogueManager : MonoBehaviour
             AudioManager.instance.HablarPalabrasEnLoop(AudioManager.instance.gibberishClips);
         }
 
-        foreach (char letter in respuestasActuales[indexRespuestas].ToCharArray())
+        tiempoUltimaActualizacion = Time.time; // Inicializar el tiempo del cursor
+
+        while (textoRespuesta.text.Length < respuestasActuales[indexRespuestas].Length)
         {
-            textoRespuesta.text += letter;
-            yield return new WaitForSeconds(velocidadTexto);
             if (textoCompleto) break;
+
+            if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
+            {
+                cursorVisible = !cursorVisible;
+                tiempoUltimaActualizacion = Time.time;
+            }
+
+            // Construye el texto actual con el cursor
+            string textoParcial = respuestasActuales[indexRespuestas].Substring(0, textoRespuesta.text.Length);
+            if (cursorVisible)
+            {
+                textoParcial += "_";
+            }
+            textoRespuesta.text = textoParcial;
+
+            yield return new WaitForSeconds(velocidadTexto);
         }
 
+        // Asegúrate de que el texto final se muestre correctamente sin el cursor
         textoRespuesta.text = respuestasActuales[indexRespuestas];
         if (AudioManager.instance != null)
         {
             AudioManager.instance.DetenerHablar();
         }
 
+        while (true)
+        {
+            if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
+            {
+                cursorVisible = !cursorVisible;
+                tiempoUltimaActualizacion = Time.time;
+            }
+
+            // Construir el texto actual con el cursor titilante
+            string textoConCursorTitilante = respuestasActuales[indexRespuestas];
+            if (cursorVisible)
+            {
+                textoConCursorTitilante += "_";
+            }
+            textoRespuesta.text = textoConCursorTitilante;
+
+            yield return null; // Espera hasta el siguiente frame
+
+            // Salir del bucle cuando se haga clic
+            if (Input.GetMouseButtonDown(0))
+            {
+                break;
+            }
+        }
+
+
+
         textoCompleto = false;
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         PanelRespuestasClick();
     }
+
 
     bool EstaDentroDelPanel(Vector2 posicionClic, RectTransform panel)
     {
@@ -124,13 +213,61 @@ public class DialogueManager : MonoBehaviour
             AudioManager.instance.HablarPalabrasEnLoop(gibberishClips);
         }
 
-        foreach (char letter in lineas[indexDialogo].ToCharArray())
+        tiempoUltimaActualizacion = Time.time; // Inicializar el tiempo del cursor
+
+        while (textoDialogo.text.Length < lineas[indexDialogo].Length)
         {
-            textoDialogo.text += letter;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                textoDialogo.text = lineas[indexDialogo];
+                break;
+            }
+
+            if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
+            {
+                cursorVisible = !cursorVisible;
+                tiempoUltimaActualizacion = Time.time;
+            }
+
+            // Construye el texto actual con el cursor
+            string textoParcial = lineas[indexDialogo].Substring(0, textoDialogo.text.Length);
+            if (cursorVisible)
+            {
+                textoParcial += "_";
+            }
+            textoDialogo.text = textoParcial;
+
             yield return new WaitForSeconds(velocidadTexto);
-            if (textoCompleto) break;
         }
 
+        while (true)
+        {
+            if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
+            {
+                cursorVisible = !cursorVisible;
+                tiempoUltimaActualizacion = Time.time;
+            }
+
+            // Construir el texto actual con el cursor titilante
+            string textoConCursorTitilante = lineas[indexDialogo];
+            if (cursorVisible)
+            {
+                textoConCursorTitilante += "_";
+            }
+            textoDialogo.text = textoConCursorTitilante;
+
+            yield return null; // Espera hasta el siguiente frame
+
+            // Salir del bucle cuando se haga clic
+            if (Input.GetMouseButtonDown(0))
+            {
+                break;
+            }
+        }
+
+
+
+        // Asegúrate de que el texto final se muestre correctamente sin el cursor
         textoDialogo.text = lineas[indexDialogo];
         if (AudioManager.instance != null)
         {

@@ -11,6 +11,7 @@ public class UI_Manager : MonoBehaviour
     public TextMeshProUGUI textoInicioDia;
     public float velocidadTexto = 0.1f;
     public float duracionPanel = 1.0f;
+    public float intervaloCursor = 0.5f;
 
     public RectTransform panelReporte;
     public RectTransform panelPerdiste;
@@ -18,7 +19,7 @@ public class UI_Manager : MonoBehaviour
     public TextMeshProUGUI reporteText;
 
     public RectTransform indicaciones; // Panel para la introducción del nivel 1
-    public float duracionIndicaciones = 3.0f; 
+    public float duracionIndicaciones = 3.0f;
 
     public Button botonSiguienteNivel;
 
@@ -30,7 +31,9 @@ public class UI_Manager : MonoBehaviour
     public AudioSource audioTecleo;
 
     private Coroutine panelInicioDiaCoroutine; // Guardar referencia de la corrutina
- 
+    private bool cursorVisible = true;
+    private float tiempoUltimaActualizacion;
+
     public void MostrarInicioDia(string mensaje)
     {
         dialogueManager.panelDialogo.gameObject.SetActive(false);
@@ -51,34 +54,73 @@ public class UI_Manager : MonoBehaviour
         panelInicioDiaCoroutine = StartCoroutine(MostrarPanelInicioDiaCoroutine(titulo + mensaje));
     }
 
-    private IEnumerator MostrarPanelInicioDiaCoroutine(string mensaje)
+   private IEnumerator MostrarPanelInicioDiaCoroutine(string mensaje)
+{
+    textoInicioDia.text = "";
+    string mensajeConCursor = mensaje + "_";
+
+    audioTecleo.Play();
+    tiempoUltimaActualizacion = Time.time;
+
+    // Mostrar el texto con efecto de escritura
+    while (textoInicioDia.text.Length < mensaje.Length)
     {
-        textoInicioDia.text = "";
-
-        audioTecleo.Play();
-
-        foreach (char letter in mensaje)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            // adelantar texto con la tecla espacio
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                textoInicioDia.text = mensaje;
-                break;
-            }
-
-            textoInicioDia.text += letter;
-            yield return new WaitForSeconds(velocidadTexto);
+            textoInicioDia.text = mensaje;
+            break;
         }
 
-        audioTecleo.Stop();
+        if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
+        {
+            cursorVisible = !cursorVisible;
+            tiempoUltimaActualizacion = Time.time;
+        }
 
-        yield return new WaitForSeconds(duracionPanel);
+        // Construye el texto actual con el cursor
+        string textoParcial = mensaje.Substring(0, textoInicioDia.text.Length);
+        if (cursorVisible)
+        {
+            textoParcial += "_";
+        }
+        textoInicioDia.text = textoParcial;
 
-        panelInicioDia.gameObject.SetActive(false);
-
-        // invoca el evento cuando el panel se desactive
-        PanelInicioDesactivado?.Invoke();
+        yield return new WaitForSeconds(velocidadTexto);
     }
+
+    // Asegúrate de que el texto final se muestre correctamente sin el cursor
+    textoInicioDia.text = mensaje;
+    audioTecleo.Stop();
+
+    // Mantén el cursor titilante al final del texto
+    while (true)
+    {
+        if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
+        {
+            cursorVisible = !cursorVisible;
+            tiempoUltimaActualizacion = Time.time;
+        }
+
+        // Muestra el cursor titilante
+        string textoConCursorTitilante = mensaje;
+        if (cursorVisible)
+        {
+            textoConCursorTitilante += "_";
+        }
+        textoInicioDia.text = textoConCursorTitilante;
+
+        yield return null; // Espera hasta el siguiente frame
+    }
+
+    // O si deseas permitir que el usuario cierre el panel, usa un tiempo de espera y luego desactiva el panel
+    yield return new WaitForSeconds(duracionPanel);
+    panelInicioDia.gameObject.SetActive(false);
+
+    // Invoca el evento cuando el panel se desactive
+    PanelInicioDesactivado?.Invoke();
+}
+
+
 
     public void CerrarPanelInicioDia()
     {
