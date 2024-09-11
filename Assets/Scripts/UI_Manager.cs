@@ -18,7 +18,7 @@ public class UI_Manager : MonoBehaviour
     public TextMeshProUGUI mensajeReporte;
     public TextMeshProUGUI reporteText;
 
-    public RectTransform indicaciones; // Panel para la introducción del nivel 1
+    public RectTransform indicaciones; 
     public float duracionIndicaciones = 3.0f;
 
     public Button botonSiguienteNivel;
@@ -30,7 +30,7 @@ public class UI_Manager : MonoBehaviour
 
     public AudioSource audioTecleo;
 
-    private Coroutine panelInicioDiaCoroutine; // Guardar referencia de la corrutina
+    private Coroutine panelInicioDiaCoroutine; 
     private bool cursorVisible = true;
     private float tiempoUltimaActualizacion;
 
@@ -54,71 +54,71 @@ public class UI_Manager : MonoBehaviour
         panelInicioDiaCoroutine = StartCoroutine(MostrarPanelInicioDiaCoroutine(titulo + mensaje));
     }
 
-   private IEnumerator MostrarPanelInicioDiaCoroutine(string mensaje)
-{
-    textoInicioDia.text = "";
-    string mensajeConCursor = mensaje + "_";
-
-    audioTecleo.Play();
-    tiempoUltimaActualizacion = Time.time;
-
-    // Mostrar el texto con efecto de escritura
-    while (textoInicioDia.text.Length < mensaje.Length)
+    private IEnumerator MostrarPanelInicioDiaCoroutine(string mensaje)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        textoInicioDia.text = "";
+        string mensajeConCursor = mensaje + "_";
+
+        audioTecleo.Play();
+        tiempoUltimaActualizacion = Time.time;
+
+        // Mostrar el texto con efecto de escritura
+        while (textoInicioDia.text.Length < mensaje.Length)
         {
-            textoInicioDia.text = mensaje;
-            break;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                textoInicioDia.text = mensaje;
+                break;
+            }
+
+            if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
+            {
+                cursorVisible = !cursorVisible;
+                tiempoUltimaActualizacion = Time.time;
+            }
+
+            // Construye el texto actual con el cursor
+            string textoParcial = mensaje.Substring(0, textoInicioDia.text.Length);
+            if (cursorVisible)
+            {
+                textoParcial += "_";
+            }
+            textoInicioDia.text = textoParcial;
+
+            yield return new WaitForSeconds(velocidadTexto);
         }
 
-        if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
+
+        textoInicioDia.text = mensaje;
+        audioTecleo.Stop();
+
+        // mantiene el cursor titilante al final del texto
+        while (true)
         {
-            cursorVisible = !cursorVisible;
-            tiempoUltimaActualizacion = Time.time;
+            if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
+            {
+                cursorVisible = !cursorVisible;
+                tiempoUltimaActualizacion = Time.time;
+            }
+
+            // Muestra el cursor titilante
+            string textoConCursorTitilante = mensaje;
+            if (cursorVisible)
+            {
+                textoConCursorTitilante += "_";
+            }
+            textoInicioDia.text = textoConCursorTitilante;
+
+            yield return null;
         }
 
-        // Construye el texto actual con el cursor
-        string textoParcial = mensaje.Substring(0, textoInicioDia.text.Length);
-        if (cursorVisible)
-        {
-            textoParcial += "_";
-        }
-        textoInicioDia.text = textoParcial;
 
-        yield return new WaitForSeconds(velocidadTexto);
+        yield return new WaitForSeconds(duracionPanel);
+        panelInicioDia.gameObject.SetActive(false);
+
+        // Invoca el evento cuando el panel se desactive
+        PanelInicioDesactivado?.Invoke();
     }
-
-    // Asegúrate de que el texto final se muestre correctamente sin el cursor
-    textoInicioDia.text = mensaje;
-    audioTecleo.Stop();
-
-    // Mantén el cursor titilante al final del texto
-    while (true)
-    {
-        if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
-        {
-            cursorVisible = !cursorVisible;
-            tiempoUltimaActualizacion = Time.time;
-        }
-
-        // Muestra el cursor titilante
-        string textoConCursorTitilante = mensaje;
-        if (cursorVisible)
-        {
-            textoConCursorTitilante += "_";
-        }
-        textoInicioDia.text = textoConCursorTitilante;
-
-        yield return null; // Espera hasta el siguiente frame
-    }
-
-    // O si deseas permitir que el usuario cierre el panel, usa un tiempo de espera y luego desactiva el panel
-    yield return new WaitForSeconds(duracionPanel);
-    panelInicioDia.gameObject.SetActive(false);
-
-    // Invoca el evento cuando el panel se desactive
-    PanelInicioDesactivado?.Invoke();
-}
 
 
 

@@ -35,9 +35,9 @@ public class AggressiveNPCs : MonoBehaviour
     public float tiempoBaseTemporizador;
 
 
-    public Transform cameraTransform; // Referencia al transform de la cámara
-    public float shakeIntensity = 0.1f; // Intensidad del temblor
-    public float shakeDuration = 3f;  // Duración del temblor
+    public Transform cameraTransform; 
+    public float shakeIntensity = 0.1f; 
+    public float shakeDuration = 3f;  
     private Vector3 originalCameraPosition;
     private bool isShaking = false;
     private Coroutine shakeCoroutine;
@@ -55,13 +55,13 @@ public class AggressiveNPCs : MonoBehaviour
             originalCameraPosition = cameraTransform.position;
         }
 
-        if (gameManager.NivelActual == 2) // Verifica si estás en el nivel 2
+        if (gameManager.NivelActual == 2)
         {
-            tiempoBaseTemporizador = 3f; // 3 segundos en nivel 2
+            tiempoBaseTemporizador = 3f; 
         }
         else
         {
-            tiempoBaseTemporizador = 5f; // 5 segundos en otros niveles
+            tiempoBaseTemporizador = 5f; 
         }
     }
 
@@ -116,7 +116,7 @@ public class AggressiveNPCs : MonoBehaviour
     {
         Debug.Log("¡El personaje está actuando de manera agresiva!");
 
-        // Asegúrate de que el temporizador siempre se reinicie cuando un nuevo personaje aparece
+
         if (temporizadorActivo)
         {
             temporizadorActivo = false;
@@ -126,7 +126,7 @@ public class AggressiveNPCs : MonoBehaviour
         StartTimer(tiempoBaseTemporizador);
         Peligro();
 
-        // Agrega el temblor de cámara aquí
+       
         if (cameraTransform != null)
         {
             ShakeCamera();
@@ -213,7 +213,7 @@ public class AggressiveNPCs : MonoBehaviour
         {
             StopCoroutine(shakeCoroutine);
             shakeCoroutine = null;
-            cameraTransform.position = originalCameraPosition; // Restablecer la posición de la cámara
+            cameraTransform.position = originalCameraPosition; 
             isShaking = false;
         }
 

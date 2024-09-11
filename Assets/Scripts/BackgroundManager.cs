@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class BackgroundManager : MonoBehaviour
 {
-    [System.Serializable]
-    public class BackgroundElement
-    {
-        public Renderer renderer;
-        public float speed;
-    }
+    public float velocidadMovimiento = 0.5f; 
+    private Vector3 startPosition;
 
-    public List<BackgroundElement> backgroundElements;
+    void Start()
+    {
+        startPosition = transform.position;
+    }
 
     void Update()
     {
-        foreach (BackgroundElement element in backgroundElements)
-        {
-
-            float offsetX = Time.time * element.speed;
-
-
-            element.renderer.material.mainTextureOffset = new Vector2(offsetX, 0);
-        }
+        float nuevoPosX = Mathf.Repeat(Time.time * velocidadMovimiento, 30f); 
+        transform.position = startPosition + Vector3.right * nuevoPosX;
     }
 }

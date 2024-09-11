@@ -38,9 +38,9 @@ public class DialogueManager : MonoBehaviour
 
     public bool medicoUsado = false;
 
-    public float intervaloCursor = 0.5f; // Intervalo para el titileo del cursor
+    public float intervaloCursor = 0.5f;
     private bool cursorVisible = true;
-    private float tiempoUltimaActualizacion; // Para el control del tiempo del cursor
+    private float tiempoUltimaActualizacion;
 
 
     void Start()
@@ -73,21 +73,18 @@ public class DialogueManager : MonoBehaviour
     void SaltarTodosLosDialogos()
     {
         StopAllCoroutines();
-         panelDialogo.gameObject.SetActive(false);
+        panelDialogo.gameObject.SetActive(false);
         panelRespuestas.gameObject.SetActive(false);
 
-         if (esAgresivo)
-    {
-        aggressiveNPCs.MostrarComportamientoAgresivo();
-    }
-    else
-    {
-        MostrarBotonSiguiente();
-    }
+        if (esAgresivo)
+        {
+            aggressiveNPCs.MostrarComportamientoAgresivo();
+        }
+        else
+        {
+            MostrarBotonSiguiente();
+        }
 
-       
-
-       
     }
 
     public void ComenzarDialogo(string[] dialogos, List<string> respuestas, bool esAgresivo)
@@ -117,7 +114,7 @@ public class DialogueManager : MonoBehaviour
             AudioManager.instance.HablarPalabrasEnLoop(AudioManager.instance.gibberishClips);
         }
 
-        tiempoUltimaActualizacion = Time.time; // Inicializar el tiempo del cursor
+        tiempoUltimaActualizacion = Time.time;
 
         while (textoRespuesta.text.Length < respuestasActuales[indexRespuestas].Length)
         {
@@ -140,7 +137,7 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(velocidadTexto);
         }
 
-        // Asegúrate de que el texto final se muestre correctamente sin el cursor
+
         textoRespuesta.text = respuestasActuales[indexRespuestas];
         if (AudioManager.instance != null)
         {
@@ -171,8 +168,6 @@ public class DialogueManager : MonoBehaviour
                 break;
             }
         }
-
-
 
         textoCompleto = false;
 
@@ -229,7 +224,7 @@ public class DialogueManager : MonoBehaviour
                 tiempoUltimaActualizacion = Time.time;
             }
 
-            // Construye el texto actual con el cursor
+
             string textoParcial = lineas[indexDialogo].Substring(0, textoDialogo.text.Length);
             if (cursorVisible)
             {
@@ -248,7 +243,7 @@ public class DialogueManager : MonoBehaviour
                 tiempoUltimaActualizacion = Time.time;
             }
 
-            // Construir el texto actual con el cursor titilante
+
             string textoConCursorTitilante = lineas[indexDialogo];
             if (cursorVisible)
             {
@@ -256,18 +251,14 @@ public class DialogueManager : MonoBehaviour
             }
             textoDialogo.text = textoConCursorTitilante;
 
-            yield return null; // Espera hasta el siguiente frame
+            yield return null;
 
-            // Salir del bucle cuando se haga clic
             if (Input.GetMouseButtonDown(0))
             {
                 break;
             }
         }
 
-
-
-        // Asegúrate de que el texto final se muestre correctamente sin el cursor
         textoDialogo.text = lineas[indexDialogo];
         if (AudioManager.instance != null)
         {
@@ -313,8 +304,6 @@ public class DialogueManager : MonoBehaviour
                 //MostrarBotonSiguiente();
                 if (esAgresivo)
                 {
-                    // Llama al método que maneja el comportamiento agresivo
-                    //  MostrarComportamientoAgresivo();
                     aggressiveNPCs.MostrarComportamientoAgresivo();
                 }
                 else
