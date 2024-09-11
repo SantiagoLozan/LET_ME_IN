@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414745, b: 0.12107873, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -391,12 +391,11 @@ MonoBehaviour:
   indicaciones1: {fileID: 0}
   indicaciones2: {fileID: 0}
   indicaciones3: {fileID: 0}
-  duracionIndicaciones1: 3
-  duracionIndicaciones2: 3
-  duracionIndicaciones3: 3
+  duracionIndicaciones: 2.5
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
+  charactersManager: {fileID: 0}
   audioTecleo: {fileID: 0}
 --- !u!114 &17082862
 MonoBehaviour:
@@ -1969,7 +1968,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.49, y: 7.47}
+  m_AnchoredPosition: {x: -11, y: -15}
   m_SizeDelta: {x: 535.02, y: 119.58}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &306527009
@@ -1992,11 +1991,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: si tenes dudas sobre el estado de un personaje podes utilizar este boton
-    pero solo una vez por nivel
+  m_text: "si tenes dudas sobre el estado de un personaje podes utilizar este bot\xF3n
+    \xA1Pero solo una vez por nivel!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a9f54d527a6fc144ca33ce1dbc79ae4c, type: 2}
+  m_sharedMaterial: {fileID: 2445440937034267188, guid: a9f54d527a6fc144ca33ce1dbc79ae4c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2020,8 +2019,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3303,8 +3302,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -622.21, y: -269}
-  m_SizeDelta: {x: -1367.58, y: -904.38}
+  m_AnchoredPosition: {x: -645.7, y: -247.06}
+  m_SizeDelta: {x: -1320.62, y: -934.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &554177963
 MonoBehaviour:
@@ -3319,15 +3318,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.9282932, g: 1, b: 0.4009434, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 86a3eb9090a811546bec0bbb79b35b7c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5583,8 +5582,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.49, y: 7.47}
-  m_SizeDelta: {x: 535.02, y: 119.58}
+  m_AnchoredPosition: {x: -5, y: 2.45}
+  m_SizeDelta: {x: 549.36, y: 129.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &919348150
 MonoBehaviour:
@@ -5608,8 +5607,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: cuando aparezca un personaje agresivo llama rapidamente a seguridad
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a9f54d527a6fc144ca33ce1dbc79ae4c, type: 2}
+  m_sharedMaterial: {fileID: 2445440937034267188, guid: a9f54d527a6fc144ca33ce1dbc79ae4c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5633,8 +5632,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5782,8 +5781,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.49, y: 7.47}
-  m_SizeDelta: {x: 535.02, y: 119.58}
+  m_AnchoredPosition: {x: 7.82, y: -1.18}
+  m_SizeDelta: {x: 513.38, y: 141.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &933161980
 MonoBehaviour:
@@ -5807,8 +5806,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: utiliza estos botones para dejar ingresar o rechazar a las personas
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a9f54d527a6fc144ca33ce1dbc79ae4c, type: 2}
+  m_sharedMaterial: {fileID: 2445440937034267188, guid: a9f54d527a6fc144ca33ce1dbc79ae4c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5832,8 +5831,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5868,7 +5867,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 24.043167, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8133,12 +8132,11 @@ MonoBehaviour:
   indicaciones1: {fileID: 0}
   indicaciones2: {fileID: 0}
   indicaciones3: {fileID: 0}
-  duracionIndicaciones1: 3
-  duracionIndicaciones2: 3
-  duracionIndicaciones3: 3
+  duracionIndicaciones: 2.5
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
+  charactersManager: {fileID: 0}
   audioTecleo: {fileID: 0}
 --- !u!114 &1493280884
 MonoBehaviour:
@@ -8349,12 +8347,11 @@ MonoBehaviour:
   indicaciones1: {fileID: 0}
   indicaciones2: {fileID: 0}
   indicaciones3: {fileID: 0}
-  duracionIndicaciones1: 3
-  duracionIndicaciones2: 3
-  duracionIndicaciones3: 3
+  duracionIndicaciones: 2.5
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 0}
   gameManager: {fileID: 0}
+  charactersManager: {fileID: 0}
   audioTecleo: {fileID: 0}
 --- !u!114 &1515895188
 MonoBehaviour:
@@ -8815,12 +8812,11 @@ MonoBehaviour:
   indicaciones1: {fileID: 0}
   indicaciones2: {fileID: 0}
   indicaciones3: {fileID: 0}
-  duracionIndicaciones1: 3
-  duracionIndicaciones2: 3
-  duracionIndicaciones3: 3
+  duracionIndicaciones: 2.5
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
+  charactersManager: {fileID: 0}
   audioTecleo: {fileID: 0}
 --- !u!114 &1658696443
 MonoBehaviour:
@@ -9371,12 +9367,11 @@ MonoBehaviour:
   indicaciones1: {fileID: 2115129266}
   indicaciones2: {fileID: 1805619943}
   indicaciones3: {fileID: 554177962}
-  duracionIndicaciones1: 3
-  duracionIndicaciones2: 3
-  duracionIndicaciones3: 3
+  duracionIndicaciones: 4
   botonSiguienteNivel: {fileID: 219588691}
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
+  charactersManager: {fileID: 943274571}
   audioTecleo: {fileID: 152417382}
 --- !u!4 &1709672044
 Transform:
@@ -9495,12 +9490,11 @@ MonoBehaviour:
   indicaciones1: {fileID: 0}
   indicaciones2: {fileID: 0}
   indicaciones3: {fileID: 0}
-  duracionIndicaciones1: 3
-  duracionIndicaciones2: 3
-  duracionIndicaciones3: 3
+  duracionIndicaciones: 2.5
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 0}
   gameManager: {fileID: 0}
+  charactersManager: {fileID: 0}
   audioTecleo: {fileID: 0}
 --- !u!1 &1727551767
 GameObject:
@@ -9601,8 +9595,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 40, y: -360}
-  m_SizeDelta: {x: -1370, y: -945.47}
+  m_AnchoredPosition: {x: 89, y: -305}
+  m_SizeDelta: {x: -1410.3, y: -945.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1805619944
 MonoBehaviour:
@@ -9617,15 +9611,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.9282932, g: 1, b: 0.4009434, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 86a3eb9090a811546bec0bbb79b35b7c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10785,8 +10779,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 536.28, y: -209.82}
-  m_SizeDelta: {x: -1370, y: -945.47}
+  m_AnchoredPosition: {x: 657.27, y: -286.63}
+  m_SizeDelta: {x: -1400.53, y: -928.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2115129267
 MonoBehaviour:
@@ -10801,15 +10795,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.9282932, g: 1, b: 0.4009434, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 86a3eb9090a811546bec0bbb79b35b7c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

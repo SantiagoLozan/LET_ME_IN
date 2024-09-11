@@ -18,11 +18,11 @@ public class UI_Manager : MonoBehaviour
     public TextMeshProUGUI mensajeReporte;
     public TextMeshProUGUI reporteText;
 
-public RectTransform indicaciones1; 
-public RectTransform indicaciones2;  
-public RectTransform indicaciones3; 
+    public RectTransform indicaciones1;
+    public RectTransform indicaciones2;
+    public RectTransform indicaciones3;
 
-public float duracionIndicaciones = 2.5f;
+    public float duracionIndicaciones = 4f;
 
     public Button botonSiguienteNivel;
 
@@ -30,10 +30,11 @@ public float duracionIndicaciones = 2.5f;
 
     public DialogueManager dialogueManager;
     public s_GameManager gameManager;
+    public CharactersManager charactersManager;
 
     public AudioSource audioTecleo;
 
-    private Coroutine panelInicioDiaCoroutine; 
+    private Coroutine panelInicioDiaCoroutine;
     private bool cursorVisible = true;
     private float tiempoUltimaActualizacion;
 
@@ -54,19 +55,23 @@ public float duracionIndicaciones = 2.5f;
         string titulo = $"Día {diaActual}\n\n";
 
         panelInicioDiaCoroutine = StartCoroutine(MostrarPanelInicioDiaCoroutine(titulo + mensaje));
-         
-    PanelInicioDesactivado += MostrarPanelIndicaciones;
-}
 
-public void MostrarPanelIndicaciones()
-{
-    
-    if (gameManager.NivelActual == 1)
-    {
-        StartCoroutine(MostrarPanelIndicacionesCoroutine());
-        PanelInicioDesactivado -= MostrarPanelIndicaciones;
+        PanelInicioDesactivado += MostrarPanelIndicaciones;
     }
-}
+
+    public void MostrarPanelIndicaciones()
+    {
+
+        if (gameManager.NivelActual == 1)
+        {
+            StartCoroutine(MostrarPanelIndicacionesCoroutine());
+            PanelInicioDesactivado -= MostrarPanelIndicaciones;
+        }
+        else
+        {
+            IniciarJuego();
+        }
+    }
 
     public IEnumerator MostrarPanelInicioDiaCoroutine(string mensaje)
     {
@@ -76,7 +81,7 @@ public void MostrarPanelIndicaciones()
         audioTecleo.Play();
         tiempoUltimaActualizacion = Time.time;
 
-      
+
         while (textoInicioDia.text.Length < mensaje.Length)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -91,7 +96,7 @@ public void MostrarPanelIndicaciones()
                 tiempoUltimaActualizacion = Time.time;
             }
 
-          
+
             string textoParcial = mensaje.Substring(0, textoInicioDia.text.Length);
             if (cursorVisible)
             {
@@ -102,11 +107,9 @@ public void MostrarPanelIndicaciones()
             yield return new WaitForSeconds(velocidadTexto);
         }
 
-
         textoInicioDia.text = mensaje;
         audioTecleo.Stop();
 
-       
         while (true)
         {
             if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
@@ -115,7 +118,7 @@ public void MostrarPanelIndicaciones()
                 tiempoUltimaActualizacion = Time.time;
             }
 
-         
+
             string textoConCursorTitilante = mensaje;
             if (cursorVisible)
             {
@@ -125,7 +128,6 @@ public void MostrarPanelIndicaciones()
 
             yield return null;
         }
-
 
         yield return new WaitForSeconds(duracionPanel);
         panelInicioDia.gameObject.SetActive(false);
@@ -146,32 +148,37 @@ public void MostrarPanelIndicaciones()
         audioTecleo.Stop();
         panelInicioDia.gameObject.SetActive(false);
 
+        //llamar iniico juego
         PanelInicioDesactivado?.Invoke();
     }
 
 
-private IEnumerator MostrarPanelIndicacionesCoroutine()
-{
-    yield return StartCoroutine(MostrarIndicacionesSecuencia());
-    PanelInicioDesactivado -= MostrarPanelIndicaciones;
-    yield break;
-}
+    private IEnumerator MostrarPanelIndicacionesCoroutine()
+    {
+        yield return StartCoroutine(MostrarIndicacionesSecuencia());
+        PanelInicioDesactivado -= MostrarPanelIndicaciones;
+        yield break;
+    }
 
 
-private IEnumerator MostrarIndicacionesSecuencia()
-{
-    indicaciones1.gameObject.SetActive(true);
-    yield return new WaitForSeconds(duracionIndicaciones);
-    indicaciones1.gameObject.SetActive(false);
-   
-    indicaciones2.gameObject.SetActive(true);
-    yield return new WaitForSeconds(duracionIndicaciones);
-    indicaciones2.gameObject.SetActive(false);
+    private IEnumerator MostrarIndicacionesSecuencia()
+    {
+        yield return new WaitForSeconds(2f);
 
-    indicaciones3.gameObject.SetActive(true);
-    yield return new WaitForSeconds(duracionIndicaciones);
-    indicaciones3.gameObject.SetActive(false);
-}
+        indicaciones1.gameObject.SetActive(true);
+        yield return new WaitForSeconds(duracionIndicaciones);
+        indicaciones1.gameObject.SetActive(false);
+
+        indicaciones2.gameObject.SetActive(true);
+        yield return new WaitForSeconds(duracionIndicaciones);
+        indicaciones2.gameObject.SetActive(false);
+
+        indicaciones3.gameObject.SetActive(true);
+        yield return new WaitForSeconds(duracionIndicaciones);
+        indicaciones3.gameObject.SetActive(false);
+
+        IniciarJuego();
+    }
 
     public void ActualizarPanelReporte(int sanosIngresados, int enfermosIngresados, int sanosRechazados, int enfermosRechazados)
     {
@@ -191,5 +198,11 @@ private IEnumerator MostrarIndicacionesSecuencia()
     public void PanelReporte()
     {
         panelPerdiste.gameObject.SetActive(true);
+    }
+
+
+    public void IniciarJuego()
+    {
+        charactersManager.AparecerSiguientePersonaje();
     }
 }

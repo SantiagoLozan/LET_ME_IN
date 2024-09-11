@@ -54,22 +54,22 @@ public class CharactersManager : MonoBehaviour
     {
         ConfigurarPersonajesParaNivel(gameManager.NivelActual);
 
-        if (uiManager != null)
+      /*  if (uiManager != null)
         {
             uiManager.PanelInicioDesactivado += AparecerSiguientePersonaje;
         }
         else
         {
             Debug.LogError("UI_Manager no está asignado en CharactersManager.");
-        }
+        }*/
     }
 
     void OnDestroy()
     {
-        if (uiManager != null)
+       /* if (uiManager != null)
         {
             uiManager.PanelInicioDesactivado -= AparecerSiguientePersonaje;
-        }
+        }*/
     }
 
     public void ConfigurarPersonajesParaNivel(int nivel)
