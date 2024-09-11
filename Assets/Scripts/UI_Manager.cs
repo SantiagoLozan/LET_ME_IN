@@ -18,8 +18,11 @@ public class UI_Manager : MonoBehaviour
     public TextMeshProUGUI mensajeReporte;
     public TextMeshProUGUI reporteText;
 
-    public RectTransform indicaciones; 
-    public float duracionIndicaciones = 3.0f;
+public RectTransform indicaciones1; 
+public RectTransform indicaciones2;  
+public RectTransform indicaciones3; 
+
+public float duracionIndicaciones = 2.5f;
 
     public Button botonSiguienteNivel;
 
@@ -50,11 +53,22 @@ public class UI_Manager : MonoBehaviour
         int diaActual = gameManager.NivelActual;
         string titulo = $"Día {diaActual}\n\n";
 
-        // Iniciar la corrutina y guardar su referencia
         panelInicioDiaCoroutine = StartCoroutine(MostrarPanelInicioDiaCoroutine(titulo + mensaje));
-    }
+         
+    PanelInicioDesactivado += MostrarPanelIndicaciones;
+}
 
-    private IEnumerator MostrarPanelInicioDiaCoroutine(string mensaje)
+public void MostrarPanelIndicaciones()
+{
+    
+    if (gameManager.NivelActual == 1)
+    {
+        StartCoroutine(MostrarPanelIndicacionesCoroutine());
+        PanelInicioDesactivado -= MostrarPanelIndicaciones;
+    }
+}
+
+    public IEnumerator MostrarPanelInicioDiaCoroutine(string mensaje)
     {
         textoInicioDia.text = "";
         string mensajeConCursor = mensaje + "_";
@@ -62,7 +76,7 @@ public class UI_Manager : MonoBehaviour
         audioTecleo.Play();
         tiempoUltimaActualizacion = Time.time;
 
-        // Mostrar el texto con efecto de escritura
+      
         while (textoInicioDia.text.Length < mensaje.Length)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -77,7 +91,7 @@ public class UI_Manager : MonoBehaviour
                 tiempoUltimaActualizacion = Time.time;
             }
 
-            // Construye el texto actual con el cursor
+          
             string textoParcial = mensaje.Substring(0, textoInicioDia.text.Length);
             if (cursorVisible)
             {
@@ -92,7 +106,7 @@ public class UI_Manager : MonoBehaviour
         textoInicioDia.text = mensaje;
         audioTecleo.Stop();
 
-        // mantiene el cursor titilante al final del texto
+       
         while (true)
         {
             if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
@@ -101,7 +115,7 @@ public class UI_Manager : MonoBehaviour
                 tiempoUltimaActualizacion = Time.time;
             }
 
-            // Muestra el cursor titilante
+         
             string textoConCursorTitilante = mensaje;
             if (cursorVisible)
             {
@@ -116,7 +130,6 @@ public class UI_Manager : MonoBehaviour
         yield return new WaitForSeconds(duracionPanel);
         panelInicioDia.gameObject.SetActive(false);
 
-        // Invoca el evento cuando el panel se desactive
         PanelInicioDesactivado?.Invoke();
     }
 
@@ -124,20 +137,41 @@ public class UI_Manager : MonoBehaviour
 
     public void CerrarPanelInicioDia()
     {
-        // Detener la corrutina si está en ejecución
         if (panelInicioDiaCoroutine != null)
         {
             StopCoroutine(panelInicioDiaCoroutine);
             panelInicioDiaCoroutine = null;
         }
 
-        // Detener el sonido y desactivar el panel
         audioTecleo.Stop();
         panelInicioDia.gameObject.SetActive(false);
 
-        // Invocar el evento
         PanelInicioDesactivado?.Invoke();
     }
+
+
+private IEnumerator MostrarPanelIndicacionesCoroutine()
+{
+    yield return StartCoroutine(MostrarIndicacionesSecuencia());
+    PanelInicioDesactivado -= MostrarPanelIndicaciones;
+    yield break;
+}
+
+
+private IEnumerator MostrarIndicacionesSecuencia()
+{
+    indicaciones1.gameObject.SetActive(true);
+    yield return new WaitForSeconds(duracionIndicaciones);
+    indicaciones1.gameObject.SetActive(false);
+   
+    indicaciones2.gameObject.SetActive(true);
+    yield return new WaitForSeconds(duracionIndicaciones);
+    indicaciones2.gameObject.SetActive(false);
+
+    indicaciones3.gameObject.SetActive(true);
+    yield return new WaitForSeconds(duracionIndicaciones);
+    indicaciones3.gameObject.SetActive(false);
+}
 
     public void ActualizarPanelReporte(int sanosIngresados, int enfermosIngresados, int sanosRechazados, int enfermosRechazados)
     {
