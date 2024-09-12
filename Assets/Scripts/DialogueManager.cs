@@ -30,8 +30,6 @@ public class DialogueManager : MonoBehaviour
 
     public s_GameManager gameManager;
     public AudioManager audioManager;
-    public AudioClip[] gibberishClips;
-    public AudioClip[] gibberishClips2;
 
     public AggressiveNPCs aggressiveNPCs;
     public CheckCondition checkCondition;
@@ -41,6 +39,9 @@ public class DialogueManager : MonoBehaviour
     public float intervaloCursor = 0.5f;
     private bool cursorVisible = true;
     private float tiempoUltimaActualizacion;
+
+    public AudioSource vozGuardia;
+    public AudioSource vozPersonaje;
 
 
     void Start()
@@ -70,11 +71,20 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void SaltarTodosLosDialogos()
+    public void SkipDialogo()
+    {
+        textoCompleto = true;
+
+        PausarVoces();
+    }
+
+    public void SaltarTodosLosDialogos()
     {
         StopAllCoroutines();
         panelDialogo.gameObject.SetActive(false);
         panelRespuestas.gameObject.SetActive(false);
+
+        PausarVoces();
 
         if (esAgresivo)
         {
@@ -86,6 +96,20 @@ public class DialogueManager : MonoBehaviour
         }
 
     }
+
+    public void PausarVoces()
+    {
+        if (vozGuardia != null)
+        {
+            vozGuardia.Pause();
+        }
+
+        if (vozPersonaje != null)
+        {
+            vozPersonaje.Pause();
+        }
+    }
+
 
     public void ComenzarDialogo(string[] dialogos, List<string> respuestas, bool esAgresivo)
     {
@@ -109,10 +133,11 @@ public class DialogueManager : MonoBehaviour
     IEnumerator EscribirRespuestas()
     {
         textoRespuesta.text = "";
-      /* if (AudioManager.instance != null)
-        {
-            AudioManager.instance.HablarPalabrasEnLoop(AudioManager.instance.gibberishClips);
-        }*/
+
+        // Iniciar la reproducción del audio pero no detener el flujo del texto
+        vozGuardia.Play();
+        StartCoroutine(DetenerAudioGuardia(2));
+
 
         tiempoUltimaActualizacion = Time.time;
 
@@ -175,6 +200,12 @@ public class DialogueManager : MonoBehaviour
         PanelRespuestasClick();
     }
 
+    // Función adicional para detener el audio después de 2 segundos
+    IEnumerator DetenerAudioGuardia(float segundos)
+    {
+        yield return new WaitForSeconds(segundos);
+        vozGuardia.Pause();
+    }
 
     bool EstaDentroDelPanel(Vector2 posicionClic, RectTransform panel)
     {
@@ -203,10 +234,9 @@ public class DialogueManager : MonoBehaviour
     IEnumerator EscribirLinea()
     {
         textoDialogo.text = string.Empty;
-       /* if (AudioManager.instance != null)
-        {
-            AudioManager.instance.HablarPalabrasEnLoop(gibberishClips);
-        }*/
+
+        vozPersonaje.Play();
+        StartCoroutine(DetenerAudioPersonaje(2));
 
         tiempoUltimaActualizacion = Time.time; // Inicializar el tiempo del cursor
 
@@ -273,6 +303,14 @@ public class DialogueManager : MonoBehaviour
         PanelDialogoClick();
     }
 
+
+    // Función adicional para detener el audio después de 2 segundos
+    IEnumerator DetenerAudioPersonaje(float segundos)
+    {
+        yield return new WaitForSeconds(segundos);
+        vozPersonaje.Pause();
+    }
+
     public void MostrarRespuestas(List<string> respuestas)
     {
         respuestasActuales = respuestas;
@@ -327,9 +365,6 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    public void SkipDialogo()
-    {
-        textoCompleto = true;
-    }
+
 
 }

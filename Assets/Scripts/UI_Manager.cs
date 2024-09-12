@@ -161,24 +161,33 @@ public class UI_Manager : MonoBehaviour
     }
 
 
-    private IEnumerator MostrarIndicacionesSecuencia()
+  private IEnumerator MostrarIndicacionesSecuencia()
+{
+    RectTransform[] indicaciones = { indicaciones1, indicaciones2, indicaciones3 };
+
+    foreach (var indicacion in indicaciones)
     {
-        yield return new WaitForSeconds(2f);
+        indicacion.gameObject.SetActive(true);
+        float tiempoRestante = duracionIndicaciones;
 
-        indicaciones1.gameObject.SetActive(true);
-        yield return new WaitForSeconds(duracionIndicaciones);
-        indicaciones1.gameObject.SetActive(false);
+        while (tiempoRestante > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                break; // Saltar a la siguiente indicación
+            }
+            tiempoRestante -= Time.deltaTime;
+            yield return null;
+        }
 
-        indicaciones2.gameObject.SetActive(true);
-        yield return new WaitForSeconds(duracionIndicaciones);
-        indicaciones2.gameObject.SetActive(false);
-
-        indicaciones3.gameObject.SetActive(true);
-        yield return new WaitForSeconds(duracionIndicaciones);
-        indicaciones3.gameObject.SetActive(false);
-
-        IniciarJuego();
+        indicacion.gameObject.SetActive(false);
     }
+
+    // Iniciar el juego después de mostrar todas las indicaciones
+    IniciarJuego();
+}
+
+
 
     public void ActualizarPanelReporte(int sanosIngresados, int enfermosIngresados, int sanosRechazados, int enfermosRechazados)
     {
