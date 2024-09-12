@@ -42,7 +42,7 @@ public class CharactersManager : MonoBehaviour
     public float bounceHeight = 0.2f;
     public float bounceSpeed = 2.0f;
 
-    public AudioClip footstepSound;
+    public AudioSource sonidoPasos;
 
     public Light sceneLight; // Referencia a la luz de la escena
     public float intensidadDecremento = 0.5f; // Cuánto se reduce la intensidad cada vez
@@ -54,22 +54,22 @@ public class CharactersManager : MonoBehaviour
     {
         ConfigurarPersonajesParaNivel(gameManager.NivelActual);
 
-      /*  if (uiManager != null)
-        {
-            uiManager.PanelInicioDesactivado += AparecerSiguientePersonaje;
-        }
-        else
-        {
-            Debug.LogError("UI_Manager no está asignado en CharactersManager.");
-        }*/
+        /*  if (uiManager != null)
+          {
+              uiManager.PanelInicioDesactivado += AparecerSiguientePersonaje;
+          }
+          else
+          {
+              Debug.LogError("UI_Manager no está asignado en CharactersManager.");
+          }*/
     }
 
     void OnDestroy()
     {
-       /* if (uiManager != null)
-        {
-            uiManager.PanelInicioDesactivado -= AparecerSiguientePersonaje;
-        }*/
+        /* if (uiManager != null)
+         {
+             uiManager.PanelInicioDesactivado -= AparecerSiguientePersonaje;
+         }*/
     }
 
     public void ConfigurarPersonajesParaNivel(int nivel)
@@ -195,14 +195,7 @@ public class CharactersManager : MonoBehaviour
         Vector3 inicio = personaje.transform.position;
         float tiempoTranscurrido = 0f;
 
-        AudioSource audioSource = personaje.GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            audioSource = personaje.AddComponent<AudioSource>();
-        }
-        audioSource.clip = footstepSound;
-        audioSource.loop = true;
-        audioSource.Play();
+        sonidoPasos.Play();
 
         while (tiempoTranscurrido < moveDuration)
         {
@@ -229,7 +222,7 @@ public class CharactersManager : MonoBehaviour
             yield break;
         }
 
-        audioSource.Stop();
+        sonidoPasos.Stop();
 
         // Asegurarse de que el personaje esté exactamente en el destino final
         personaje.transform.position = destino;
@@ -276,14 +269,7 @@ public class CharactersManager : MonoBehaviour
         Vector3 inicio = personaje.transform.position;
         float tiempoTranscurrido = 0f;
 
-        AudioSource audioSource = personaje.GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            audioSource = personaje.AddComponent<AudioSource>();
-        }
-        audioSource.clip = footstepSound;
-        audioSource.loop = true;
-        audioSource.Play();
+        sonidoPasos.Play();
 
         while (tiempoTranscurrido < moveDuration)
         {
@@ -308,7 +294,7 @@ public class CharactersManager : MonoBehaviour
             yield break;
         }
 
-        audioSource.Stop();
+        sonidoPasos.Stop();
 
         personaje.transform.position = destino;
     }

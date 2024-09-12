@@ -109,10 +109,10 @@ public class DialogueManager : MonoBehaviour
     IEnumerator EscribirRespuestas()
     {
         textoRespuesta.text = "";
-        if (AudioManager.instance != null)
+      /* if (AudioManager.instance != null)
         {
             AudioManager.instance.HablarPalabrasEnLoop(AudioManager.instance.gibberishClips);
-        }
+        }*/
 
         tiempoUltimaActualizacion = Time.time;
 
@@ -203,10 +203,10 @@ public class DialogueManager : MonoBehaviour
     IEnumerator EscribirLinea()
     {
         textoDialogo.text = string.Empty;
-        if (AudioManager.instance != null)
+       /* if (AudioManager.instance != null)
         {
             AudioManager.instance.HablarPalabrasEnLoop(gibberishClips);
-        }
+        }*/
 
         tiempoUltimaActualizacion = Time.time; // Inicializar el tiempo del cursor
 
