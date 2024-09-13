@@ -46,16 +46,7 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        /* var imageIngreso = botonIngreso.GetComponent<Image>();
-           var imageRechazo = botonRechazo.GetComponent<Image>();
 
-           if (imageIngreso != null) {
-               imageIngreso.alphaHitTestMinimumThreshold = 0.1f;
-           }
-
-           if (imageRechazo != null) {
-               imageRechazo.alphaHitTestMinimumThreshold = 0.1f;
-           }*/
     }
 
     void Update()
@@ -356,6 +347,7 @@ public class DialogueManager : MonoBehaviour
     {
         botonIngreso.interactable = true;
         botonRechazo.interactable = true;
+        ColisionBotones();
         panelSiguiente.gameObject.SetActive(true);
 
         if (!medicoUsado)
@@ -365,6 +357,21 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    public void ColisionBotones()
+    {
+        var imageIngreso = botonIngreso.GetComponent<Image>();
+        var imageRechazo = botonRechazo.GetComponent<Image>();
 
+
+        if (imageIngreso != null)
+        {
+            imageIngreso.alphaHitTestMinimumThreshold = 0.1f;
+        }
+
+        if (imageRechazo != null)
+        {
+            imageRechazo.alphaHitTestMinimumThreshold = 0.1f;
+        }
+    }
 
 }
