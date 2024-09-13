@@ -44,12 +44,6 @@ public class CharactersManager : MonoBehaviour
 
     public AudioSource sonidoPasos;
 
-    public Light sceneLight; // Referencia a la luz de la escena
-    public float intensidadDecremento = 0.5f; // Cuánto se reduce la intensidad cada vez
-    public int personajesPorDecremento = 2; // Cada cuántos personajes se decrementa la intensidad
-    public float duracionOscurecimiento = 2.0f; // Duración del cambio de intensidad en segundos
-
-
     void Start()
     {
         ConfigurarPersonajesParaNivel(gameManager.NivelActual);
@@ -153,37 +147,6 @@ public class CharactersManager : MonoBehaviour
             gameManager.MostrarPanelReporte();
         }
     }
-
-
-    /* private IEnumerator OscurecerLuzGradualmente()
-     {
-         if (sceneLight != null)
-         {
-             float startIntensity = sceneLight.intensity;
-             float targetIntensity = Mathf.Max(0, startIntensity - intensidadDecremento);
-
-             Debug.Log($"Oscureciendo luz: Intensidad inicial = {startIntensity}, Intensidad objetivo = {targetIntensity}");
-
-             float elapsedTime = 0;
-
-             while (elapsedTime < duracionOscurecimiento)
-             {
-                 sceneLight.intensity = Mathf.Lerp(startIntensity, targetIntensity, elapsedTime / duracionOscurecimiento);
-                 elapsedTime += Time.deltaTime;
-                 yield return null;
-             }
-
-             sceneLight.intensity = targetIntensity;
-
-             Debug.Log($"Oscurecimiento completado: Intensidad final = {sceneLight.intensity}");
-         }
-         else
-         {
-             Debug.LogError("La luz de la escena no está asignada.");
-         }
-     }*/
-
-
 
     private IEnumerator MoverPersonajeAlCentro(GameObject personaje, Vector3 destino, int characterIndex)
     {
