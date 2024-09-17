@@ -43,6 +43,7 @@ public class DialogueManager : MonoBehaviour
     public AudioSource vozGuardia;
     public AudioSource vozPersonaje;
 
+    private bool dialogoVisible = false;  // Verifica si hay un diálogo en pantalla
 
     void Start()
     {
@@ -51,18 +52,22 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
+      if (dialogoVisible)
+    {
+        // Detecta si el usuario presiona Espacio para adelantar un diálogo
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SkipDialogo();
+            AdelantarDialogo();
         }
-
-        if (Input.GetKeyDown(KeyCode.Return))
+        // Detecta si el usuario presiona Enter para omitir todos los diálogos
+        else if (Input.GetKeyDown(KeyCode.Return))
         {
             SaltarTodosLosDialogos();
         }
     }
+    }
 
-    public void SkipDialogo()
+    public void AdelantarDialogo()
     {
         textoCompleto = true;
 
@@ -74,6 +79,7 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         panelDialogo.gameObject.SetActive(false);
         panelRespuestas.gameObject.SetActive(false);
+        dialogoVisible = false; 
 
         PausarVoces();
 
@@ -118,6 +124,7 @@ public class DialogueManager : MonoBehaviour
     {
         panelRespuestas.gameObject.SetActive(true);
         panelDialogo.gameObject.SetActive(false);
+        dialogoVisible = true; 
         StartCoroutine(EscribirRespuestas());
     }
 
@@ -212,6 +219,7 @@ public class DialogueManager : MonoBehaviour
     void MostrarPanelDialogo()
     {
         mostrandoRespuestas = false;
+        dialogoVisible = true; 
         panelDialogo.gameObject.SetActive(true);
         panelRespuestas.gameObject.SetActive(false);
         ComenzarEscritura();
@@ -222,77 +230,78 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(EscribirLinea());
     }
 
-    IEnumerator EscribirLinea()
+   IEnumerator EscribirLinea()
+{
+    textoDialogo.text = string.Empty;
+
+    vozPersonaje.Play();
+    StartCoroutine(DetenerAudioPersonaje(2));
+
+    tiempoUltimaActualizacion = Time.time; // Inicializar el tiempo del cursor
+
+    while (textoDialogo.text.Length < lineas[indexDialogo].Length)
     {
-        textoDialogo.text = string.Empty;
-
-        vozPersonaje.Play();
-        StartCoroutine(DetenerAudioPersonaje(2));
-
-        tiempoUltimaActualizacion = Time.time; // Inicializar el tiempo del cursor
-
-        while (textoDialogo.text.Length < lineas[indexDialogo].Length)
+        if (textoCompleto)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                textoDialogo.text = lineas[indexDialogo];
-                break;
-            }
-
-            if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
-            {
-                cursorVisible = !cursorVisible;
-                tiempoUltimaActualizacion = Time.time;
-            }
-
-
-            string textoParcial = lineas[indexDialogo].Substring(0, textoDialogo.text.Length);
-            if (cursorVisible)
-            {
-                textoParcial += "_";
-            }
-            textoDialogo.text = textoParcial;
-
-            yield return new WaitForSeconds(velocidadTexto);
+            textoDialogo.text = lineas[indexDialogo]; // Mostrar el texto completo
+            break;
         }
 
-        while (true)
+        if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
         {
-            if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
-            {
-                cursorVisible = !cursorVisible;
-                tiempoUltimaActualizacion = Time.time;
-            }
-
-
-            string textoConCursorTitilante = lineas[indexDialogo];
-            if (cursorVisible)
-            {
-                textoConCursorTitilante += "_";
-            }
-            textoDialogo.text = textoConCursorTitilante;
-
-            yield return null;
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                break;
-            }
+            cursorVisible = !cursorVisible;
+            tiempoUltimaActualizacion = Time.time;
         }
 
-        textoDialogo.text = lineas[indexDialogo];
-        if (AudioManager.instance != null)
+        string textoParcial = lineas[indexDialogo].Substring(0, textoDialogo.text.Length);
+        if (cursorVisible)
         {
-            AudioManager.instance.DetenerHablar();
+            textoParcial += "_";
         }
+        textoDialogo.text = textoParcial;
 
-        textoCompleto = false;
-
-        mostrandoRespuestas = true;
-
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        PanelDialogoClick();
+        yield return new WaitForSeconds(velocidadTexto);
     }
+
+    // Mostrar el texto completo con el cursor titilante
+    while (true)
+    {
+        if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
+        {
+            cursorVisible = !cursorVisible;
+            tiempoUltimaActualizacion = Time.time;
+        }
+
+        string textoConCursorTitilante = lineas[indexDialogo];
+        if (cursorVisible)
+        {
+            textoConCursorTitilante += "_";
+        }
+        textoDialogo.text = textoConCursorTitilante;
+
+        yield return null; // Esperar al siguiente frame
+
+        // Salir del bucle cuando el jugador haga clic o presione una tecla
+        if (Input.GetMouseButtonDown(0))
+        {
+            break;
+        }
+    }
+
+    // Finalizar diálogo
+    textoDialogo.text = lineas[indexDialogo];
+    if (AudioManager.instance != null)
+    {
+        AudioManager.instance.DetenerHablar();
+    }
+
+    textoCompleto = false;
+    mostrandoRespuestas = true;
+
+    yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+    PanelDialogoClick();
+}
+
 
 
     // Función adicional para detener el audio después de 2 segundos
@@ -330,6 +339,7 @@ public class DialogueManager : MonoBehaviour
             if (indexDialogo == lineas.Length - 1)
             {
                 panelDialogo.gameObject.SetActive(false);
+                 dialogoVisible = false;
                 //MostrarBotonSiguiente();
                 if (esAgresivo)
                 {
@@ -373,5 +383,5 @@ public class DialogueManager : MonoBehaviour
             imageRechazo.alphaHitTestMinimumThreshold = 0.1f;
         }
     }
+    }
 
-}
