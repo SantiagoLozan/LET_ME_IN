@@ -61,12 +61,12 @@ public class PauseManager : MonoBehaviour
         isPaused = true;
     }
 
-   /* public void RestartGame()
+    public void RestartGame()
     {
         Time.timeScale = 1f;           // Restablece el tiempo normal
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  // Reinicia la escena actual
+        SceneManager.LoadScene("Gameplay");  // Reinicia la escena actual
         pauseMenuUI.SetActive(false);  // Asegúrate de que el menú de pausa esté desactivado
-    }*/
+    }
    public void ReturnToMenu()
     {
         Time.timeScale = 1f;           // Restablece el tiempo normal
