@@ -390,7 +390,7 @@ MonoBehaviour:
   indicaciones1: {fileID: 0}
   indicaciones2: {fileID: 0}
   indicaciones3: {fileID: 0}
-  duracionIndicaciones: 2.5
+  duracionIndicaciones: 8
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
@@ -9961,7 +9961,7 @@ MonoBehaviour:
   indicaciones1: {fileID: 0}
   indicaciones2: {fileID: 0}
   indicaciones3: {fileID: 0}
-  duracionIndicaciones: 2.5
+  duracionIndicaciones: 8
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
@@ -10176,7 +10176,7 @@ MonoBehaviour:
   indicaciones1: {fileID: 0}
   indicaciones2: {fileID: 0}
   indicaciones3: {fileID: 0}
-  duracionIndicaciones: 2.5
+  duracionIndicaciones: 8
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 0}
   gameManager: {fileID: 0}
@@ -10691,7 +10691,7 @@ MonoBehaviour:
   indicaciones1: {fileID: 0}
   indicaciones2: {fileID: 0}
   indicaciones3: {fileID: 0}
-  duracionIndicaciones: 2.5
+  duracionIndicaciones: 8
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
@@ -11354,7 +11354,7 @@ MonoBehaviour:
   indicaciones1: {fileID: 2115129266}
   indicaciones2: {fileID: 1805619943}
   indicaciones3: {fileID: 554177962}
-  duracionIndicaciones: 4
+  duracionIndicaciones: 8
   botonSiguienteNivel: {fileID: 219588691}
   dialogueManager: {fileID: 2085731922}
   gameManager: {fileID: 926031996}
@@ -11467,7 +11467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelInicioDia: {fileID: 1720687406}
   textoInicioDia: {fileID: 732569429}
-  velocidadTexto: 0.5
+  velocidadTexto: 0.6
   duracionPanel: 2
   intervaloCursor: 0.5
   panelReporte: {fileID: 0}
@@ -11477,7 +11477,7 @@ MonoBehaviour:
   indicaciones1: {fileID: 0}
   indicaciones2: {fileID: 0}
   indicaciones3: {fileID: 0}
-  duracionIndicaciones: 2.5
+  duracionIndicaciones: 8
   botonSiguienteNivel: {fileID: 0}
   dialogueManager: {fileID: 0}
   gameManager: {fileID: 0}

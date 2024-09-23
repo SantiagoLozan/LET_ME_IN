@@ -22,7 +22,7 @@ public class UI_Manager : MonoBehaviour
     public RectTransform indicaciones2;
     public RectTransform indicaciones3;
 
-    public float duracionIndicaciones = 4f;
+    public float duracionIndicaciones = 8f;
 
     public Button botonSiguienteNivel;
 
@@ -81,8 +81,9 @@ public class UI_Manager : MonoBehaviour
         audioTecleo.Play();
         tiempoUltimaActualizacion = Time.time;
 
+        int currentIndex = 0; // índice para controlar el progreso del texto
 
-        while (textoInicioDia.text.Length < mensaje.Length)
+        while (currentIndex < mensaje.Length)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -90,19 +91,16 @@ public class UI_Manager : MonoBehaviour
                 break;
             }
 
+            // Mostrar el texto carácter por carácter
+            textoInicioDia.text = mensaje.Substring(0, currentIndex + 1) + (cursorVisible ? "_" : "");
+            currentIndex++;
+
+            // Control del cursor parpadeante
             if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
             {
                 cursorVisible = !cursorVisible;
                 tiempoUltimaActualizacion = Time.time;
             }
-
-
-            string textoParcial = mensaje.Substring(0, textoInicioDia.text.Length);
-            if (cursorVisible)
-            {
-                textoParcial += "_";
-            }
-            textoInicioDia.text = textoParcial;
 
             yield return new WaitForSeconds(velocidadTexto);
         }
@@ -110,6 +108,7 @@ public class UI_Manager : MonoBehaviour
         textoInicioDia.text = mensaje;
         audioTecleo.Stop();
 
+        // Bucle para mostrar el cursor parpadeante después de que todo el texto se haya mostrado
         while (true)
         {
             if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
@@ -117,7 +116,6 @@ public class UI_Manager : MonoBehaviour
                 cursorVisible = !cursorVisible;
                 tiempoUltimaActualizacion = Time.time;
             }
-
 
             string textoConCursorTitilante = mensaje;
             if (cursorVisible)
@@ -161,31 +159,31 @@ public class UI_Manager : MonoBehaviour
     }
 
 
-  private IEnumerator MostrarIndicacionesSecuencia()
-{
-    RectTransform[] indicaciones = { indicaciones1, indicaciones2, indicaciones3 };
-
-    foreach (var indicacion in indicaciones)
+    private IEnumerator MostrarIndicacionesSecuencia()
     {
-        indicacion.gameObject.SetActive(true);
-        float tiempoRestante = duracionIndicaciones;
+        RectTransform[] indicaciones = { indicaciones1, indicaciones2, indicaciones3 };
 
-        while (tiempoRestante > 0)
+        foreach (var indicacion in indicaciones)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            indicacion.gameObject.SetActive(true);
+
+
+            float tiempoEsperado = Time.time + duracionIndicaciones;
+            while (Time.time < tiempoEsperado)
             {
-                break; // Saltar a la siguiente indicación
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    break; // Saltar a la siguiente indicación si se presiona espacio
+                }
+                yield return null; // Esperar un frame antes de verificar nuevamente
             }
-            tiempoRestante -= Time.deltaTime;
-            yield return null;
+
+            indicacion.gameObject.SetActive(false);
         }
 
-        indicacion.gameObject.SetActive(false);
+        // Iniciar el juego después de mostrar todas las indicaciones
+        IniciarJuego();
     }
-
-    // Iniciar el juego después de mostrar todas las indicaciones
-    IniciarJuego();
-}
 
 
 
