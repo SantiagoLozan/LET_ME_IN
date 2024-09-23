@@ -4993,7 +4993,7 @@ MonoBehaviour:
   botonIngreso: {fileID: 0}
   botonRechazo: {fileID: 0}
   panelSiguiente: {fileID: 0}
-  velocidadTexto: 0.1
+  velocidadTexto: 0.5
   gameManager: {fileID: 0}
   audioManager: {fileID: 1168009879}
   aggressiveNPCs: {fileID: 0}
@@ -5239,7 +5239,6 @@ GameObject:
   - component: {fileID: 732569428}
   - component: {fileID: 732569430}
   - component: {fileID: 732569429}
-  - component: {fileID: 732569431}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5363,18 +5362,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732569427}
   m_CullTransparentMesh: 1
---- !u!114 &732569431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732569427}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35a14a3603a573340ab0515f5a7c440b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &744323517
 GameObject:
   m_ObjectHideFlags: 0
@@ -9561,7 +9548,7 @@ MonoBehaviour:
   botonIngreso: {fileID: 0}
   botonRechazo: {fileID: 0}
   panelSiguiente: {fileID: 0}
-  velocidadTexto: 0.1
+  velocidadTexto: 0.5
   gameManager: {fileID: 0}
   audioManager: {fileID: 1168009879}
   aggressiveNPCs: {fileID: 0}
@@ -11480,7 +11467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelInicioDia: {fileID: 1720687406}
   textoInicioDia: {fileID: 732569429}
-  velocidadTexto: 0.1
+  velocidadTexto: 0.5
   duracionPanel: 2
   intervaloCursor: 0.5
   panelReporte: {fileID: 0}

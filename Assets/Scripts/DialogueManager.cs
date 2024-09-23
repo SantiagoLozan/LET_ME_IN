@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     public Button botonRechazo;
     public RectTransform panelSiguiente;
 
-    public float velocidadTexto = 0.05f;
+    public float velocidadTexto = 0.5f;
 
     private string[] lineas;
     private List<string> respuestasActuales;
