@@ -166,16 +166,16 @@ public class UI_Manager : MonoBehaviour
         foreach (var indicacion in indicaciones)
         {
             indicacion.gameObject.SetActive(true);
+            float tiempoRestante = duracionIndicaciones;
 
-
-            float tiempoEsperado = Time.time + duracionIndicaciones;
-            while (Time.time < tiempoEsperado)
+            while (tiempoRestante > 0)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    break; // Saltar a la siguiente indicación si se presiona espacio
+                    break; // Saltar a la siguiente indicación
                 }
-                yield return null; // Esperar un frame antes de verificar nuevamente
+                tiempoRestante -= Time.deltaTime;
+                yield return null;
             }
 
             indicacion.gameObject.SetActive(false);

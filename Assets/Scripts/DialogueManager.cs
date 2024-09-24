@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     public Button botonRechazo;
     public RectTransform panelSiguiente;
 
-    public float velocidadTexto = 0.5f;
+    public float velocidadTexto = 0.05f;
 
     private string[] lineas;
     private List<string> respuestasActuales;
@@ -52,19 +52,19 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-      if (dialogoVisible)
-    {
-        // Detecta si el usuario presiona Espacio para adelantar un diálogo
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (dialogoVisible)
         {
-            AdelantarDialogo();
+            // Detecta si el usuario presiona Espacio para adelantar un diálogo
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                AdelantarDialogo();
+            }
+            // Detecta si el usuario presiona Enter para omitir todos los diálogos
+            else if (Input.GetKeyDown(KeyCode.Return))
+            {
+                SaltarTodosLosDialogos();
+            }
         }
-        // Detecta si el usuario presiona Enter para omitir todos los diálogos
-        else if (Input.GetKeyDown(KeyCode.Return))
-        {
-            SaltarTodosLosDialogos();
-        }
-    }
     }
 
     public void AdelantarDialogo()
@@ -79,7 +79,7 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         panelDialogo.gameObject.SetActive(false);
         panelRespuestas.gameObject.SetActive(false);
-        dialogoVisible = false; 
+        dialogoVisible = false;
 
         PausarVoces();
 
@@ -124,7 +124,7 @@ public class DialogueManager : MonoBehaviour
     {
         panelRespuestas.gameObject.SetActive(true);
         panelDialogo.gameObject.SetActive(false);
-        dialogoVisible = true; 
+        dialogoVisible = true;
         StartCoroutine(EscribirRespuestas());
     }
 
@@ -134,7 +134,7 @@ public class DialogueManager : MonoBehaviour
 
         // Iniciar la reproducción del audio pero no detener el flujo del texto
         vozGuardia.Play();
-        StartCoroutine(DetenerAudioGuardia(2));
+        StartCoroutine(DetenerAudioGuardia(8));
 
 
         tiempoUltimaActualizacion = Time.time;
@@ -219,7 +219,7 @@ public class DialogueManager : MonoBehaviour
     void MostrarPanelDialogo()
     {
         mostrandoRespuestas = false;
-        dialogoVisible = true; 
+        dialogoVisible = true;
         panelDialogo.gameObject.SetActive(true);
         panelRespuestas.gameObject.SetActive(false);
         ComenzarEscritura();
@@ -230,77 +230,77 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(EscribirLinea());
     }
 
-   IEnumerator EscribirLinea()
-{
-    textoDialogo.text = string.Empty;
-
-    vozPersonaje.Play();
-    StartCoroutine(DetenerAudioPersonaje(2));
-
-    tiempoUltimaActualizacion = Time.time; // Inicializar el tiempo del cursor
-
-    while (textoDialogo.text.Length < lineas[indexDialogo].Length)
+    IEnumerator EscribirLinea()
     {
-        if (textoCompleto)
+        textoDialogo.text = string.Empty;
+
+        vozPersonaje.Play();
+        StartCoroutine(DetenerAudioPersonaje(8));
+
+        tiempoUltimaActualizacion = Time.time; // Inicializar el tiempo del cursor
+
+        while (textoDialogo.text.Length < lineas[indexDialogo].Length)
         {
-            textoDialogo.text = lineas[indexDialogo]; // Mostrar el texto completo
-            break;
+            if (textoCompleto)
+            {
+                textoDialogo.text = lineas[indexDialogo]; // Mostrar el texto completo
+                break;
+            }
+
+            if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
+            {
+                cursorVisible = !cursorVisible;
+                tiempoUltimaActualizacion = Time.time;
+            }
+
+            string textoParcial = lineas[indexDialogo].Substring(0, textoDialogo.text.Length);
+            if (cursorVisible)
+            {
+                textoParcial += "_";
+            }
+            textoDialogo.text = textoParcial;
+
+            yield return new WaitForSeconds(velocidadTexto);
         }
 
-        if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
+        // Mostrar el texto completo con el cursor titilante
+        while (true)
         {
-            cursorVisible = !cursorVisible;
-            tiempoUltimaActualizacion = Time.time;
+            if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
+            {
+                cursorVisible = !cursorVisible;
+                tiempoUltimaActualizacion = Time.time;
+            }
+
+            string textoConCursorTitilante = lineas[indexDialogo];
+            if (cursorVisible)
+            {
+                textoConCursorTitilante += "_";
+            }
+            textoDialogo.text = textoConCursorTitilante;
+
+            yield return null; // Esperar al siguiente frame
+
+            // Salir del bucle cuando el jugador haga clic o presione una tecla
+            if (Input.GetMouseButtonDown(0))
+            {
+                break;
+            }
         }
 
-        string textoParcial = lineas[indexDialogo].Substring(0, textoDialogo.text.Length);
-        if (cursorVisible)
+        // Finalizar diálogo
+        textoDialogo.text = lineas[indexDialogo];
+        if (AudioManager.instance != null)
         {
-            textoParcial += "_";
+            AudioManager.instance.DetenerHablar();
         }
-        textoDialogo.text = textoParcial;
 
-        yield return new WaitForSeconds(velocidadTexto);
+        textoCompleto = false;
+        mostrandoRespuestas = true;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        PanelDialogoClick();
     }
-
-    // Mostrar el texto completo con el cursor titilante
-    while (true)
-    {
-        if (Time.time - tiempoUltimaActualizacion >= intervaloCursor)
-        {
-            cursorVisible = !cursorVisible;
-            tiempoUltimaActualizacion = Time.time;
-        }
-
-        string textoConCursorTitilante = lineas[indexDialogo];
-        if (cursorVisible)
-        {
-            textoConCursorTitilante += "_";
-        }
-        textoDialogo.text = textoConCursorTitilante;
-
-        yield return null; // Esperar al siguiente frame
-
-        // Salir del bucle cuando el jugador haga clic o presione una tecla
-        if (Input.GetMouseButtonDown(0))
-        {
-            break;
-        }
-    }
-
-    // Finalizar diálogo
-    textoDialogo.text = lineas[indexDialogo];
-    if (AudioManager.instance != null)
-    {
-        AudioManager.instance.DetenerHablar();
-    }
-
-    textoCompleto = false;
-    mostrandoRespuestas = true;
-
-    yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-    PanelDialogoClick();
-}
 
 
 
@@ -339,7 +339,7 @@ public class DialogueManager : MonoBehaviour
             if (indexDialogo == lineas.Length - 1)
             {
                 panelDialogo.gameObject.SetActive(false);
-                 dialogoVisible = false;
+                dialogoVisible = false;
                 //MostrarBotonSiguiente();
                 if (esAgresivo)
                 {
@@ -383,5 +383,5 @@ public class DialogueManager : MonoBehaviour
             imageRechazo.alphaHitTestMinimumThreshold = 0.1f;
         }
     }
-    }
+}
 

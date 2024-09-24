@@ -380,7 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelInicioDia: {fileID: 17082860}
   textoInicioDia: {fileID: 0}
-  velocidadTexto: 0.1
+  velocidadTexto: 0.05
   duracionPanel: 1
   intervaloCursor: 0.5
   panelReporte: {fileID: 17082860}
@@ -4993,7 +4993,7 @@ MonoBehaviour:
   botonIngreso: {fileID: 0}
   botonRechazo: {fileID: 0}
   panelSiguiente: {fileID: 0}
-  velocidadTexto: 0.5
+  velocidadTexto: 0.05
   gameManager: {fileID: 0}
   audioManager: {fileID: 1168009879}
   aggressiveNPCs: {fileID: 0}
@@ -9548,7 +9548,7 @@ MonoBehaviour:
   botonIngreso: {fileID: 0}
   botonRechazo: {fileID: 0}
   panelSiguiente: {fileID: 0}
-  velocidadTexto: 0.5
+  velocidadTexto: 0.05
   gameManager: {fileID: 0}
   audioManager: {fileID: 1168009879}
   aggressiveNPCs: {fileID: 0}
@@ -9951,7 +9951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelInicioDia: {fileID: 1493280882}
   textoInicioDia: {fileID: 0}
-  velocidadTexto: 0.1
+  velocidadTexto: 0.05
   duracionPanel: 1
   intervaloCursor: 0.5
   panelReporte: {fileID: 1493280882}
@@ -10166,7 +10166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelInicioDia: {fileID: 1515895190}
   textoInicioDia: {fileID: 1992671362}
-  velocidadTexto: 0.1
+  velocidadTexto: 0.05
   duracionPanel: 2
   intervaloCursor: 0.5
   panelReporte: {fileID: 0}
@@ -10681,7 +10681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelInicioDia: {fileID: 1658696441}
   textoInicioDia: {fileID: 0}
-  velocidadTexto: 0.1
+  velocidadTexto: 0.05
   duracionPanel: 1
   intervaloCursor: 0.5
   panelReporte: {fileID: 1658696441}
@@ -11344,7 +11344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelInicioDia: {fileID: 1720687406}
   textoInicioDia: {fileID: 732569429}
-  velocidadTexto: 0.1
+  velocidadTexto: 0.05
   duracionPanel: 5
   intervaloCursor: 0.5
   panelReporte: {fileID: 1493280882}
@@ -13116,7 +13116,7 @@ MonoBehaviour:
   botonIngreso: {fileID: 1228093870}
   botonRechazo: {fileID: 1941776353}
   panelSiguiente: {fileID: 1947946919}
-  velocidadTexto: 0.1
+  velocidadTexto: 0.05
   gameManager: {fileID: 0}
   audioManager: {fileID: 1168009879}
   aggressiveNPCs: {fileID: 1727551768}
