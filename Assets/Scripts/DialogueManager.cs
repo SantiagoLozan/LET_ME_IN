@@ -30,6 +30,7 @@ public class DialogueManager : MonoBehaviour
 
     public s_GameManager gameManager;
     public AudioManager audioManager;
+    public VoiceRecognitionManager voiceRecognitionManager;
 
     public AggressiveNPCs aggressiveNPCs;
     public CheckCondition checkCondition;
@@ -43,7 +44,10 @@ public class DialogueManager : MonoBehaviour
     public AudioSource vozGuardia;
     public AudioSource vozPersonaje;
 
+    
+
     private bool dialogoVisible = false;  // Verifica si hay un diálogo en pantalla
+    
 
     void Start()
     {
@@ -83,6 +87,8 @@ public class DialogueManager : MonoBehaviour
 
         PausarVoces();
 
+        voiceRecognitionManager.ActivarReconocimientoVoz();
+
         if (esAgresivo)
         {
             aggressiveNPCs.MostrarComportamientoAgresivo();
@@ -116,6 +122,8 @@ public class DialogueManager : MonoBehaviour
 
         indexDialogo = 0;
         indexRespuestas = 0;
+
+        voiceRecognitionManager.DesactivarReconocimientoVoz();
 
         MostrarPanelDialogo();
     }
@@ -340,6 +348,8 @@ public class DialogueManager : MonoBehaviour
             {
                 panelDialogo.gameObject.SetActive(false);
                 dialogoVisible = false;
+
+                voiceRecognitionManager.ActivarReconocimientoVoz();
                 //MostrarBotonSiguiente();
                 if (esAgresivo)
                 {
