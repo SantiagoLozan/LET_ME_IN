@@ -630,18 +630,18 @@ MonoBehaviour:
   - La llegada de un virus ha devastado gran parte de la sociedad
   - "la creaci\xF3n de zonas seguras entre las ciudades ya es una realidad"
   - "tras una extensa investigaci\xF3n por parte de los fundadores"
-  - se confirma que no estuviste expuesto al virus y se te elige para el trabajo
-  - "tu permanencia en la zona segura depender\xE1 de tu desempe\xF1o"
+  - se confirma que no has estado expuesto al virus y se te ha eligido para el trabajo
+  - "la permanencia en la zona segura depender\xE1 solamente de tu desempe\xF1o"
   - "tu tarea es determinar cu\xE1les sobrevivientes son aptos para ingresar al b\xFAnker"
   - "te dejamos esta importante misi\xF3n en tus manos."
   audios:
-  - {fileID: 8300000, guid: da0495043e0a8a64291b91c56029bbf3, type: 3}
-  - {fileID: 8300000, guid: 79fd7762b16687e4ba655007de779ae6, type: 3}
-  - {fileID: 8300000, guid: 8f47761a072d50a4395a48e3bf27236c, type: 3}
-  - {fileID: 8300000, guid: 3ea209c9df4660045a92e34f51976de7, type: 3}
-  - {fileID: 8300000, guid: 837d216640105c84dba6cd9945bb4e87, type: 3}
-  - {fileID: 8300000, guid: d8586e68d88e1ab4e8eb6430e3e1d04d, type: 3}
-  - {fileID: 8300000, guid: 0820799faca2d6a40b0c279a31dca6c9, type: 3}
+  - {fileID: 8300000, guid: 492e467e2cafff548971d3624fce415a, type: 3}
+  - {fileID: 8300000, guid: 609c12b2d488ef9468500e6a3f2ea0e6, type: 3}
+  - {fileID: 8300000, guid: 7659edca69c417043882ab1965c5fe53, type: 3}
+  - {fileID: 8300000, guid: 86707644cba8d7d4290d3f888410aee1, type: 3}
+  - {fileID: 8300000, guid: dc14b061e5d6ef448acf94c160576959, type: 3}
+  - {fileID: 8300000, guid: 3ba781783f3b92f4694abb8a024932b7, type: 3}
+  - {fileID: 8300000, guid: f3c748ccb28c54c48918fcca402d115d, type: 3}
   duracionPorImagen: 3
   velocidadDeTipeo: 0.05
 --- !u!4 &987662867

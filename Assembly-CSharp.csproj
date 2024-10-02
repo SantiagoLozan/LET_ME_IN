@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Cinematica.cs" />
     <Compile Include="Assets\Scripts\OptionsManager.cs" />
+    <Compile Include="Assets\Scripts\VoiceRecognitionManager.cs" />
     <Compile Include="Assets\Scripts\PauseManager.cs" />
     <Compile Include="Assets\Scripts\GameData.cs" />
     <Compile Include="Assets\Scripts\s_VideoScript.cs" />
