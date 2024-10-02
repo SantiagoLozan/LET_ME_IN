@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\UI_Manager.cs" />
     <Compile Include="Assets\Scripts\s_InformacionVisible.cs" />
     <Compile Include="Assets\Scripts\s_GameManager.cs" />
+    <Compile Include="Assets\Scripts\RecordatorioManager.cs" />
     <Compile Include="Assets\Scripts\s_NavScene.cs" />
     <Compile Include="Assets\Scripts\BackgroundManager.cs" />
   </ItemGroup>
