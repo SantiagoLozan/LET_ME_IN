@@ -44,10 +44,10 @@ public class DialogueManager : MonoBehaviour
     public AudioSource vozGuardia;
     public AudioSource vozPersonaje;
 
-    
+
 
     private bool dialogoVisible = false;  // Verifica si hay un diálogo en pantalla
-    
+
 
     void Start()
     {
@@ -142,7 +142,7 @@ public class DialogueManager : MonoBehaviour
 
         // Iniciar la reproducción del audio pero no detener el flujo del texto
         vozGuardia.Play();
-        StartCoroutine(DetenerAudioGuardia(8));
+        StartCoroutine(DetenerAudioGuardia(3));
 
 
         tiempoUltimaActualizacion = Time.time;
@@ -243,7 +243,7 @@ public class DialogueManager : MonoBehaviour
         textoDialogo.text = string.Empty;
 
         vozPersonaje.Play();
-        StartCoroutine(DetenerAudioPersonaje(8));
+        StartCoroutine(DetenerAudioPersonaje(3));
 
         tiempoUltimaActualizacion = Time.time; // Inicializar el tiempo del cursor
 

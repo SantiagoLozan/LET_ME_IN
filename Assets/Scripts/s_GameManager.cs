@@ -27,10 +27,8 @@ public class s_GameManager : MonoBehaviour
     public float tiempoMovimiento = 1f; // El tiempo que tarda en levantar la capa
     public float tiempoEspera = 3f; // El tiempo que esperará antes de volver a su posición original
 
-
     private int totalEnfermos;
     public int NivelActual { get; private set; }
-
 
     void Start()
     {
@@ -51,6 +49,18 @@ public class s_GameManager : MonoBehaviour
     public void ChangeScene(string name)
     {
         SceneManager.LoadScene(name);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        ResetGameProgress();
+        ChangeScene("MenuPrincipal");
+    }
+
+    public void ResetGameProgress()
+    {
+        NivelActual = 1;
+        GameData.NivelActual = NivelActual;
     }
 
     public void NextCharacter()
@@ -101,7 +111,6 @@ public class s_GameManager : MonoBehaviour
         capaPuerta.transform.position = posicionInicial;
     }
 
-
     private IEnumerator DetenerSonidoPuerta(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -151,7 +160,6 @@ public class s_GameManager : MonoBehaviour
             }
         }
 
-
         NextCharacter();
     }
 
@@ -171,33 +179,29 @@ public class s_GameManager : MonoBehaviour
 
     public void MostrarMensaje()
     {
-        // Mostrar mensaje según la cantidad de enfermos ingresados
-        if (enfermosIngresados == 0 && sanosRechazados == 0)
-        {
-            uiManager.mensajeReporte.text = "¡Buen trabajo!";
-
-            //modificacion temporal para que no apse al nivel 3
-            if (NivelActual == 1)
-            {
-                uiManager.botonSiguienteNivel.gameObject.SetActive(true);
-            };
-
-        }
-        else if ((enfermosIngresados >= 1 && enfermosIngresados <= 3) || (sanosRechazados >= 1 && sanosRechazados <= 3))
-        {
-            uiManager.mensajeReporte.text = "Más cuidado la próxima vez...";
-            // GameData.Faltas++;
-
-
-            //modificacion temporal para que no apse al nivel 3
-            if (NivelActual == 1)
-            {
-                uiManager.botonSiguienteNivel.gameObject.SetActive(true);
-            };
-        }
-        else if (enfermosIngresados > 3 || sanosRechazados > 3)
+        // Verificar si el jugador pierde
+        if (enfermosIngresados > 2 || sanosRechazados > 3)
         {
             uiManager.mensajeReporte.text = "Fuiste retirado del puesto de trabajo.";
+            uiManager.botonSiguienteNivel.gameObject.SetActive(false);
+        }
+
+        else if ((enfermosIngresados >= 1 && enfermosIngresados <= 2) || (sanosRechazados >= 1 && sanosRechazados <= 3))
+        {
+            uiManager.mensajeReporte.text = "Más cuidado la próxima vez...";
+            if (NivelActual == 1)
+            {
+                uiManager.botonSiguienteNivel.gameObject.SetActive(true);
+            }
+        }
+
+        else
+        {
+            uiManager.mensajeReporte.text = "¡Buen trabajo!";
+            if (NivelActual == 1)
+            {
+                uiManager.botonSiguienteNivel.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -211,7 +215,6 @@ public class s_GameManager : MonoBehaviour
 
     private string ObtenerMensajeInicioParaNivel(int nivel)
     {
-        // Asegurarse de que el índice esté dentro del rango del array
         if (nivel - 1 >= 0 && nivel - 1 < mensajesInicioDia.Length)
         {
             return mensajesInicioDia[nivel - 1];

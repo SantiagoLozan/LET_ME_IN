@@ -22,7 +22,6 @@ public class Character
 
 public class CharactersManager : MonoBehaviour
 {
-
     public GameObject[] personajesPrefabs;
     public Transform spawnPoint;
     public Transform centerPoint;
@@ -48,22 +47,22 @@ public class CharactersManager : MonoBehaviour
     {
         ConfigurarPersonajesParaNivel(gameManager.NivelActual);
 
-        /*  if (uiManager != null)
-          {
-              uiManager.PanelInicioDesactivado += AparecerSiguientePersonaje;
-          }
-          else
-          {
-              Debug.LogError("UI_Manager no está asignado en CharactersManager.");
-          }*/
+        /* if (uiManager != null)
+        {
+            uiManager.PanelInicioDesactivado += AparecerSiguientePersonaje;
+        }
+        else
+        {
+            Debug.LogError("UI_Manager no está asignado en CharactersManager.");
+        } */
     }
 
     void OnDestroy()
     {
         /* if (uiManager != null)
-         {
-             uiManager.PanelInicioDesactivado -= AparecerSiguientePersonaje;
-         }*/
+        {
+            uiManager.PanelInicioDesactivado -= AparecerSiguientePersonaje;
+        } */
     }
 
     public void ConfigurarPersonajesParaNivel(int nivel)
@@ -87,8 +86,6 @@ public class CharactersManager : MonoBehaviour
             charactersForCurrentLevel = charactersForCurrentLevel.GetRange(0, personajesPorNivel);
         }
 
-
-
         // Mezcla la lista de personajes
         Shuffle(charactersForCurrentLevel);
     }
@@ -103,7 +100,6 @@ public class CharactersManager : MonoBehaviour
             list[rnd] = temp;
         }
     }
-
 
     public void AparecerSiguientePersonaje()
     {
@@ -128,18 +124,17 @@ public class CharactersManager : MonoBehaviour
             Character character = charactersForCurrentLevel[index];
             Debug.Log($"Instanciando personaje: {character.nombre} (Índice: {index})");
 
-            //GameObject personajePrefab = personajesPrefabs[Random.Range(0, personajesPrefabs.Length)];
-            GameObject nuevoPersonaje = Instantiate(character.prefab, spawnPoint.position, Quaternion.identity);
+            // Verificación de prefab
+            if (character.prefab == null)
+            {
+                Debug.LogError($"El prefab para el personaje {character.nombre} no está asignado.");
+                yield break; // No continuar si no hay prefab
+            }
 
+            GameObject nuevoPersonaje = Instantiate(character.prefab, spawnPoint.position, Quaternion.identity);
             personajesEnPantalla.Add(nuevoPersonaje);
             StartCoroutine(MoverPersonajeAlCentro(nuevoPersonaje, centerPoint.position, index));
             index++;
-
-
-            /*  if (index % personajesPorDecremento == 0)
-              {
-                  StartCoroutine(OscurecerLuzGradualmente());
-              }*/
         }
         else
         {
@@ -173,7 +168,7 @@ public class CharactersManager : MonoBehaviour
             // Movimiento de deslizamiento
             personaje.transform.position = Vector3.Lerp(inicio, destino, t);
 
-            // Movimiento caminar
+            // Movimiento caminar (rebote)
             float offsetY = Mathf.Sin(tiempoTranscurrido * bounceSpeed) * bounceHeight;
             personaje.transform.position = new Vector3(personaje.transform.position.x, destino.y + offsetY, personaje.transform.position.z);
 
@@ -205,7 +200,10 @@ public class CharactersManager : MonoBehaviour
 
         foreach (GameObject personaje in personajesEnPantalla)
         {
-            salidas.Add(StartCoroutine(MoverPersonajeFueraDePantalla(personaje, exitPoint.position)));
+            if (personaje != null)
+            {
+                salidas.Add(StartCoroutine(MoverPersonajeFueraDePantalla(personaje, exitPoint.position)));
+            }
         }
 
         // Esperar a que todos los personajes se hayan movido fuera de la pantalla
@@ -217,7 +215,10 @@ public class CharactersManager : MonoBehaviour
         // Limpiar personajes después de moverlos fuera de la pantalla
         foreach (GameObject personaje in personajesEnPantalla)
         {
-            Destroy(personaje);
+            if (personaje != null)
+            {
+                Destroy(personaje);
+            }
         }
         personajesEnPantalla.Clear();
     }
@@ -272,7 +273,7 @@ public class CharactersManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Índice de personaje fuera de rango");
+            Debug.LogError("Índice de personaje fuera de rango");
         }
     }
 
@@ -295,7 +296,6 @@ public class CharactersManager : MonoBehaviour
     {
         get { return index - 1; }
     }
-
 
     public void MoverPersonajeAlPunto(Vector3 destino)
     {
@@ -329,10 +329,8 @@ public class CharactersManager : MonoBehaviour
     {
         if (personajesEnPantalla.Count > 0)
         {
-            return personajesEnPantalla[personajesEnPantalla.Count - 1];
+            return personajesEnPantalla[0];
         }
         return null;
     }
-
-
 }
